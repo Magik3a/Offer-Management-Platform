@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  omp.web:
+    image: ${DOCKER_REGISTRY-}ompweb
+    build:
+      context: .
+      dockerfile: OMP.Web/Dockerfile
+    depends_on: 
+        - sql.data
+
+  sql.data:
+    image: mcr.microsoft.com/mssql/server

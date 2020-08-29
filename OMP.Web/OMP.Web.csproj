@@ -29,6 +29,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="StackExchange.Exceptional.AspNetCore" Version="2.1.0" />
     <PackageReference Include="Serenity.FluentMigrator.Runner" Version="1.6.904" />
     <PackageReference Include="Serenity.Scripts" Version="3.13.7" />
@@ -37,6 +38,8 @@
   </ItemGroup>
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);COREFX;ASPNETCORE</DefineConstants>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
   <Import Project="$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets" Condition="Exists('$(SolutionDir)Serenity\tools\Submodule\Serenity.Submodule.AspNetCore.targets')" />
   <Target Name="CreateInputsOutputs" BeforeTargets="BeforeBuild">

@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  omp.web:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5100:80
+
+  sql.data:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+    ports:
+      - 5433:1433
