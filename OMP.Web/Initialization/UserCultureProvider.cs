@@ -15,6 +15,7 @@ namespace OMP.AppServices
             { "en", "en-US" },
             { "zh", "zh-CN" },
             { "vi", "vi-VN" },
+            { "bg", "bg-BG" },
             { "fa", "fa-IR" }
         };
 
@@ -42,6 +43,7 @@ namespace OMP.AppServices
         private static readonly string[] supportedCultureIdentifiers = new string[] {
             "de-DE",
             "en-US",
+            "bg-BG",
             "en-GB",
             "es-ES",
             "fa-IR",

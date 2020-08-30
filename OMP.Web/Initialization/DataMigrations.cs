@@ -15,7 +15,9 @@
     public static class DataMigrations
     {
         private static readonly string[] databaseKeys = new[] {
-            "Default"
+            "Default",
+            "Offers",
+            "Payments"
         };
 
         public static void Initialize()
