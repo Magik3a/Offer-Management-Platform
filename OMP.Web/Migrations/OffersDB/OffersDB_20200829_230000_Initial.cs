@@ -42,7 +42,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("Accounts", "AccountId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Address").AsString(500).NotNullable()
+                .WithColumn("Address").AsString(500).Nullable()
                 .WithColumn("Phone").AsString(200).Nullable()
                 
                 .WithColumn("CityId").AsInt32().Nullable()
@@ -63,7 +63,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("Companies", "CompanyId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Address").AsString(500).NotNullable()
+                .WithColumn("Address").AsString(500).Nullable()
                 .WithColumn("Phone").AsString(200).Nullable()
                 
                 .WithColumn("CityId").AsInt32().Nullable()
@@ -103,7 +103,7 @@ namespace OMP.Migrations.OffersDB
             );
 
             this.CreateTableWithId32("OfferStatuses", "OfferStatusId", s => s
-                .WithColumn("Name").AsString(500).Nullable()
+                .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("BorderColor").AsString(50).Nullable()
                 .WithColumn("BackgroundColor").AsString(50).Nullable()
 
@@ -160,13 +160,13 @@ namespace OMP.Migrations.OffersDB
                 .WithColumn("Discount").AsCurrency().NotNullable().WithDefaultValue(0)
                 .WithColumn("MinimumDaysDevelopmentTime").AsInt32().NotNullable().WithDefaultValue(0)
                 .WithColumn("MaximumDaysDevelopmentTime").AsInt32().NotNullable().WithDefaultValue(1)
-                .WithColumn("StartDate").AsDateTime().NotNullable()
+                .WithColumn("StartDate").AsDateTime().Nullable()
                 .WithColumn("AdditionalInfo").AsString(Int32.MaxValue).Nullable()
                 
-                .WithColumn("CompanyId").AsInt32().NotNullable()
+                .WithColumn("CompanyId").AsInt32().Nullable()
                 .ForeignKey("Companies", "CompanyId")
                 
-                .WithColumn("OfferStatusId").AsInt32().Nullable()
+                .WithColumn("OfferStatusId").AsInt32().NotNullable()
                 .ForeignKey("OfferStatuses", "OfferStatusId")
 
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
@@ -183,10 +183,10 @@ namespace OMP.Migrations.OffersDB
             );
 
             this.CreateTableWithId32("OfferCategories", "OfferCategoryId", s => s
-                .WithColumn("OfferId").AsInt32().Nullable()
+                .WithColumn("OfferId").AsInt32().NotNullable()
                 .ForeignKey("Offers", "OfferId")
 
-                .WithColumn("CategoryId").AsInt32().Nullable()
+                .WithColumn("CategoryId").AsInt32().NotNullable()
                 .ForeignKey("Categories", "CategoryId")
 
                 .WithColumn("Price").AsCurrency().NotNullable().WithDefaultValue(0)
@@ -206,7 +206,7 @@ namespace OMP.Migrations.OffersDB
             );
 
             this.CreateTableWithId32("TaskStatuses", "TaskStatusId", s => s
-                .WithColumn("Name").AsString(500).Nullable()
+                .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("BorderColor").AsString(50).Nullable()
                 .WithColumn("BackgroundColor").AsString(50).Nullable()
 

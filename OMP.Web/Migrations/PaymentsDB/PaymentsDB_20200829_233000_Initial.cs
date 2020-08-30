@@ -10,7 +10,7 @@ namespace OMP.Migrations.PaymentsDB
         {
 
             this.CreateTableWithId32("PaymentTypes", "PaymentTypeId", s => s
-                .WithColumn("Name").AsString(500).Nullable()
+                .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("BorderColor").AsString(50).Nullable()
                 .WithColumn("BackgroundColor").AsString(50).Nullable()
 
@@ -54,7 +54,7 @@ namespace OMP.Migrations.PaymentsDB
             });
 
             this.CreateTableWithId32("PaymentStatuses", "PaymentStatusId", s => s
-                .WithColumn("Name").AsString(500).Nullable()
+                .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("BorderColor").AsString(50).Nullable()
                 .WithColumn("BackgroundColor").AsString(50).Nullable()
 
