@@ -6,12 +6,12 @@ namespace OMP.Offers.Endpoints
     using Serenity.Services;
     using System.Data;
     using Microsoft.AspNetCore.Mvc;
-    using MyRepository = Repositories.CitiesRepository;
-    using MyRow = Entities.CitiesRow;
+    using MyRepository = Repositories.CitiesLangRepository;
+    using MyRow = Entities.CitiesLangRow;
 
-    [Route("Services/Offers/Cities/[action]")]
+    [Route("Services/Offers/CitiesLang/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class CitiesController : ServiceEndpoint
+    public class CitiesLangController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
@@ -24,22 +24,13 @@ namespace OMP.Offers.Endpoints
         {
             return new MyRepository().Update(uow, request);
         }
-        public RetrieveLocalizationResponse<MyRow> RetrieveLocalization(
-            IDbConnection connection, RetrieveLocalizationRequest request)
-        {
-            return new MyRepository().RetrieveLocalization(connection, request);
-        }
+ 
         [HttpPost, AuthorizeDelete(typeof(MyRow))]
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
             return new MyRepository().Delete(uow, request);
         }
 
-        [HttpPost, AuthorizeDelete(typeof(MyRow))]
-        public UndeleteResponse Undelete(IUnitOfWork uow, UndeleteRequest request)
-        {
-            return new MyRepository().Undelete(uow, request);
-        }
         [HttpPost]
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {

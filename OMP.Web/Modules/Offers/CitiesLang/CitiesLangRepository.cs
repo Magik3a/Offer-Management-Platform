@@ -6,9 +6,9 @@ namespace OMP.Offers.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.CitiesRow;
+    using MyRow = Entities.CitiesLangRow;
 
-    public class CitiesRepository
+    public class CitiesLangRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -26,11 +26,7 @@ namespace OMP.Offers.Repositories
         {
             return new MyDeleteHandler().Process(uow, request);
         }
-        public RetrieveLocalizationResponse<MyRow> RetrieveLocalization(
-            IDbConnection connection, RetrieveLocalizationRequest request)
-        {
-            return new LocalizationRowHandler<MyRow>().Retrieve(connection, request);
-        }
+
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRetrieveHandler().Process(connection, request);
@@ -41,11 +37,6 @@ namespace OMP.Offers.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        public UndeleteResponse Undelete(IUnitOfWork uow, UndeleteRequest request)
-        {
-            return new MyUndeleteHandler().Process(uow, request);
-        }
-        private class MyUndeleteHandler : UndeleteRequestHandler<MyRow> { }
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }

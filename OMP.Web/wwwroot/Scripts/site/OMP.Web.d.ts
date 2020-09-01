@@ -54,6 +54,35 @@ declare namespace OMP.Administration {
     }
 }
 declare namespace OMP.Administration {
+    interface NoteRow {
+        NoteId?: number;
+        EntityType?: string;
+        EntityId?: number;
+        Text?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        InsertUserDisplayName?: string;
+    }
+    namespace NoteRow {
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Northwind.Note";
+        const deletePermission: any;
+        const insertPermission: any;
+        const readPermission = "";
+        const updatePermission: any;
+        const enum Fields {
+            NoteId = "NoteId",
+            EntityType = "EntityType",
+            EntityId = "EntityId",
+            Text = "Text",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            InsertUserDisplayName = "InsertUserDisplayName"
+        }
+    }
+}
+declare namespace OMP.Administration {
 }
 declare namespace OMP.Administration {
 }
@@ -598,6 +627,247 @@ declare namespace OMP.Membership {
         Password?: string;
     }
 }
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface CitiesForm {
+        Name: Serenity.StringEditor;
+        CountryId: Serenity.LookupEditor;
+    }
+    class CitiesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface CitiesLangRow {
+        Id?: number;
+        CityId?: number;
+        LanguageId?: number;
+        Name?: string;
+        CityName?: string;
+        CityCountryId?: number;
+        CityInsertDate?: string;
+        CityInsertUserId?: number;
+        CityUpdateDate?: string;
+        CityUpdateUserId?: number;
+        CityIsActive?: number;
+    }
+    namespace CitiesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.CitiesLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            CityId = "CityId",
+            LanguageId = "LanguageId",
+            Name = "Name",
+            CityName = "CityName",
+            CityCountryId = "CityCountryId",
+            CityInsertDate = "CityInsertDate",
+            CityInsertUserId = "CityInsertUserId",
+            CityUpdateDate = "CityUpdateDate",
+            CityUpdateUserId = "CityUpdateUserId",
+            CityIsActive = "CityIsActive"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CitiesLangService {
+        const baseUrl = "Offers/CitiesLang";
+        function Create(request: Serenity.SaveRequest<CitiesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CitiesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CitiesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CitiesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/CitiesLang/Create",
+            Update = "Offers/CitiesLang/Update",
+            Delete = "Offers/CitiesLang/Delete",
+            Retrieve = "Offers/CitiesLang/Retrieve",
+            List = "Offers/CitiesLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface CitiesRow {
+        CityId?: number;
+        Name?: string;
+        CountryId?: number;
+        CountryName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace CitiesRow {
+        const idProperty = "CityId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.Cities";
+        const lookupKey = "Offers.Cities";
+        function getLookup(): Q.Lookup<CitiesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CityId = "CityId",
+            Name = "Name",
+            CountryId = "CountryId",
+            CountryName = "CountryName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CitiesService {
+        const baseUrl = "Offers/Cities";
+        function Create(request: Serenity.SaveRequest<CitiesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CitiesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/Cities/Create",
+            Update = "Offers/Cities/Update",
+            RetrieveLocalization = "Offers/Cities/RetrieveLocalization",
+            Delete = "Offers/Cities/Delete",
+            Undelete = "Offers/Cities/Undelete",
+            Retrieve = "Offers/Cities/Retrieve",
+            List = "Offers/Cities/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface CountriesForm {
+        Name: Serenity.StringEditor;
+    }
+    class CountriesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface CountriesLangRow {
+        Id?: number;
+        CountryId?: number;
+        LanguageId?: number;
+        Name?: string;
+    }
+    namespace CountriesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.CountriesLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            CountryId = "CountryId",
+            LanguageId = "LanguageId",
+            Name = "Name"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CountriesLangService {
+        const baseUrl = "Offers/CountriesLang";
+        function Create(request: Serenity.SaveRequest<CountriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CountriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CountriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CountriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/CountriesLang/Create",
+            Update = "Offers/CountriesLang/Update",
+            Delete = "Offers/CountriesLang/Delete",
+            Retrieve = "Offers/CountriesLang/Retrieve",
+            List = "Offers/CountriesLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface CountriesRow {
+        CountryId?: number;
+        Name?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace CountriesRow {
+        const idProperty = "CountryId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.Countries";
+        const lookupKey = "Offers.Countries";
+        function getLookup(): Q.Lookup<CountriesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CountryId = "CountryId",
+            Name = "Name",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CountriesService {
+        const baseUrl = "Offers/Countries";
+        function Create(request: Serenity.SaveRequest<CountriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CountriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<CountriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CountriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CountriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/Countries/Create",
+            Update = "Offers/Countries/Update",
+            Delete = "Offers/Countries/Delete",
+            Undelete = "Offers/Countries/Undelete",
+            RetrieveLocalization = "Offers/Countries/RetrieveLocalization",
+            Retrieve = "Offers/Countries/Retrieve",
+            List = "Offers/Countries/List"
+        }
+    }
+}
 declare namespace OMP {
     interface ScriptUserDefinition {
         Username?: string;
@@ -609,6 +879,8 @@ declare namespace OMP {
     }
 }
 declare namespace OMP.Texts {
+}
+declare namespace OMP.Web.Modules.Offers {
 }
 declare namespace OMP.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
@@ -629,6 +901,36 @@ declare namespace OMP.Administration {
         protected getService(): string;
         constructor(container: JQuery);
         protected getDefaultSortBy(): LanguageRow.Fields[];
+    }
+}
+declare namespace OMP.Administration {
+    class NoteDialog extends Serenity.TemplatedDialog<any> {
+        private textEditor;
+        constructor();
+        protected getTemplate(): string;
+        protected getDialogOptions(): JQueryUI.DialogOptions;
+        get text(): string;
+        set text(value: string);
+        okClick: () => void;
+    }
+}
+declare namespace OMP.Administration {
+    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        private isDirty;
+        private items;
+        constructor(div: JQuery);
+        protected getTemplate(): string;
+        protected updateContent(): void;
+        protected addClick(): void;
+        protected editClick(e: any): void;
+        deleteClick(e: any): void;
+        get value(): NoteRow[];
+        set value(value: NoteRow[]);
+        getEditValue(prop: Serenity.PropertyItem, target: any): void;
+        setEditValue(source: any, prop: Serenity.PropertyItem): void;
+        get_isDirty(): boolean;
+        set_isDirty(value: any): void;
+        onChange: () => void;
     }
 }
 declare namespace OMP.Administration {
@@ -1084,72 +1386,29 @@ declare namespace OMP.Membership {
     }
 }
 declare namespace OMP.Offers {
-    interface CountriesForm {
-        Name: Serenity.StringEditor;
-    }
-    class CountriesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace OMP.Offers {
-    interface CountriesRow {
-        CountryId?: number;
-        Name?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-        NoteList?: Administration.NoteRow[];
-    }
-    namespace CountriesRow {
-        const idProperty = "CountryId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Offers.Countries";
-        const lookupKey = "Offers.Countries";
-        function getLookup(): Q.Lookup<CountriesRow>;
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            CountryId = "CountryId",
-            Name = "Name",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-            NoteList = "NoteList"
-        }
+    class CitiesDialog extends Serenity.EntityDialog<CitiesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: CitiesForm;
     }
 }
 declare namespace OMP.Offers {
-    namespace CountriesService {
-        const baseUrl = "Offers/Countries";
-        function Create(request: Serenity.SaveRequest<CountriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<CountriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<CountriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CountriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CountriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Offers/Countries/Create",
-            Update = "Offers/Countries/Update",
-            Delete = "Offers/Countries/Delete",
-            Undelete = "Offers/Countries/Undelete",
-            RetrieveLocalization = "Offers/Countries/RetrieveLocalization",
-            Retrieve = "Offers/Countries/Retrieve",
-            List = "Offers/Countries/List"
-        }
+    class CitiesGrid extends Serenity.EntityGrid<CitiesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CitiesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace OMP.Offers {
@@ -1178,203 +1437,4 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
         protected onViewProcessData(response: Serenity.ListResponse<CountriesRow>): Serenity.ListResponse<CountriesRow>;
     }
-}
-declare namespace OMP.Offers {
-}
-declare namespace OMP.Administration {
-    class NoteDialog extends Serenity.TemplatedDialog<any> {
-        private textEditor;
-        constructor();
-        protected getTemplate(): string;
-        protected getDialogOptions(): JQueryUI.DialogOptions;
-        get text(): string;
-        set text(value: string);
-        okClick: () => void;
-    }
-}
-declare namespace OMP.Administration {
-    class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
-        private isDirty;
-        private items;
-        constructor(div: JQuery);
-        protected getTemplate(): string;
-        protected updateContent(): void;
-        protected addClick(): void;
-        protected editClick(e: any): void;
-        deleteClick(e: any): void;
-        get value(): NoteRow[];
-        set value(value: NoteRow[]);
-        getEditValue(prop: Serenity.PropertyItem, target: any): void;
-        setEditValue(source: any, prop: Serenity.PropertyItem): void;
-        get_isDirty(): boolean;
-        set_isDirty(value: any): void;
-        onChange: () => void;
-    }
-}
-declare namespace OMP.Administration {
-    interface NoteRow {
-        NoteId?: number;
-        EntityType?: string;
-        EntityId?: number;
-        Text?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        InsertUserDisplayName?: string;
-    }
-    namespace NoteRow {
-        const idProperty = "NoteId";
-        const nameProperty = "EntityType";
-        const localTextPrefix = "Northwind.Note";
-        const deletePermission: any;
-        const insertPermission: any;
-        const readPermission = "";
-        const updatePermission: any;
-        const enum Fields {
-            NoteId = "NoteId",
-            EntityType = "EntityType",
-            EntityId = "EntityId",
-            Text = "Text",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            InsertUserDisplayName = "InsertUserDisplayName"
-        }
-    }
-}
-declare namespace OMP.Web.Modules.Offers {
-}
-declare namespace OMP.Offers {
-    interface CountriesLangRow {
-        Id?: number;
-        CountryId?: number;
-        LanguageId?: number;
-        Name?: string;
-    }
-    namespace CountriesLangRow {
-        const idProperty = "Id";
-        const nameProperty = "Name";
-        const localTextPrefix = "Offers.CountriesLang";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            Id = "Id",
-            CountryId = "CountryId",
-            LanguageId = "LanguageId",
-            Name = "Name"
-        }
-    }
-}
-declare namespace OMP.Offers {
-    namespace CountriesLangService {
-        const baseUrl = "Offers/CountriesLang";
-        function Create(request: Serenity.SaveRequest<CountriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<CountriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CountriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CountriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Offers/CountriesLang/Create",
-            Update = "Offers/CountriesLang/Update",
-            Delete = "Offers/CountriesLang/Delete",
-            Retrieve = "Offers/CountriesLang/Retrieve",
-            List = "Offers/CountriesLang/List"
-        }
-    }
-}
-declare namespace OMP.Offers {
-    interface CitiesForm {
-        Name: Serenity.StringEditor;
-        CountryId: Serenity.LookupEditor;
-    }
-    class CitiesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace OMP.Offers {
-    interface CitiesRow {
-        CityId?: number;
-        Name?: string;
-        CountryId?: number;
-        CountryName?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-        NoteList?: Administration.NoteRow[];
-    }
-    namespace CitiesRow {
-        const idProperty = "CityId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Offers.Cities";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            CityId = "CityId",
-            Name = "Name",
-            CountryId = "CountryId",
-            CountryName = "CountryName",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-            NoteList = "NoteList"
-        }
-    }
-}
-declare namespace OMP.Offers {
-    namespace CitiesService {
-        const baseUrl = "Offers/Cities";
-        function Create(request: Serenity.SaveRequest<CitiesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<CitiesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Offers/Cities/Create",
-            Update = "Offers/Cities/Update",
-            RetrieveLocalization = "Offers/Cities/RetrieveLocalization",
-            Delete = "Offers/Cities/Delete",
-            Retrieve = "Offers/Cities/Retrieve",
-            List = "Offers/Cities/List"
-        }
-    }
-}
-declare namespace OMP.Offers {
-    class CitiesDialog extends Serenity.EntityDialog<CitiesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        protected form: CitiesForm;
-    }
-}
-declare namespace OMP.Offers {
-    class CitiesGrid extends Serenity.EntityGrid<CitiesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CitiesDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace OMP.Offers {
 }

@@ -6,6 +6,7 @@
         export declare function Update(request: Serenity.SaveRequest<CitiesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function RetrieveLocalization(request: Serenity.RetrieveLocalizationRequest, onSuccess?: (response: Serenity.RetrieveLocalizationResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        export declare function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         export declare function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CitiesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
 
@@ -14,6 +15,7 @@
             Update = "Offers/Cities/Update",
             RetrieveLocalization = "Offers/Cities/RetrieveLocalization",
             Delete = "Offers/Cities/Delete",
+            Undelete = "Offers/Cities/Undelete",
             Retrieve = "Offers/Cities/Retrieve",
             List = "Offers/Cities/List"
         }
@@ -23,6 +25,7 @@
             'Update', 
             'RetrieveLocalization', 
             'Delete', 
+            'Undelete', 
             'Retrieve', 
             'List'
         ].forEach(x => {

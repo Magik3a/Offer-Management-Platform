@@ -19,6 +19,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'Name';
         export const localTextPrefix = 'Offers.Cities';
+        export const lookupKey = 'Offers.Cities';
+
+        export function getLookup(): Q.Lookup<CitiesRow> {
+            return Q.getLookup<CitiesRow>('Offers.Cities');
+        }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';

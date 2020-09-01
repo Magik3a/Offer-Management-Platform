@@ -15,6 +15,12 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.CitiesLang",
+          "Identifier": "CitiesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Countries",
           "Identifier": "Countries",
           "Module": "Offers",

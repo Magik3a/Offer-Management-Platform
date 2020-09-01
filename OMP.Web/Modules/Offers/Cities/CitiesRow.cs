@@ -12,9 +12,11 @@ namespace OMP.Offers.Entities
     using System.IO;
 
     [ConnectionKey("Offers"), Module("Offers"), TableName("[dbo].[Cities]")]
-    [DisplayName("Cities"), InstanceName("Cities")]
+    [DisplayName("Cities"), InstanceName("City")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LocalizationRow(typeof(CitiesLangRow))]
+    [LookupScript]
     public sealed class CitiesRow : OMPLoggingRow, IIdRow, INameRow
     {
         [DisplayName("City Id"), Identity]

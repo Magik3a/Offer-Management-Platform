@@ -11,6 +11,7 @@ namespace OMP.Offers {
         protected getDeletePermission() { return CitiesRow.deletePermission; }
         protected getInsertPermission() { return CitiesRow.insertPermission; }
         protected getUpdatePermission() { return CitiesRow.updatePermission; }
+        protected getIsActiveProperty() { return CitiesRow.isActiveProperty; }
 
         protected form = new CitiesForm(this.idPrefix);
 

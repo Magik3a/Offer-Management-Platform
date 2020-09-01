@@ -9,6 +9,7 @@ namespace OMP.Offers {
         protected getInsertPermission() { return CitiesRow.insertPermission; }
         protected getLocalTextPrefix() { return CitiesRow.localTextPrefix; }
         protected getService() { return CitiesService.baseUrl; }
+        protected getIsActiveProperty() { return CitiesRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);
