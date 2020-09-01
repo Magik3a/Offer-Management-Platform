@@ -1,4 +1,6 @@
 ﻿
+using OMP.Localization;
+
 namespace OMP.Offers.Entities
 {
     using Serenity;
@@ -13,7 +15,7 @@ namespace OMP.Offers.Entities
     [DisplayName("Cities Lang"), InstanceName("Cities Lang")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class CitiesLangRow : Row, IIdRow, INameRow, ILocalizationRow
+    public sealed class CitiesLangRow : Row,  IOMPLocalizationLangRow
     {
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id
@@ -57,41 +59,6 @@ namespace OMP.Offers.Entities
             set { Fields.CityCountryId[this] = value; }
         }
 
-        [DisplayName("City Insert Date"), Expression("jCity.[InsertDate]")]
-        public DateTime? CityInsertDate
-        {
-            get { return Fields.CityInsertDate[this]; }
-            set { Fields.CityInsertDate[this] = value; }
-        }
-
-        [DisplayName("City Insert User Id"), Expression("jCity.[InsertUserId]")]
-        public Int32? CityInsertUserId
-        {
-            get { return Fields.CityInsertUserId[this]; }
-            set { Fields.CityInsertUserId[this] = value; }
-        }
-
-        [DisplayName("City Update Date"), Expression("jCity.[UpdateDate]")]
-        public DateTime? CityUpdateDate
-        {
-            get { return Fields.CityUpdateDate[this]; }
-            set { Fields.CityUpdateDate[this] = value; }
-        }
-
-        [DisplayName("City Update User Id"), Expression("jCity.[UpdateUserId]")]
-        public Int32? CityUpdateUserId
-        {
-            get { return Fields.CityUpdateUserId[this]; }
-            set { Fields.CityUpdateUserId[this] = value; }
-        }
-
-        [DisplayName("City Is Active"), Expression("jCity.[IsActive]")]
-        public Int16? CityIsActive
-        {
-            get { return Fields.CityIsActive[this]; }
-            set { Fields.CityIsActive[this] = value; }
-        }
-
         IIdField IIdRow.IdField
         {
             get { return Fields.Id; }
@@ -121,11 +88,6 @@ namespace OMP.Offers.Entities
 
             public StringField CityName;
             public Int32Field CityCountryId;
-            public DateTimeField CityInsertDate;
-            public Int32Field CityInsertUserId;
-            public DateTimeField CityUpdateDate;
-            public Int32Field CityUpdateUserId;
-            public Int16Field CityIsActive;
         }
     }
 }

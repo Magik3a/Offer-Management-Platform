@@ -648,11 +648,6 @@ declare namespace OMP.Offers {
         Name?: string;
         CityName?: string;
         CityCountryId?: number;
-        CityInsertDate?: string;
-        CityInsertUserId?: number;
-        CityUpdateDate?: string;
-        CityUpdateUserId?: number;
-        CityIsActive?: number;
     }
     namespace CitiesLangRow {
         const idProperty = "Id";
@@ -668,12 +663,7 @@ declare namespace OMP.Offers {
             LanguageId = "LanguageId",
             Name = "Name",
             CityName = "CityName",
-            CityCountryId = "CityCountryId",
-            CityInsertDate = "CityInsertDate",
-            CityInsertUserId = "CityInsertUserId",
-            CityUpdateDate = "CityUpdateDate",
-            CityUpdateUserId = "CityUpdateUserId",
-            CityIsActive = "CityIsActive"
+            CityCountryId = "CityCountryId"
         }
     }
 }
@@ -1435,6 +1425,5 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
-        protected onViewProcessData(response: Serenity.ListResponse<CountriesRow>): Serenity.ListResponse<CountriesRow>;
     }
 }

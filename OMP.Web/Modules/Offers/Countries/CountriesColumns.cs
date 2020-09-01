@@ -15,7 +15,7 @@ namespace OMP.Offers.Columns
     [BasedOnRow(typeof(Entities.CountriesRow), CheckNames = true)]
     public class CountriesColumns : OMPLoggingRowColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 CountryId { get; set; }
         [EditLink]
         public String Name { get; set; }

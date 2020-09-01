@@ -1,4 +1,6 @@
 ﻿
+using OMP.Localization;
+
 namespace OMP.Offers.Entities
 {
     using Serenity;
@@ -13,7 +15,7 @@ namespace OMP.Offers.Entities
     [DisplayName("Countries Lang"), InstanceName("Countries Lang")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
-    public sealed class CountriesLangRow : Row, IIdRow, INameRow, ILocalizationRow
+    public sealed class CountriesLangRow : Row,  IOMPLocalizationLangRow
     {
         [DisplayName("Id"), Column("ID"), Identity]
         public Int32? Id

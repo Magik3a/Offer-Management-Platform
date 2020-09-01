@@ -10,7 +10,8 @@
                 if (path && path != '/' && Q.endsWith(path, '/'))
                     path = path.substr(0, path.length - 1);
                 $.cookie('LanguagePreference', select.val(), {
-                    path: path,
+                   // path: path,
+                    path: '/',
                     expires: 365
                 });
                 window.location.reload(true);

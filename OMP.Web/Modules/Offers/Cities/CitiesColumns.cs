@@ -15,10 +15,11 @@ namespace OMP.Offers.Columns
     [BasedOnRow(typeof(Entities.CitiesRow), CheckNames = true)]
     public class CitiesColumns : OMPLoggingRowColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 CityId { get; set; }
         [EditLink]
         public String Name { get; set; }
+        [EditLink]
         public String CountryName { get; set; }
     }
 }

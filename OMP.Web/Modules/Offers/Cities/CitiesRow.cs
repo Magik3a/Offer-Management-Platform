@@ -1,5 +1,6 @@
 ﻿
 using OMP.Administration.Entities;
+using OMP.Localization;
 
 namespace OMP.Offers.Entities
 {
@@ -17,7 +18,7 @@ namespace OMP.Offers.Entities
     [ModifyPermission("Administration:General")]
     [LocalizationRow(typeof(CitiesLangRow))]
     [LookupScript]
-    public sealed class CitiesRow : OMPLoggingRow, IIdRow, INameRow
+    public sealed class CitiesRow : OMPLoggingRow, IOMPLocalizationRow
     {
         [DisplayName("City Id"), Identity]
         public Int32? CityId
@@ -60,7 +61,7 @@ namespace OMP.Offers.Entities
         {
             get { return Fields.Name; }
         }
-
+        
         public static readonly RowFields Fields = new RowFields().Init();
 
         public CitiesRow()

@@ -1,5 +1,6 @@
 ﻿
 using OMP.Administration.Entities;
+using OMP.Localization;
 
 namespace OMP.Offers.Entities
 {
@@ -17,7 +18,7 @@ namespace OMP.Offers.Entities
     [ModifyPermission("Administration:General")]
     [LocalizationRow(typeof(CountriesLangRow))]
     [LookupScript]
-    public sealed class CountriesRow : OMPLoggingRow, IIdRow, INameRow
+    public sealed class CountriesRow : OMPLoggingRow, IOMPLocalizationRow
     {
         [DisplayName("Country Id"), Identity]
         public Int32? CountryId
@@ -32,7 +33,7 @@ namespace OMP.Offers.Entities
             get { return Fields.Name[this]; }
             set { Fields.Name[this] = value; }
         }
-
+        
         IIdField IIdRow.IdField
         {
             get { return Fields.CountryId; }

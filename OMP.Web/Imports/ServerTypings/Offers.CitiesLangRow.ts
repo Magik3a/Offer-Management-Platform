@@ -6,11 +6,6 @@
         Name?: string;
         CityName?: string;
         CityCountryId?: number;
-        CityInsertDate?: string;
-        CityInsertUserId?: number;
-        CityUpdateDate?: string;
-        CityUpdateUserId?: number;
-        CityIsActive?: number;
     }
 
     export namespace CitiesLangRow {
@@ -28,12 +23,7 @@
             LanguageId = "LanguageId",
             Name = "Name",
             CityName = "CityName",
-            CityCountryId = "CityCountryId",
-            CityInsertDate = "CityInsertDate",
-            CityInsertUserId = "CityInsertUserId",
-            CityUpdateDate = "CityUpdateDate",
-            CityUpdateUserId = "CityUpdateUserId",
-            CityIsActive = "CityIsActive"
+            CityCountryId = "CityCountryId"
         }
     }
 }
