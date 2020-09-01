@@ -22,6 +22,7 @@ namespace OMP.Migrations.PaymentsDB
 
             this.CreateTableWithId32("PaymentTypesLang", "ID", s => s
                 .WithColumn("PaymentTypeId").AsInt32().NotNullable()
+                .ForeignKey("PaymentTypes", "PaymentTypeId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable());
 
@@ -67,6 +68,7 @@ namespace OMP.Migrations.PaymentsDB
 
             this.CreateTableWithId32("PaymentStatusesLang", "ID", s => s
                 .WithColumn("PaymentStatusId").AsInt32().NotNullable()
+                .ForeignKey("PaymentStatuses", "PaymentStatusId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable());
 

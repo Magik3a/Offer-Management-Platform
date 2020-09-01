@@ -20,6 +20,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("CountriesLang", "ID", s => s
                 .WithColumn("CountryId").AsInt32().NotNullable()
+                .ForeignKey("Countries", "CountryId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable());
 
@@ -37,6 +38,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("CitiesLang", "ID", s => s
                 .WithColumn("CityId").AsInt32().NotNullable()
+                .ForeignKey("Cities", "CityId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable());
 
@@ -98,6 +100,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("CategoriesLang", "ID", s => s
                 .WithColumn("CategoryId").AsInt32().NotNullable()
+                .ForeignKey("Categories", "CategoryId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable()
             );
@@ -115,6 +118,7 @@ namespace OMP.Migrations.OffersDB
             
             this.CreateTableWithId32("OfferStatusesLang", "ID", s => s
                 .WithColumn("OfferStatusId").AsInt32().NotNullable()
+                .ForeignKey("OfferStatuses", "OfferStatusId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable());
 
@@ -201,6 +205,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("OfferCategoriesLang", "ID", s => s
                 .WithColumn("OfferCategoryId").AsInt32().NotNullable()
+                .ForeignKey("OfferCategories", "OfferCategoryId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("CategoryNameReport").AsString(500).Nullable()
             );
@@ -218,6 +223,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("TaskStatusesLang", "ID", s => s
                 .WithColumn("TaskStatusId").AsInt32().NotNullable()
+                .ForeignKey("TaskStatuses", "TaskStatusId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable());
 
@@ -281,6 +287,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("OfferCategoryTasksLang", "ID", s => s
                 .WithColumn("OfferCategoryTaskId").AsInt32().NotNullable()
+                .ForeignKey("OfferCategoryTasks", "OfferCategoryTaskId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(2000).Nullable()
                 .WithColumn("Description").AsString(Int32.MaxValue).Nullable()

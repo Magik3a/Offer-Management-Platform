@@ -1,10 +1,36 @@
-﻿{
+{
   "RootNamespace": "OMP",
   "ServerTypings": {
     "Assemblies": [],
     "LocalTexts": true
   },
-  "Connections": [],
+  "Connections": [
+    {
+      "Key": "Offers",
+      "Tables": [
+        {
+          "Tablename": "dbo.Cities",
+          "Identifier": "Cities",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Countries",
+          "Identifier": "Countries",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CountriesLang",
+          "Identifier": "CountriesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        }
+      ]
+    }
+  ],
   "BaseRowClasses": [],
-  "RemoveForeignFields": []
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
 }

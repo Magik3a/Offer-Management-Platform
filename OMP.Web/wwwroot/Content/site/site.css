@@ -8092,3 +8092,15 @@ section.content > .s-DataGrid {
   font-style: italic;
   color: #966;
 }
+.s-Offers-CountriesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CountriesDialog .caption {
+  width: 150px;
+}
+.s-Offers-CitiesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CitiesDialog .caption {
+  width: 150px;
+}

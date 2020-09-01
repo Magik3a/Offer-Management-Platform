@@ -84,6 +84,20 @@ namespace MVC
                     public const string AccountSignUp_AdminLTE = "~/Modules/Membership/Account/SignUp/AccountSignUp.AdminLTE.cshtml";
                 }
             }
+
+        }
+
+        public static class Offers
+        {
+            public static class Cities
+            {
+                public const string CitiesIndex = "~/Modules/Offers/Cities/CitiesIndex.cshtml";
+            }
+
+            public static class Countries
+            {
+                public const string CountriesIndex = "~/Modules/Offers/Countries/CountriesIndex.cshtml";
+            }
         }
 
         public static class Shared
