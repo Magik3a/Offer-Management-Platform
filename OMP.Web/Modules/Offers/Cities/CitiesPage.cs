@@ -11,7 +11,7 @@ namespace OMP.Offers.Pages
         [Route("Offers/Cities")]
         public ActionResult Index()
         {
-            return View("~/Modules/Offers/Cities/CitiesIndex.cshtml");
+            return View(MVC.Views.Offers.Cities.CitiesIndex);
         }
     }
 }

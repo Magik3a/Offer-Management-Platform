@@ -21,6 +21,18 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.Categories",
+          "Identifier": "Categories",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CategoriesLang",
+          "Identifier": "CategoriesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Cities",
           "Identifier": "Cities",
           "Module": "Offers",
@@ -53,6 +65,18 @@
         {
           "Tablename": "dbo.CountriesLang",
           "Identifier": "CountriesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.OfferCategories",
+          "Identifier": "OfferCategories",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.OfferCategoriesLang",
+          "Identifier": "OfferCategoriesLang",
           "Module": "Offers",
           "PermissionKey": "Administration:General"
         },

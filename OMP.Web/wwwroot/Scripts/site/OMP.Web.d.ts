@@ -762,6 +762,122 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
 }
 declare namespace OMP.Offers {
+    interface CategoriesForm {
+        Name: Serenity.StringEditor;
+        FontColor: Serenity.StringEditor;
+    }
+    class CategoriesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface CategoriesLangRow {
+        Id?: number;
+        CategoryId?: number;
+        LanguageId?: number;
+        Name?: string;
+        CategoryName?: string;
+        CategoryFontColor?: string;
+    }
+    namespace CategoriesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.CategoriesLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            CategoryId = "CategoryId",
+            LanguageId = "LanguageId",
+            Name = "Name",
+            CategoryName = "CategoryName",
+            CategoryFontColor = "CategoryFontColor"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CategoriesLangService {
+        const baseUrl = "Offers/CategoriesLang";
+        function Create(request: Serenity.SaveRequest<CategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/CategoriesLang/Create",
+            Update = "Offers/CategoriesLang/Update",
+            Delete = "Offers/CategoriesLang/Delete",
+            Retrieve = "Offers/CategoriesLang/Retrieve",
+            List = "Offers/CategoriesLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface CategoriesRow {
+        CategoryId?: number;
+        Name?: string;
+        FontColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace CategoriesRow {
+        const idProperty = "CategoryId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.Categories";
+        const lookupKey = "Offers.Categories";
+        function getLookup(): Q.Lookup<CategoriesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CategoryId = "CategoryId",
+            Name = "Name",
+            FontColor = "FontColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CategoriesService {
+        const baseUrl = "Offers/Categories";
+        function Create(request: Serenity.SaveRequest<CategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/Categories/Create",
+            Update = "Offers/Categories/Update",
+            Delete = "Offers/Categories/Delete",
+            Undelete = "Offers/Categories/Undelete",
+            Retrieve = "Offers/Categories/Retrieve",
+            List = "Offers/Categories/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
     interface CitiesForm {
         Name: Serenity.StringEditor;
         CountryId: Serenity.LookupEditor;
@@ -1132,6 +1248,157 @@ declare namespace OMP.Offers {
             RetrieveLocalization = "Offers/Countries/RetrieveLocalization",
             Retrieve = "Offers/Countries/Retrieve",
             List = "Offers/Countries/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface OfferCategoriesForm {
+        OfferId: Serenity.LookupEditor;
+        CategoryId: Serenity.LookupEditor;
+        Price: Serenity.DecimalEditor;
+        CategoryNameReport: Serenity.StringEditor;
+        CategoryFontColorReport: Serenity.StringEditor;
+    }
+    class OfferCategoriesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferCategoriesLangRow {
+        Id?: number;
+        OfferCategoryId?: number;
+        LanguageId?: number;
+        CategoryNameReport?: string;
+        OfferCategoryOfferId?: number;
+        OfferCategoryCategoryId?: number;
+        OfferCategoryPrice?: number;
+        OfferCategoryCategoryNameReport?: string;
+        OfferCategoryCategoryFontColorReport?: string;
+    }
+    namespace OfferCategoriesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "CategoryNameReport";
+        const localTextPrefix = "Offers.OfferCategoriesLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            OfferCategoryId = "OfferCategoryId",
+            LanguageId = "LanguageId",
+            CategoryNameReport = "CategoryNameReport",
+            OfferCategoryOfferId = "OfferCategoryOfferId",
+            OfferCategoryCategoryId = "OfferCategoryCategoryId",
+            OfferCategoryPrice = "OfferCategoryPrice",
+            OfferCategoryCategoryNameReport = "OfferCategoryCategoryNameReport",
+            OfferCategoryCategoryFontColorReport = "OfferCategoryCategoryFontColorReport"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OfferCategoriesLangService {
+        const baseUrl = "Offers/OfferCategoriesLang";
+        function Create(request: Serenity.SaveRequest<OfferCategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfferCategoriesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferCategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferCategoriesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OfferCategoriesLang/Create",
+            Update = "Offers/OfferCategoriesLang/Update",
+            Delete = "Offers/OfferCategoriesLang/Delete",
+            Retrieve = "Offers/OfferCategoriesLang/Retrieve",
+            List = "Offers/OfferCategoriesLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferCategoriesRow {
+        OfferCategoryId?: number;
+        OfferId?: number;
+        CategoryId?: number;
+        Price?: number;
+        CategoryNameReport?: string;
+        CategoryFontColorReport?: string;
+        OfferName?: string;
+        OfferDiscount?: number;
+        OfferMinimumDaysDevelopmentTime?: number;
+        OfferMaximumDaysDevelopmentTime?: number;
+        OfferStartDate?: string;
+        OfferAdditionalInfo?: string;
+        OfferCompanyId?: number;
+        OfferOfferStatusId?: number;
+        CategoryName?: string;
+        CategoryFontColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace OfferCategoriesRow {
+        const idProperty = "OfferCategoryId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "CategoryNameReport";
+        const localTextPrefix = "Offers.OfferCategories";
+        const lookupKey = "Offers.OfferCategories";
+        function getLookup(): Q.Lookup<OfferCategoriesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OfferCategoryId = "OfferCategoryId",
+            OfferId = "OfferId",
+            CategoryId = "CategoryId",
+            Price = "Price",
+            CategoryNameReport = "CategoryNameReport",
+            CategoryFontColorReport = "CategoryFontColorReport",
+            OfferName = "OfferName",
+            OfferDiscount = "OfferDiscount",
+            OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
+            OfferMaximumDaysDevelopmentTime = "OfferMaximumDaysDevelopmentTime",
+            OfferStartDate = "OfferStartDate",
+            OfferAdditionalInfo = "OfferAdditionalInfo",
+            OfferCompanyId = "OfferCompanyId",
+            OfferOfferStatusId = "OfferOfferStatusId",
+            CategoryName = "CategoryName",
+            CategoryFontColor = "CategoryFontColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OfferCategoriesService {
+        const baseUrl = "Offers/OfferCategories";
+        function Create(request: Serenity.SaveRequest<OfferCategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfferCategoriesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferCategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferCategoriesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OfferCategories/Create",
+            Update = "Offers/OfferCategories/Update",
+            Delete = "Offers/OfferCategories/Delete",
+            Undelete = "Offers/OfferCategories/Undelete",
+            Retrieve = "Offers/OfferCategories/Retrieve",
+            List = "Offers/OfferCategories/List"
         }
     }
 }
@@ -2085,6 +2352,32 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+    class CategoriesDialog extends Serenity.EntityDialog<CategoriesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: CategoriesForm;
+    }
+}
+declare namespace OMP.Offers {
+    class CategoriesGrid extends Serenity.EntityGrid<CategoriesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CategoriesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
     class CitiesDialog extends Serenity.EntityDialog<CitiesRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2159,6 +2452,30 @@ declare namespace OMP.Offers {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class OfferCategoriesDialog extends Serenity.EntityDialog<OfferCategoriesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: OfferCategoriesForm;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferCategoriesGrid extends Serenity.EntityGrid<OfferCategoriesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OfferCategoriesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
         constructor(container: JQuery);
     }
 }

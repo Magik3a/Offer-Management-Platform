@@ -94,6 +94,11 @@ namespace MVC
                 public const string AccountsIndex = "~/Modules/Offers/Accounts/AccountsIndex.cshtml";
             }
 
+            public static class Categories
+            {
+                public const string CategoriesIndex = "~/Modules/Offers/Categories/CategoriesIndex.cshtml";
+            }
+
             public static class Cities
             {
                 public const string CitiesIndex = "~/Modules/Offers/Cities/CitiesIndex.cshtml";
@@ -107,6 +112,11 @@ namespace MVC
             public static class Countries
             {
                 public const string CountriesIndex = "~/Modules/Offers/Countries/CountriesIndex.cshtml";
+            }
+
+            public static class OfferCategories
+            {
+                public const string OfferCategoriesIndex = "~/Modules/Offers/OfferCategories/OfferCategoriesIndex.cshtml";
             }
 
             public static class Offers_

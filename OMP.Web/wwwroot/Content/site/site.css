@@ -8140,3 +8140,15 @@ section.content > .s-DataGrid {
 .s-Offers-TaskStatusesDialog .caption {
   width: 150px;
 }
+.s-Offers-CategoriesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CategoriesDialog .caption {
+  width: 150px;
+}
+.s-Offers-OfferCategoriesDialog > .size {
+  width: 650px;
+}
+.s-Offers-OfferCategoriesDialog .caption {
+  width: 150px;
+}
