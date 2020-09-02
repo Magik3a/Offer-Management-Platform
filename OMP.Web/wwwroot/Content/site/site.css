@@ -8116,3 +8116,9 @@ section.content > .s-DataGrid {
 .s-Offers-CompaniesDialog .caption {
   width: 150px;
 }
+.s-Offers-OfferStatusesDialog > .size {
+  width: 650px;
+}
+.s-Offers-OfferStatusesDialog .caption {
+  width: 150px;
+}

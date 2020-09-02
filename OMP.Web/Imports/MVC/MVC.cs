@@ -108,6 +108,11 @@ namespace MVC
             {
                 public const string CountriesIndex = "~/Modules/Offers/Countries/CountriesIndex.cshtml";
             }
+
+            public static class OfferStatuses
+            {
+                public const string OfferStatusesIndex = "~/Modules/Offers/OfferStatuses/OfferStatusesIndex.cshtml";
+            }
         }
 
         public static class Shared
