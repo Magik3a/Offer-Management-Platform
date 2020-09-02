@@ -1420,6 +1420,127 @@ declare namespace OMP.Offers {
         }
     }
 }
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface TaskStatusesForm {
+        Name: Serenity.StringEditor;
+        BorderColor: Serenity.StringEditor;
+        BackgroundColor: Serenity.StringEditor;
+    }
+    class TaskStatusesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface TaskStatusesLangRow {
+        Id?: number;
+        TaskStatusId?: number;
+        LanguageId?: number;
+        Name?: string;
+        TaskStatusName?: string;
+        TaskStatusBorderColor?: string;
+        TaskStatusBackgroundColor?: string;
+    }
+    namespace TaskStatusesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.TaskStatusesLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            TaskStatusId = "TaskStatusId",
+            LanguageId = "LanguageId",
+            Name = "Name",
+            TaskStatusName = "TaskStatusName",
+            TaskStatusBorderColor = "TaskStatusBorderColor",
+            TaskStatusBackgroundColor = "TaskStatusBackgroundColor"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace TaskStatusesLangService {
+        const baseUrl = "Offers/TaskStatusesLang";
+        function Create(request: Serenity.SaveRequest<TaskStatusesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TaskStatusesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TaskStatusesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TaskStatusesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/TaskStatusesLang/Create",
+            Update = "Offers/TaskStatusesLang/Update",
+            Delete = "Offers/TaskStatusesLang/Delete",
+            Retrieve = "Offers/TaskStatusesLang/Retrieve",
+            List = "Offers/TaskStatusesLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface TaskStatusesRow {
+        TaskStatusId?: number;
+        Name?: string;
+        BorderColor?: string;
+        BackgroundColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace TaskStatusesRow {
+        const idProperty = "TaskStatusId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.TaskStatuses";
+        const lookupKey = "Offers.TaskStatuses";
+        function getLookup(): Q.Lookup<TaskStatusesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            TaskStatusId = "TaskStatusId",
+            Name = "Name",
+            BorderColor = "BorderColor",
+            BackgroundColor = "BackgroundColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace TaskStatusesService {
+        const baseUrl = "Offers/TaskStatuses";
+        function Create(request: Serenity.SaveRequest<TaskStatusesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<TaskStatusesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<TaskStatusesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<TaskStatusesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/TaskStatuses/Create",
+            Update = "Offers/TaskStatuses/Update",
+            Delete = "Offers/TaskStatuses/Delete",
+            Undelete = "Offers/TaskStatuses/Undelete",
+            Retrieve = "Offers/TaskStatuses/Retrieve",
+            List = "Offers/TaskStatuses/List"
+        }
+    }
+}
 declare namespace OMP {
     interface ScriptUserDefinition {
         Username?: string;
@@ -2085,6 +2206,32 @@ declare namespace OMP.Offers {
     class OffersGrid extends Serenity.EntityGrid<OffersRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OffersDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class TaskStatusesDialog extends Serenity.EntityDialog<TaskStatusesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: TaskStatusesForm;
+    }
+}
+declare namespace OMP.Offers {
+    class TaskStatusesGrid extends Serenity.EntityGrid<TaskStatusesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof TaskStatusesDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;

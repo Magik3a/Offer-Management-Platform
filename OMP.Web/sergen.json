@@ -79,6 +79,18 @@
           "Identifier": "OfferStatusesLang",
           "Module": "Offers",
           "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TaskStatuses",
+          "Identifier": "TaskStatuses",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.TaskStatusesLang",
+          "Identifier": "TaskStatusesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
         }
       ]
     }

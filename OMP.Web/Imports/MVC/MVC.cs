@@ -118,6 +118,11 @@ namespace MVC
             {
                 public const string OfferStatusesIndex = "~/Modules/Offers/OfferStatuses/OfferStatusesIndex.cshtml";
             }
+
+            public static class TaskStatuses
+            {
+                public const string TaskStatusesIndex = "~/Modules/Offers/TaskStatuses/TaskStatusesIndex.cshtml";
+            }
         }
 
         public static class Shared

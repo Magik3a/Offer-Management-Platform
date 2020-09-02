@@ -8134,3 +8134,9 @@ section.content > .s-DataGrid {
 .s-Offers-OffersLangDialog .caption {
   width: 150px;
 }
+.s-Offers-TaskStatusesDialog > .size {
+  width: 650px;
+}
+.s-Offers-TaskStatusesDialog .caption {
+  width: 150px;
+}
