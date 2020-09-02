@@ -32,7 +32,17 @@ namespace OMP.Administration
                 return false;
 
             attr = row.GetType().GetCustomAttribute<LocalizationRowAttribute>();
+            if (attr == null)
+                return false;
+
             localRowType = attr.LocalizationRow;
+            if (!typeof(ILocalizationRow).IsAssignableFrom(localRowType))
+            {
+                throw new ArgumentException(String.Format(
+                    "Row type '{0}' has a LocalizationRowAttribute, " +
+                    "but its localization row type ('{1}') doesn't implement ILocalizationRow interface!",
+                    row.GetType().FullName, localRowType.FullName));
+            }
 
             localRowFactory = FastReflection.DelegateForConstructor<Row>(localRowType);
             var localRow = localRowFactory();
