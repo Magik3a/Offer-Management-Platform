@@ -58,6 +58,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("AccountsLang", "ID", s => s
                 .WithColumn("AccountId").AsInt32().NotNullable()
+                .ForeignKey("Accounts", "AccountId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable()
                 .WithColumn("Address").AsString(500).Nullable()
@@ -83,6 +84,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("CompaniesLang", "ID", s => s
                 .WithColumn("CompanyId").AsInt32().NotNullable()
+                .ForeignKey("Companies", "CompanyId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable()
                 .WithColumn("Address").AsString(500).Nullable()
@@ -181,6 +183,7 @@ namespace OMP.Migrations.OffersDB
 
             this.CreateTableWithId32("OffersLang", "ID", s => s
                 .WithColumn("OfferId").AsInt32().NotNullable()
+                .ForeignKey("Offers", "OfferId")
                 .WithColumn("LanguageID").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(500).Nullable()
                 .WithColumn("AdditionalInfo").AsString(Int32.MaxValue).Nullable()

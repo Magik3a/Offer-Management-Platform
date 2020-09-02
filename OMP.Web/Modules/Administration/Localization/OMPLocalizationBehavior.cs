@@ -80,6 +80,7 @@ namespace OMP.Administration
             if (handler.Response.Entities.Count == 0)
                 return;
 
+            // Lets Get the main row and translate it
             var culture = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var userLanguage = new LanguageRow();
 
@@ -98,22 +99,24 @@ namespace OMP.Administration
             listRequest.Criteria = (foreignKeyCriteria.In(localList.Select(s => s.IdField[s as Row])) && languageIdCriteria == userLanguage.Id.Value);
 
             var translationsResponse = listHandler.Process(handler.Connection, listRequest);
-            if (translationsResponse.Entities.Count == 0)
-                return;
-
-            var responseLang = translationsResponse.Entities.Cast<IOMPLocalizationLangRow>();
-            foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
+            if (translationsResponse.Entities.Count > 0)
             {
-                var entityLang = responseLang
-                    .FirstOrDefault(s =>
-                        (Int32)foreignKeyField.AsObject(s as Row) == responseEntity.IdField[responseEntity as Row]);
+                var responseLang = translationsResponse.Entities.Cast<IOMPLocalizationLangRow>();
+                foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
+                {
+                    var entityLang = responseLang
+                        .FirstOrDefault(s =>
+                            (Int32) foreignKeyField.AsObject(s as Row) ==
+                            responseEntity.IdField[responseEntity as Row]);
 
-                if (entityLang != null)
-                    responseEntity.NameField[responseEntity as Row] = entityLang?.NameField[entityLang as Row];
+                    if (entityLang != null)
+                        responseEntity.NameField[responseEntity as Row] = entityLang?.NameField[entityLang as Row];
 
 
+                }
             }
-            // Other tables Joined with translations
+
+            // How about the joined table, lets translate them too
             var localizationRowFields = handler.Row.GetFields();
             foreach (var localizationRowField in localizationRowFields.Where(f =>
                 !String.IsNullOrEmpty(f.ForeignTable)))
