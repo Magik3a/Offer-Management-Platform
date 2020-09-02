@@ -1,5 +1,6 @@
 ﻿
 using OMP.Administration.Entities;
+using OMP.Administration.Services;
 using OMP.Localization;
 
 namespace OMP.Offers.Entities
@@ -17,7 +18,7 @@ namespace OMP.Offers.Entities
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LocalizationRow(typeof(CitiesLangRow))]
-    [LookupScript]
+    [LookupScript(LookupType = typeof(OMPLocalizationLookupScript<>))]
     public sealed class CitiesRow : OMPLoggingRow, IOMPLocalizationRow
     {
         [DisplayName("City Id"), Identity]
