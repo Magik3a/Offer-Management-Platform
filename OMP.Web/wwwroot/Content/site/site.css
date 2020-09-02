@@ -8122,3 +8122,15 @@ section.content > .s-DataGrid {
 .s-Offers-OfferStatusesDialog .caption {
   width: 150px;
 }
+.s-Offers-OffersDialog > .size {
+  width: 650px;
+}
+.s-Offers-OffersDialog .caption {
+  width: 150px;
+}
+.s-Offers-OffersLangDialog > .size {
+  width: 650px;
+}
+.s-Offers-OffersLangDialog .caption {
+  width: 150px;
+}

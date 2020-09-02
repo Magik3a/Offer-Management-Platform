@@ -1256,6 +1256,170 @@ declare namespace OMP.Offers {
         }
     }
 }
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface OffersForm {
+        Name: Serenity.StringEditor;
+        Discount: Serenity.DecimalEditor;
+        MinimumDaysDevelopmentTime: Serenity.IntegerEditor;
+        MaximumDaysDevelopmentTime: Serenity.IntegerEditor;
+        StartDate: Serenity.DateTimeEditor;
+        AdditionalInfo: Serenity.TextAreaEditor;
+        CompanyId: Serenity.LookupEditor;
+        OfferStatusId: Serenity.LookupEditor;
+    }
+    class OffersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface OffersLangRow {
+        Id?: number;
+        OfferId?: number;
+        LanguageId?: number;
+        Name?: string;
+        AdditionalInfo?: string;
+        OfferName?: string;
+        OfferDiscount?: number;
+        OfferMinimumDaysDevelopmentTime?: number;
+        OfferMaximumDaysDevelopmentTime?: number;
+        OfferStartDate?: string;
+        OfferAdditionalInfo?: string;
+        OfferCompanyId?: number;
+        OfferOfferStatusId?: number;
+    }
+    namespace OffersLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.OffersLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            OfferId = "OfferId",
+            LanguageId = "LanguageId",
+            Name = "Name",
+            AdditionalInfo = "AdditionalInfo",
+            OfferName = "OfferName",
+            OfferDiscount = "OfferDiscount",
+            OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
+            OfferMaximumDaysDevelopmentTime = "OfferMaximumDaysDevelopmentTime",
+            OfferStartDate = "OfferStartDate",
+            OfferAdditionalInfo = "OfferAdditionalInfo",
+            OfferCompanyId = "OfferCompanyId",
+            OfferOfferStatusId = "OfferOfferStatusId"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OffersLangService {
+        const baseUrl = "Offers/OffersLang";
+        function Create(request: Serenity.SaveRequest<OffersLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OffersLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OffersLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OffersLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OffersLang/Create",
+            Update = "Offers/OffersLang/Update",
+            Delete = "Offers/OffersLang/Delete",
+            Retrieve = "Offers/OffersLang/Retrieve",
+            List = "Offers/OffersLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface OffersRow {
+        OfferId?: number;
+        Name?: string;
+        Discount?: number;
+        MinimumDaysDevelopmentTime?: number;
+        MaximumDaysDevelopmentTime?: number;
+        StartDate?: string;
+        AdditionalInfo?: string;
+        CompanyId?: number;
+        OfferStatusId?: number;
+        CompanyName?: string;
+        CompanyAddress?: string;
+        CompanyPhone?: string;
+        CompanyCityId?: number;
+        CompanyPrimaryAccountId?: number;
+        OfferStatusName?: string;
+        OfferStatusBorderColor?: string;
+        OfferStatusBackgroundColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace OffersRow {
+        const idProperty = "OfferId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.Offers";
+        const lookupKey = "Offers.Offers";
+        function getLookup(): Q.Lookup<OffersRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OfferId = "OfferId",
+            Name = "Name",
+            Discount = "Discount",
+            MinimumDaysDevelopmentTime = "MinimumDaysDevelopmentTime",
+            MaximumDaysDevelopmentTime = "MaximumDaysDevelopmentTime",
+            StartDate = "StartDate",
+            AdditionalInfo = "AdditionalInfo",
+            CompanyId = "CompanyId",
+            OfferStatusId = "OfferStatusId",
+            CompanyName = "CompanyName",
+            CompanyAddress = "CompanyAddress",
+            CompanyPhone = "CompanyPhone",
+            CompanyCityId = "CompanyCityId",
+            CompanyPrimaryAccountId = "CompanyPrimaryAccountId",
+            OfferStatusName = "OfferStatusName",
+            OfferStatusBorderColor = "OfferStatusBorderColor",
+            OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OffersService {
+        const baseUrl = "Offers/Offers";
+        function Create(request: Serenity.SaveRequest<OffersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OffersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OffersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OffersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/Offers/Create",
+            Update = "Offers/Offers/Update",
+            Delete = "Offers/Offers/Delete",
+            Undelete = "Offers/Offers/Undelete",
+            Retrieve = "Offers/Offers/Retrieve",
+            List = "Offers/Offers/List"
+        }
+    }
+}
 declare namespace OMP {
     interface ScriptUserDefinition {
         Username?: string;
@@ -1895,6 +2059,32 @@ declare namespace OMP.Offers {
     class OfferStatusesGrid extends Serenity.EntityGrid<OfferStatusesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OfferStatusesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class OffersDialog extends Serenity.EntityDialog<OffersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: OffersForm;
+    }
+}
+declare namespace OMP.Offers {
+    class OffersGrid extends Serenity.EntityGrid<OffersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OffersDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;

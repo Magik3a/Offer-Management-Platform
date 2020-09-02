@@ -57,6 +57,18 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.Offers",
+          "Identifier": "Offers",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.OffersLang",
+          "Identifier": "OffersLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.OfferStatuses",
           "Identifier": "OfferStatuses",
           "Module": "Offers",

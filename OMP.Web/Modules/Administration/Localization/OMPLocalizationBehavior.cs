@@ -164,7 +164,9 @@ namespace OMP.Administration
                 var idList = new List<Int32>();
                 foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
                 {
-                    idList.Add((Int32)localizationRowField.AsObject(responseEntity as Row));
+                    var idToAdd = (Int32?)localizationRowField.AsObject(responseEntity as Row);
+                    if(idToAdd.HasValue)
+                        idList.Add(idToAdd.Value);
                 }
 
                 listForeignRequest.Criteria =
