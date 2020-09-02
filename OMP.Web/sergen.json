@@ -9,6 +9,18 @@
       "Key": "Offers",
       "Tables": [
         {
+          "Tablename": "dbo.Accounts",
+          "Identifier": "Accounts",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.AccountsLang",
+          "Identifier": "AccountsLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Cities",
           "Identifier": "Cities",
           "Module": "Offers",
@@ -17,6 +29,18 @@
         {
           "Tablename": "dbo.CitiesLang",
           "Identifier": "CitiesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Companies",
+          "Identifier": "Companies",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.CompaniesLang",
+          "Identifier": "CompaniesLang",
           "Module": "Offers",
           "PermissionKey": "Administration:General"
         },

@@ -8104,3 +8104,15 @@ section.content > .s-DataGrid {
 .s-Offers-CitiesDialog .caption {
   width: 150px;
 }
+.s-Offers-AccountsDialog > .size {
+  width: 650px;
+}
+.s-Offers-AccountsDialog .caption {
+  width: 150px;
+}
+.s-Offers-CompaniesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CompaniesDialog .caption {
+  width: 150px;
+}

@@ -1427,3 +1427,354 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
     }
 }
+declare namespace OMP.Offers {
+    class AccountsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface AccountsForm {
+        Name: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+        CityId: Serenity.IntegerEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+}
+declare namespace OMP.Offers {
+    interface AccountsRow {
+        AccountId?: number;
+        Name?: string;
+        Address?: string;
+        Phone?: string;
+        CityId?: number;
+        CityName?: string;
+        CityCountryId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace AccountsRow {
+        const idProperty = "AccountId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.Accounts";
+        const lookupKey = "Offers.Accounts";
+        function getLookup(): Q.Lookup<AccountsRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            AccountId = "AccountId",
+            Name = "Name",
+            Address = "Address",
+            Phone = "Phone",
+            CityId = "CityId",
+            CityName = "CityName",
+            CityCountryId = "CityCountryId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace AccountsService {
+        const baseUrl = "Offers/Accounts";
+        function Create(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace OMP.Offers {
+    class AccountsDialog extends Serenity.EntityDialog<AccountsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: AccountsForm;
+    }
+}
+declare namespace OMP.Offers {
+    class AccountsGrid extends Serenity.EntityGrid<AccountsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof AccountsDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface AccountsLangRow {
+        Id?: number;
+        AccountId?: number;
+        LanguageId?: number;
+        Name?: string;
+        Address?: string;
+        AccountName?: string;
+        AccountAddress?: string;
+        AccountPhone?: string;
+        AccountCityId?: number;
+        AccountInsertDate?: string;
+        AccountInsertUserId?: number;
+        AccountUpdateDate?: string;
+        AccountUpdateUserId?: number;
+        AccountIsActive?: number;
+    }
+    namespace AccountsLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.AccountsLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Id: any;
+            const AccountId: any;
+            const LanguageId: any;
+            const Name: any;
+            const Address: any;
+            const AccountName: any;
+            const AccountAddress: any;
+            const AccountPhone: any;
+            const AccountCityId: any;
+            const AccountInsertDate: any;
+            const AccountInsertUserId: any;
+            const AccountUpdateDate: any;
+            const AccountUpdateUserId: any;
+            const AccountIsActive: any;
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace AccountsLangService {
+        const baseUrl = "Offers/AccountsLang";
+        function Create(request: Serenity.SaveRequest<AccountsLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AccountsLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AccountsLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AccountsLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface CompaniesRow {
+        CompanyId?: number;
+        Name?: string;
+        Address?: string;
+        Phone?: string;
+        CityId?: number;
+        PrimaryAccountId?: number;
+        CityName?: string;
+        CityCountryId?: number;
+        PrimaryAccountName?: string;
+        PrimaryAccountAddress?: string;
+        PrimaryAccountPhone?: string;
+        PrimaryAccountCityId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace CompaniesRow {
+        const idProperty = "CompanyId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.Companies";
+        const lookupKey = "Offers.Companies";
+        function getLookup(): Q.Lookup<CompaniesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CompanyId = "CompanyId",
+            Name = "Name",
+            Address = "Address",
+            Phone = "Phone",
+            CityId = "CityId",
+            PrimaryAccountId = "PrimaryAccountId",
+            CityName = "CityName",
+            CityCountryId = "CityCountryId",
+            PrimaryAccountName = "PrimaryAccountName",
+            PrimaryAccountAddress = "PrimaryAccountAddress",
+            PrimaryAccountPhone = "PrimaryAccountPhone",
+            PrimaryAccountCityId = "PrimaryAccountCityId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CompaniesService {
+        const baseUrl = "Offers/Companies";
+        function Create(request: Serenity.SaveRequest<CompaniesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CompaniesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace OMP.Offers {
+    class CompaniesDialog extends Serenity.EntityDialog<CompaniesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: CompaniesForm;
+    }
+}
+declare namespace OMP.Offers {
+    class CompaniesGrid extends Serenity.EntityGrid<CompaniesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CompaniesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class CompaniesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface CompaniesForm {
+        Name: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+        CityId: Serenity.IntegerEditor;
+        PrimaryAccountId: Serenity.IntegerEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface CompaniesLangRow {
+        Id?: number;
+        CompanyId?: number;
+        LanguageId?: number;
+        Name?: string;
+        Address?: string;
+        CompanyName?: string;
+        CompanyAddress?: string;
+        CompanyPhone?: string;
+        CompanyCityId?: number;
+        CompanyPrimaryAccountId?: number;
+        CompanyInsertDate?: string;
+        CompanyInsertUserId?: number;
+        CompanyUpdateDate?: string;
+        CompanyUpdateUserId?: number;
+        CompanyIsActive?: number;
+    }
+    namespace CompaniesLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.CompaniesLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        namespace Fields {
+            const Id: any;
+            const CompanyId: any;
+            const LanguageId: any;
+            const Name: any;
+            const Address: any;
+            const CompanyName: any;
+            const CompanyAddress: any;
+            const CompanyPhone: any;
+            const CompanyCityId: any;
+            const CompanyPrimaryAccountId: any;
+            const CompanyInsertDate: any;
+            const CompanyInsertUserId: any;
+            const CompanyUpdateDate: any;
+            const CompanyUpdateUserId: any;
+            const CompanyIsActive: any;
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CompaniesLangService {
+        const baseUrl = "Offers/CompaniesLang";
+        function Create(request: Serenity.SaveRequest<CompaniesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CompaniesLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CompaniesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CompaniesLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}

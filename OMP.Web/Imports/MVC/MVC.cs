@@ -89,9 +89,19 @@ namespace MVC
 
         public static class Offers
         {
+            public static class Accounts
+            {
+                public const string AccountsIndex = "~/Modules/Offers/Accounts/AccountsIndex.cshtml";
+            }
+
             public static class Cities
             {
                 public const string CitiesIndex = "~/Modules/Offers/Cities/CitiesIndex.cshtml";
+            }
+
+            public static class Companies
+            {
+                public const string CompaniesIndex = "~/Modules/Offers/Companies/CompaniesIndex.cshtml";
             }
 
             public static class Countries
