@@ -34,7 +34,7 @@ namespace OMP.Offers.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Country"), NotNull, ForeignKey("[dbo].[Countries]", "CountryId"), LeftJoin("jCountry"), TextualField("CountryName")]
+        [DisplayName("Country"), NotNull, ForeignKey(typeof(CountriesRow), "CountryId"), LeftJoin("jCountry"), TextualField("CountryName")]
         [LookupEditor(typeof(CountriesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]

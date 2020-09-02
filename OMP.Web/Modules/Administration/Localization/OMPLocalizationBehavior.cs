@@ -9,6 +9,7 @@ using OMP.Administration.Entities;
 using OMP.AppServices;
 using OMP.Localization;
 using Serenity.Data;
+using Serenity.Data.Mapping;
 using Serenity.Reflection;
 using Serenity.Services;
 
@@ -29,7 +30,7 @@ namespace OMP.Administration
             var loc = row as IOMPLocalizationRow;
             if (loc == null)
                 return false;
-            
+
             attr = row.GetType().GetCustomAttribute<LocalizationRowAttribute>();
             localRowType = attr.LocalizationRow;
 
@@ -88,7 +89,7 @@ namespace OMP.Administration
                 if (userLanguage == null)
                     return;
             }
-            
+
             var listHandler = DefaultHandlerFactory.ListHandlerFor(localRowType);
             var listRequest = DefaultHandlerFactory.ListRequestFor(localRowType);
             listRequest.ColumnSelection = ColumnSelection.List;
@@ -104,10 +105,83 @@ namespace OMP.Administration
             foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
             {
                 var entityLang = responseLang
-                    .FirstOrDefault(s => (Int32)foreignKeyField.AsObject(s as Row) == responseEntity.IdField[responseEntity as Row]);
+                    .FirstOrDefault(s =>
+                        (Int32)foreignKeyField.AsObject(s as Row) == responseEntity.IdField[responseEntity as Row]);
 
-                if(entityLang != null)
+                if (entityLang != null)
                     responseEntity.NameField[responseEntity as Row] = entityLang?.NameField[entityLang as Row];
+
+
+            }
+            // Other tables Joined with translations
+            var localizationRowFields = handler.Row.GetFields();
+            foreach (var localizationRowField in localizationRowFields.Where(f =>
+                !String.IsNullOrEmpty(f.ForeignTable)))
+            {
+
+                var foreignKeyAttr = localizationRowField.GetAttribute<ForeignKeyAttribute>();
+                var textualFieldAttr = localizationRowField.GetAttribute<TextualFieldAttribute>();
+                if (foreignKeyAttr.RowType == null || textualFieldAttr == null || string.IsNullOrEmpty(textualFieldAttr.Value))
+                    return;
+
+                var foreignRowFactory = FastReflection.DelegateForConstructor<Row>(foreignKeyAttr.RowType);
+                var foreignRow = foreignRowFactory();
+                var foreignAttr = foreignRow.GetType().GetCustomAttribute<LocalizationRowAttribute>();
+
+                if (foreignAttr == null)
+                    return;
+
+                var foreignLangType = foreignAttr.LocalizationRow;
+
+                var foreignLangRowFactory = FastReflection.DelegateForConstructor<Row>(foreignLangType);
+                var foreignLangRow = foreignLangRowFactory();
+
+                var externalForeignKeyFieldName =
+                    foreignAttr.MappedIdField ?? ((Field)((IIdRow)foreignRow).IdField).PropertyName;
+                var externalForeignKeyField = foreignLangRow.FindFieldByPropertyName(externalForeignKeyFieldName) ??
+                                              foreignLangRow.FindField(externalForeignKeyFieldName);
+
+                var listForeignHandler = DefaultHandlerFactory.ListHandlerFor(foreignLangType);
+                var listForeignRequest = DefaultHandlerFactory.ListRequestFor(foreignLangType);
+                listRequest.ColumnSelection = ColumnSelection.List;
+
+                var externalForeignCriteria =
+                    new Criteria(externalForeignKeyField.PropertyName ?? externalForeignKeyField.Name);
+
+                var idList = new List<Int32>();
+                foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
+                {
+                    idList.Add((Int32)localizationRowField.AsObject(responseEntity as Row));
+                }
+
+                listForeignRequest.Criteria =
+                    externalForeignCriteria.In(idList.Distinct()) &&
+                    languageIdCriteria == userLanguage.Id.Value;
+
+                var translationsForeignResponse =
+                    listForeignHandler.Process(handler.Connection, listForeignRequest);
+
+                if (translationsForeignResponse.TotalCount > 0)
+                {
+                    foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
+                    {
+                        var localId = (Int32?)localizationRowField.AsObject(responseEntity as Row);
+
+                        var entityLang = translationsForeignResponse.Entities.Cast<IOMPLocalizationLangRow>()
+                            .FirstOrDefault(s =>
+                                (Int32?)externalForeignKeyField.AsObject(s as Row) == localId);
+
+                        if (entityLang != null)
+                        {
+                            var foreignEntityName = entityLang?.NameField[entityLang as Row];
+
+                            var textualFieldExternal = (responseEntity as Row).FindField(textualFieldAttr.Value);
+                            if (!string.IsNullOrEmpty(foreignEntityName))
+                                textualFieldExternal.AsObject(responseEntity as Row, foreignEntityName);
+                        }
+                    }
+
+                }
             }
         }
 
