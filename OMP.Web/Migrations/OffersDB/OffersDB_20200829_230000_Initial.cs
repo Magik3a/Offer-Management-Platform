@@ -99,7 +99,46 @@ namespace OMP.Migrations.OffersDB
                 .WithColumn("UpdateDate").AsDateTime().Nullable()
                 .WithColumn("UpdateUserId").AsInt32().Nullable()
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1), checkExists: true);
-
+            Insert.IntoTable("Categories").Row(new
+            {
+                Name = "Software version update",
+                FontColor = "#0070C0",
+                InsertDate = DateTime.Now,
+                InsertUserId = 1,
+                IsActive = 1
+            });
+            Insert.IntoTable("Categories").Row(new
+            {
+                Name = "System software update",
+                FontColor = "#70AD47",
+                InsertDate = DateTime.Now,
+                InsertUserId = 1,
+                IsActive = 1
+            });
+            Insert.IntoTable("Categories").Row(new
+            {
+                Name = "Included changes",
+                FontColor = "#BF8F00",
+                InsertDate = DateTime.Now,
+                InsertUserId = 1,
+                IsActive = 1
+            });
+            Insert.IntoTable("Categories").Row(new
+            {
+                Name = "Specific changes",
+                FontColor = "#7030A0",
+                InsertDate = DateTime.Now,
+                InsertUserId = 1,
+                IsActive = 1
+            });
+            Insert.IntoTable("Categories").Row(new
+            {
+                Name = "Extra changes",
+                FontColor = "#FF0000",
+                InsertDate = DateTime.Now,
+                InsertUserId = 1,
+                IsActive = 1
+            });
             this.CreateTableWithId32("CategoriesLang", "ID", s => s
                 .WithColumn("CategoryId").AsInt32().NotNullable()
                 .ForeignKey("Categories", "CategoryId")
