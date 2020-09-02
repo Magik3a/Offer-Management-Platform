@@ -168,7 +168,8 @@ namespace OMP.Administration
                     if(idToAdd.HasValue)
                         idList.Add(idToAdd.Value);
                 }
-
+                if (!idList.Any())
+                    return;
                 listForeignRequest.Criteria =
                     externalForeignCriteria.In(idList.Distinct()) &&
                     languageIdCriteria == userLanguage.Id.Value;
