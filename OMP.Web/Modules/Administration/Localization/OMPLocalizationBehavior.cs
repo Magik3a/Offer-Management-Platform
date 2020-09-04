@@ -112,6 +112,7 @@ namespace OMP.Administration
             if (translationsResponse.Entities.Count > 0)
             {
                 var responseLang = translationsResponse.Entities.Cast<IOMPLocalizationLangRow>();
+                // Validate They have IName row
                 foreach (IOMPLocalizationRow responseEntity in handler.Response.Entities)
                 {
                     var entityLang = responseLang
@@ -126,7 +127,7 @@ namespace OMP.Administration
                 }
             }
 
-            // How about the joined table, lets translate them too
+            // How about the joined tables, lets translate them too
             var localizationRowFields = handler.Row.GetFields();
             foreach (var localizationRowField in localizationRowFields.Where(f =>
                 !String.IsNullOrEmpty(f.ForeignTable)))

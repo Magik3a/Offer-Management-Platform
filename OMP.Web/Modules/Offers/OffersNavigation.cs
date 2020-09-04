@@ -10,3 +10,4 @@ using MyPages = OMP.Offers.Pages;
 [assembly: NavigationLink(int.MaxValue, "Offers/Task Statuses", typeof(MyPages.TaskStatusesController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Offers/Categories", typeof(MyPages.CategoriesController), icon: null)]
 [assembly: NavigationLink(int.MaxValue, "Offers/Offer Categories", typeof(MyPages.OfferCategoriesController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Offers/Offer Category Tasks", typeof(MyPages.OfferCategoryTasksController), icon: null)]

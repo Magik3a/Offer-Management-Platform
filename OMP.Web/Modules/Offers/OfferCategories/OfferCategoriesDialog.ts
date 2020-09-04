@@ -11,6 +11,7 @@ namespace OMP.Offers {
         protected getDeletePermission() { return OfferCategoriesRow.deletePermission; }
         protected getInsertPermission() { return OfferCategoriesRow.insertPermission; }
         protected getUpdatePermission() { return OfferCategoriesRow.updatePermission; }
+        protected getIsActiveProperty() { return OfferCategoriesRow.isActiveProperty; }
 
         protected form = new OfferCategoriesForm(this.idPrefix);
 

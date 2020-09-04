@@ -81,6 +81,18 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.OfferCategoryTasks",
+          "Identifier": "OfferCategoryTasks",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.OfferCategoryTasksLang",
+          "Identifier": "OfferCategoryTasksLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Offers",
           "Identifier": "Offers",
           "Module": "Offers",

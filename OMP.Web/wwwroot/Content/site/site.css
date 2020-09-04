@@ -8152,3 +8152,9 @@ section.content > .s-DataGrid {
 .s-Offers-OfferCategoriesDialog .caption {
   width: 150px;
 }
+.s-Offers-OfferCategoryTasksDialog > .size {
+  width: 650px;
+}
+.s-Offers-OfferCategoryTasksDialog .caption {
+  width: 150px;
+}

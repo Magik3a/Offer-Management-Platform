@@ -17,7 +17,9 @@ namespace OMP.Offers.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OfferCategoryId { get; set; }
+        [EditLink]
         public String OfferName { get; set; }
+        [EditLink]
         public String CategoryName { get; set; }
         public Decimal Price { get; set; }
         [EditLink]

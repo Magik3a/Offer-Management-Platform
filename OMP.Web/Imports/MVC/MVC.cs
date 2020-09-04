@@ -119,6 +119,11 @@ namespace MVC
                 public const string OfferCategoriesIndex = "~/Modules/Offers/OfferCategories/OfferCategoriesIndex.cshtml";
             }
 
+            public static class OfferCategoryTasks
+            {
+                public const string OfferCategoryTasksIndex = "~/Modules/Offers/OfferCategoryTasks/OfferCategoryTasksIndex.cshtml";
+            }
+
             public static class Offers_
             {
                 public const string OffersIndex = "~/Modules/Offers/Offers/OffersIndex.cshtml";

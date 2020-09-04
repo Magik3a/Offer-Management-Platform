@@ -1405,6 +1405,172 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
 }
 declare namespace OMP.Offers {
+    interface OfferCategoryTasksForm {
+        Name: Serenity.StringEditor;
+        DevelopmentTimeHours: Serenity.DecimalEditor;
+        Description: Serenity.TextAreaEditor;
+        ParentOfferCategoryTaskId: Serenity.LookupEditor;
+        OfferCategoryId: Serenity.LookupEditor;
+        TaskStatusId: Serenity.LookupEditor;
+    }
+    class OfferCategoryTasksForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferCategoryTasksLangRow {
+        Id?: number;
+        OfferCategoryTaskId?: number;
+        LanguageId?: number;
+        Name?: string;
+        Description?: string;
+        OfferCategoryTaskName?: string;
+        OfferCategoryTaskDevelopmentTimeHours?: number;
+        OfferCategoryTaskDescription?: string;
+        OfferCategoryTaskParentOfferCategoryTaskId?: number;
+        OfferCategoryTaskOfferCategoryId?: number;
+        OfferCategoryTaskTaskStatusId?: number;
+    }
+    namespace OfferCategoryTasksLangRow {
+        const idProperty = "Id";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.OfferCategoryTasksLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            OfferCategoryTaskId = "OfferCategoryTaskId",
+            LanguageId = "LanguageId",
+            Name = "Name",
+            Description = "Description",
+            OfferCategoryTaskName = "OfferCategoryTaskName",
+            OfferCategoryTaskDevelopmentTimeHours = "OfferCategoryTaskDevelopmentTimeHours",
+            OfferCategoryTaskDescription = "OfferCategoryTaskDescription",
+            OfferCategoryTaskParentOfferCategoryTaskId = "OfferCategoryTaskParentOfferCategoryTaskId",
+            OfferCategoryTaskOfferCategoryId = "OfferCategoryTaskOfferCategoryId",
+            OfferCategoryTaskTaskStatusId = "OfferCategoryTaskTaskStatusId"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OfferCategoryTasksLangService {
+        const baseUrl = "Offers/OfferCategoryTasksLang";
+        function Create(request: Serenity.SaveRequest<OfferCategoryTasksLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfferCategoryTasksLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferCategoryTasksLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferCategoryTasksLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OfferCategoryTasksLang/Create",
+            Update = "Offers/OfferCategoryTasksLang/Update",
+            Delete = "Offers/OfferCategoryTasksLang/Delete",
+            Retrieve = "Offers/OfferCategoryTasksLang/Retrieve",
+            List = "Offers/OfferCategoryTasksLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferCategoryTasksRow {
+        OfferCategoryTaskId?: number;
+        Name?: string;
+        DevelopmentTimeHours?: number;
+        Description?: string;
+        ParentOfferCategoryTaskId?: number;
+        OfferCategoryId?: number;
+        TaskStatusId?: number;
+        ParentOfferCategoryTaskName?: string;
+        ParentOfferCategoryTaskDevelopmentTimeHours?: number;
+        ParentOfferCategoryTaskDescription?: string;
+        ParentOfferCategoryTaskParentOfferCategoryTaskId?: number;
+        ParentOfferCategoryTaskOfferCategoryId?: number;
+        ParentOfferCategoryTaskTaskStatusId?: number;
+        OfferCategoryOfferId?: number;
+        OfferCategoryCategoryId?: number;
+        OfferCategoryPrice?: number;
+        OfferCategoryCategoryNameReport?: string;
+        OfferCategoryCategoryFontColorReport?: string;
+        TaskStatusName?: string;
+        TaskStatusBorderColor?: string;
+        TaskStatusBackgroundColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace OfferCategoryTasksRow {
+        const idProperty = "OfferCategoryTaskId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.OfferCategoryTasks";
+        const lookupKey = "Offers.OfferCategoryTasks";
+        function getLookup(): Q.Lookup<OfferCategoryTasksRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OfferCategoryTaskId = "OfferCategoryTaskId",
+            Name = "Name",
+            DevelopmentTimeHours = "DevelopmentTimeHours",
+            Description = "Description",
+            ParentOfferCategoryTaskId = "ParentOfferCategoryTaskId",
+            OfferCategoryId = "OfferCategoryId",
+            TaskStatusId = "TaskStatusId",
+            ParentOfferCategoryTaskName = "ParentOfferCategoryTaskName",
+            ParentOfferCategoryTaskDevelopmentTimeHours = "ParentOfferCategoryTaskDevelopmentTimeHours",
+            ParentOfferCategoryTaskDescription = "ParentOfferCategoryTaskDescription",
+            ParentOfferCategoryTaskParentOfferCategoryTaskId = "ParentOfferCategoryTaskParentOfferCategoryTaskId",
+            ParentOfferCategoryTaskOfferCategoryId = "ParentOfferCategoryTaskOfferCategoryId",
+            ParentOfferCategoryTaskTaskStatusId = "ParentOfferCategoryTaskTaskStatusId",
+            OfferCategoryOfferId = "OfferCategoryOfferId",
+            OfferCategoryCategoryId = "OfferCategoryCategoryId",
+            OfferCategoryPrice = "OfferCategoryPrice",
+            OfferCategoryCategoryNameReport = "OfferCategoryCategoryNameReport",
+            OfferCategoryCategoryFontColorReport = "OfferCategoryCategoryFontColorReport",
+            TaskStatusName = "TaskStatusName",
+            TaskStatusBorderColor = "TaskStatusBorderColor",
+            TaskStatusBackgroundColor = "TaskStatusBackgroundColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OfferCategoryTasksService {
+        const baseUrl = "Offers/OfferCategoryTasks";
+        function Create(request: Serenity.SaveRequest<OfferCategoryTasksRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfferCategoryTasksRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferCategoryTasksRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferCategoryTasksRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OfferCategoryTasks/Create",
+            Update = "Offers/OfferCategoryTasks/Update",
+            Undelete = "Offers/OfferCategoryTasks/Undelete",
+            Delete = "Offers/OfferCategoryTasks/Delete",
+            Retrieve = "Offers/OfferCategoryTasks/Retrieve",
+            List = "Offers/OfferCategoryTasks/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
     interface OfferStatusesForm {
         Name: Serenity.StringEditor;
         BorderColor: Serenity.StringEditor;
@@ -2465,6 +2631,7 @@ declare namespace OMP.Offers {
         protected getDeletePermission(): string;
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
         protected form: OfferCategoriesForm;
     }
 }
@@ -2476,6 +2643,33 @@ declare namespace OMP.Offers {
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class OfferCategoryTasksDialog extends Serenity.EntityDialog<OfferCategoryTasksRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: OfferCategoryTasksForm;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferCategoryTasksGrid extends Serenity.EntityGrid<OfferCategoryTasksRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OfferCategoryTasksDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
     }
 }

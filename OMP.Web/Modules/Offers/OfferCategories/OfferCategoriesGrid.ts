@@ -9,6 +9,7 @@ namespace OMP.Offers {
         protected getInsertPermission() { return OfferCategoriesRow.insertPermission; }
         protected getLocalTextPrefix() { return OfferCategoriesRow.localTextPrefix; }
         protected getService() { return OfferCategoriesService.baseUrl; }
+        protected getIsActiveProperty() { return OfferCategoriesRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);
