@@ -11,8 +11,20 @@ namespace OMP.Offers {
         protected getService() { return OfferCategoryTasksService.baseUrl; }
         protected getIsActiveProperty() { return OfferCategoryTasksRow.isActiveProperty; }
 
+
+        private treeMixin: Serenity.TreeGridMixin<OfferCategoryTasksRow>;
+
         constructor(container: JQuery) {
             super(container);
+            this.treeMixin = new Serenity.TreeGridMixin(  {
+                grid: this,
+                // bring tree items initially collapsed
+                initialCollapse: () => false,
+                // which column to place tree toggle / expand/collapse button
+                toggleField: OfferCategoryTasksRow.Fields.OfferCategoryTaskId,
+                getParentId: x => x.ParentOfferCategoryTaskId,
+            });
+
         }
     }
 }
