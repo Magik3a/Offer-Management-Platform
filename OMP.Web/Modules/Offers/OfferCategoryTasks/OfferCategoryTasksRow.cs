@@ -52,8 +52,9 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Parent Offer Category Task"), ForeignKey(typeof(OfferCategoryTasksRow), "OfferCategoryTaskId"), LeftJoin("jParentOfferCategoryTask"), TextualField("ParentOfferCategoryTaskName")]
         [LookupEditor(typeof(OfferCategoryTasksRow), FilterField = "IsActive", FilterValue = 1
-            , InplaceAdd = true
+            , InplaceAdd = true, CascadeField = "OfferCategoryOfferId", CascadeFrom = "OfferCategoryOfferId"
         )]
+        [LookupInclude]
         public Int32? ParentOfferCategoryTaskId
         {
             get { return Fields.ParentOfferCategoryTaskId[this]; }
@@ -62,7 +63,7 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Offer Category"), NotNull, ForeignKey(typeof(OfferCategoriesRow), "OfferCategoryId"), LeftJoin("jOfferCategory"), TextualField("OfferCategoryCategoryNameReport")]
         [LookupEditor(typeof(OfferCategoriesRow), FilterField = "IsActive", FilterValue = 1
-            , InplaceAdd = true
+            , InplaceAdd = true, CascadeField = "OfferId", CascadeFrom = "OfferCategoryOfferId"
         )]
         public Int32? OfferCategoryId
         {
@@ -124,10 +125,22 @@ namespace OMP.Offers.Entities
 
 
         [DisplayName("Offer Category Offer Id"), Expression("jOfferCategory.[OfferId]")]
+        [ForeignKey(typeof(OffersRow), "OfferId"), LeftJoin("jOffer"), TextualField("OfferName")]
+        [LookupEditor(typeof(OffersRow), FilterField = "IsActive", FilterValue = 1
+            , InplaceAdd = true
+        )]
+        [LookupInclude, MinSelectLevel(SelectLevel.List)]
         public Int32? OfferCategoryOfferId
         {
             get { return Fields.OfferCategoryOfferId[this]; }
             set { Fields.OfferCategoryOfferId[this] = value; }
+        }
+
+        [DisplayName("Offer Name"), Expression("jOffer.[Name]")]
+        public String OfferName
+        {
+            get { return Fields.OfferName[this]; }
+            set { Fields.OfferName[this] = value; }
         }
 
         [DisplayName("Offer Category Category Id"), Expression("jOfferCategory.[CategoryId]")]
@@ -222,6 +235,9 @@ namespace OMP.Offers.Entities
             public StringField TaskStatusName;
             public StringField TaskStatusBorderColor;
             public StringField TaskStatusBackgroundColor;
+
+            public StringField OfferName;
+
         }
     }
 }

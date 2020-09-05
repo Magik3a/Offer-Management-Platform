@@ -23,6 +23,8 @@ namespace OMP.Offers.Columns
         public Decimal DevelopmentTimeHours { get; set; }
         [EditLink]
         public String Description { get; set; }
+
+        public String OfferName { get; set; }
         public String ParentOfferCategoryTaskName { get; set; }
         public String OfferCategoryCategoryNameReport { get; set; }
         public String TaskStatusName { get; set; }

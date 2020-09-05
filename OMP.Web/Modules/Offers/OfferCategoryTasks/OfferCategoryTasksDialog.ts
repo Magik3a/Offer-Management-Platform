@@ -15,5 +15,16 @@ namespace OMP.Offers {
 
         protected form = new OfferCategoryTasksForm(this.idPrefix);
 
+        constructor() {
+            super();
+        }
+
+        loadEntity(entity: OfferCategoryTasksRow) {
+            super.loadEntity(entity);
+
+            if (this.isEditMode()) {
+                this.form.ParentOfferCategoryTaskId.items = this.form.ParentOfferCategoryTaskId.items.filter(x => x.id !== entity.OfferCategoryTaskId.toString());
+            }
+        }
     }
 }

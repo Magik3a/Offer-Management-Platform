@@ -21,5 +21,7 @@ namespace OMP.Offers.Forms
         public String AdditionalInfo { get; set; }
         public Int32 CompanyId { get; set; }
         public Int32 OfferStatusId { get; set; }
+        public List<object> NoteList { get; set; }
+
     }
 }

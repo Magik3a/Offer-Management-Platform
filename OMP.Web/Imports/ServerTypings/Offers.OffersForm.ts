@@ -8,6 +8,7 @@
         AdditionalInfo: Serenity.TextAreaEditor;
         CompanyId: Serenity.LookupEditor;
         OfferStatusId: Serenity.LookupEditor;
+        NoteList: Serenity.StringEditor;
     }
 
     export class OffersForm extends Serenity.PrefixedContext {
@@ -36,7 +37,8 @@
                     'StartDate', w3,
                     'AdditionalInfo', w4,
                     'CompanyId', w5,
-                    'OfferStatusId', w5
+                    'OfferStatusId', w5,
+                    'NoteList', w0
                 ]);
             }
         }

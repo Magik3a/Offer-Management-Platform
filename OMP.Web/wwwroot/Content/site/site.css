@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Core: General Layout Style
  * -------------------------
  */
@@ -275,7 +275,7 @@ a:focus {
   text-align: center;
   font-size: 9px;
   padding: 2px 3px;
-  line-height: .9;
+  line-height: 0.9;
 }
 .main-header .logo {
   -webkit-transition: width 0.3s ease-in-out;
@@ -974,15 +974,15 @@ a:focus {
   background-color: #fff;
   padding: 7px 10px;
   border-bottom: 1px solid #eeeeee;
-  color: #444!important;
+  color: #444 !important;
   text-align: center;
 }
 @media (max-width: 991px) {
   .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
   .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
   .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
-    background: #fff!important;
-    color: #444!important;
+    background: #fff !important;
+    color: #444 !important;
   }
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a:hover,
@@ -8157,4 +8157,56 @@ section.content > .s-DataGrid {
 }
 .s-Offers-OfferCategoryTasksDialog .caption {
   width: 150px;
+}
+.s-NotesEditor {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.s-NotesEditor ul {
+  padding: 0;
+  min-height: 110px;
+  overflow-y: auto;
+  list-style: none;
+}
+.s-NotesEditor li {
+  margin: 10px;
+  border-radius: 4px;
+  border: 1px solid #C3C2C2;
+  background-color: #F5E7DC;
+  padding: 8px;
+  position: relative;
+}
+.s-NotesEditor .note-text {
+  padding-right: 24px;
+  display: block;
+}
+.s-NotesEditor .note-delete {
+  background-image: url('../serenity/images/delete2.png');
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 6px;
+  top: 6px;
+  opacity: 0.4;
+}
+.s-NotesEditor .note-delete:hover {
+  opacity: 1;
+}
+.s-NotesEditor .note-date {
+  margin-top: 6px;
+  display: block;
+  text-align: right;
+  color: #2a4084;
+  font-style: italic;
+}
+.s-NotesEditor .s-Toolbar {
+  background-color: #eee;
+  padding: 4px;
+}
+.s-NoteDialog > .size {
+  width: 465px;
+}
+.s-NoteDialog .ui-dialog-content {
+  padding-bottom: 10px;
 }

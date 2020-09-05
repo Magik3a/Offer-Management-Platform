@@ -1,0 +1,75 @@
+﻿.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.s-Offers-CountriesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CountriesDialog .caption {
+  width: 150px;
+}
+.s-Offers-CitiesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CitiesDialog .caption {
+  width: 150px;
+}
+.s-Offers-AccountsDialog > .size {
+  width: 650px;
+}
+.s-Offers-AccountsDialog .caption {
+  width: 150px;
+}
+.s-Offers-CompaniesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CompaniesDialog .caption {
+  width: 150px;
+}
+.s-Offers-OfferStatusesDialog > .size {
+  width: 650px;
+}
+.s-Offers-OfferStatusesDialog .caption {
+  width: 150px;
+}
+.s-Offers-OffersDialog > .size {
+  width: 650px;
+}
+.s-Offers-OffersDialog .caption {
+  width: 150px;
+}
+.s-Offers-OffersLangDialog > .size {
+  width: 650px;
+}
+.s-Offers-OffersLangDialog .caption {
+  width: 150px;
+}
+.s-Offers-TaskStatusesDialog > .size {
+  width: 650px;
+}
+.s-Offers-TaskStatusesDialog .caption {
+  width: 150px;
+}
+.s-Offers-CategoriesDialog > .size {
+  width: 650px;
+}
+.s-Offers-CategoriesDialog .caption {
+  width: 150px;
+}
+.s-Offers-OfferCategoriesDialog > .size {
+  width: 650px;
+}
+.s-Offers-OfferCategoriesDialog .caption {
+  width: 150px;
+}
+.s-Offers-OfferCategoryTasksDialog > .size {
+  width: 650px;
+}
+.s-Offers-OfferCategoryTasksDialog .caption {
+  width: 150px;
+}

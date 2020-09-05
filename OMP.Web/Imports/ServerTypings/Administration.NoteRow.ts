@@ -12,7 +12,7 @@
     export namespace NoteRow {
         export const idProperty = 'NoteId';
         export const nameProperty = 'EntityType';
-        export const localTextPrefix = 'Northwind.Note';
+        export const localTextPrefix = 'Administration.Note';
         export const deletePermission = null;
         export const insertPermission = null;
         export const readPermission = '';

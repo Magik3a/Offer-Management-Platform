@@ -21,6 +21,7 @@
         TaskStatusName?: string;
         TaskStatusBorderColor?: string;
         TaskStatusBackgroundColor?: string;
+        OfferName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -68,6 +69,7 @@
             TaskStatusName = "TaskStatusName",
             TaskStatusBorderColor = "TaskStatusBorderColor",
             TaskStatusBackgroundColor = "TaskStatusBackgroundColor",
+            OfferName = "OfferName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

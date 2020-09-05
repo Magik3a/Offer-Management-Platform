@@ -3,6 +3,7 @@
         Name: Serenity.StringEditor;
         DevelopmentTimeHours: Serenity.DecimalEditor;
         Description: Serenity.TextAreaEditor;
+        OfferCategoryOfferId: Serenity.LookupEditor;
         ParentOfferCategoryTaskId: Serenity.LookupEditor;
         OfferCategoryId: Serenity.LookupEditor;
         TaskStatusId: Serenity.LookupEditor;
@@ -28,6 +29,7 @@
                     'Name', w0,
                     'DevelopmentTimeHours', w1,
                     'Description', w2,
+                    'OfferCategoryOfferId', w3,
                     'ParentOfferCategoryTaskId', w3,
                     'OfferCategoryId', w3,
                     'TaskStatusId', w3

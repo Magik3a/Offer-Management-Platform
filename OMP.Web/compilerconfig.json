@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/Content/site/site.administration.css",
+    "inputFile": "wwwroot/Content/site/site.administration.less"
+  },
+  {
+    "outputFile": "wwwroot/Content/site/site.offers.css",
+    "inputFile": "wwwroot/Content/site/site.offers.less"
+  },
+  {
+    "outputFile": "wwwroot/Content/site/site.css",
+    "inputFile": "wwwroot/Content/site/site.less"
+  }
+]

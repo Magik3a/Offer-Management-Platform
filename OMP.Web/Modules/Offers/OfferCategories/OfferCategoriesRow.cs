@@ -32,6 +32,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OffersRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
+        [LookupInclude]
         public Int32? OfferId
         {
             get { return Fields.OfferId[this]; }

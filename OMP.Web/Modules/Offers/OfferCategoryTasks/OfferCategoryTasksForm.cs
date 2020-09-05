@@ -16,6 +16,7 @@ namespace OMP.Offers.Forms
         public String Name { get; set; }
         public Decimal DevelopmentTimeHours { get; set; }
         public String Description { get; set; }
+        public Int32 OfferCategoryOfferId { get; set; }
         public Int32 ParentOfferCategoryTaskId { get; set; }
         public Int32 OfferCategoryId { get; set; }
         public Int32 TaskStatusId { get; set; }

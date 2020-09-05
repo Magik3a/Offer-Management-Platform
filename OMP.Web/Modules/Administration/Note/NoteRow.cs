@@ -7,7 +7,7 @@ namespace OMP.Administration.Entities
     using System;
     using System.ComponentModel;
 
-    [ConnectionKey("Northwind"), Module("Northwind"), TableName("Notes")]
+    [ConnectionKey("Administration"), Module("Administration"), TableName("Notes")]
     [DisplayName("Notes"), InstanceName("Note")]
     //[ReadPermission(PermissionKeys.General)]
     //[ModifyPermission(PermissionKeys.General)]
