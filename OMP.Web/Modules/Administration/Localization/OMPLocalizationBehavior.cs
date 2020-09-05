@@ -136,14 +136,14 @@ namespace OMP.Administration
                 var foreignKeyAttr = localizationRowField.GetAttribute<ForeignKeyAttribute>();
                 var textualFieldAttr = localizationRowField.GetAttribute<TextualFieldAttribute>();
                 if (foreignKeyAttr.RowType == null || textualFieldAttr == null || string.IsNullOrEmpty(textualFieldAttr.Value))
-                    return;
+                    continue;
 
                 var foreignRowFactory = FastReflection.DelegateForConstructor<Row>(foreignKeyAttr.RowType);
                 var foreignRow = foreignRowFactory();
                 var foreignAttr = foreignRow.GetType().GetCustomAttribute<LocalizationRowAttribute>();
 
                 if (foreignAttr == null)
-                    return;
+                    continue;
 
                 var foreignLangType = foreignAttr.LocalizationRow;
 
@@ -170,7 +170,7 @@ namespace OMP.Administration
                         idList.Add(idToAdd.Value);
                 }
                 if (!idList.Any())
-                    return;
+                    continue;
                 listForeignRequest.Criteria =
                     externalForeignCriteria.In(idList.Distinct()) &&
                     languageIdCriteria == userLanguage.Id.Value;
