@@ -1,8 +1,8 @@
 ﻿namespace OMP.Offers {
     export interface TaskStatusesForm {
         Name: Serenity.StringEditor;
-        BorderColor: Serenity.StringEditor;
-        BackgroundColor: Serenity.StringEditor;
+        BackgroundColor: ColorPickerEditor;
+        BorderColor: ColorPickerEditor;
     }
 
     export class TaskStatusesForm extends Serenity.PrefixedContext {
@@ -17,11 +17,12 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
+                var w1 = ColorPickerEditor;
 
                 Q.initFormType(TaskStatusesForm, [
                     'Name', w0,
-                    'BorderColor', w0,
-                    'BackgroundColor', w0
+                    'BackgroundColor', w1,
+                    'BorderColor', w1
                 ]);
             }
         }

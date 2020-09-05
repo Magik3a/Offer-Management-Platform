@@ -36,6 +36,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Border Color"), Size(50)]
+        [ColorPickerEditor]
         public String BorderColor
         {
             get { return Fields.BorderColor[this]; }
@@ -43,6 +44,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Background Color"), Size(50)]
+        [ColorPickerEditor]
         public String BackgroundColor
         {
             get { return Fields.BackgroundColor[this]; }

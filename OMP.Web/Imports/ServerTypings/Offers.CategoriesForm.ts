@@ -1,7 +1,7 @@
 ﻿namespace OMP.Offers {
     export interface CategoriesForm {
         Name: Serenity.StringEditor;
-        FontColor: Serenity.StringEditor;
+        FontColor: ColorPickerEditor;
     }
 
     export class CategoriesForm extends Serenity.PrefixedContext {
@@ -16,10 +16,11 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
+                var w1 = ColorPickerEditor;
 
                 Q.initFormType(CategoriesForm, [
                     'Name', w0,
-                    'FontColor', w0
+                    'FontColor', w1
                 ]);
             }
         }

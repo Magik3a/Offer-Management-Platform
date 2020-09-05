@@ -14,7 +14,9 @@ namespace OMP.Offers.Forms
     public class TaskStatusesForm
     {
         public String Name { get; set; }
-        public String BorderColor { get; set; }
+        [HalfWidth]
         public String BackgroundColor { get; set; }
+        [HalfWidth]
+        public String BorderColor { get; set; }
     }
 }
