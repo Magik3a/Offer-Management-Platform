@@ -14,7 +14,7 @@ namespace OMP.Offers.Entities
     using System.IO;
 
     [ConnectionKey("Offers"), Module("Offers"), TableName("[dbo].[OfferCategories]")]
-    [DisplayName("Offer Categories"), InstanceName("Offer Categories")]
+    [DisplayName("Offer Categories"), InstanceName("Offer Category")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LocalizationRow(typeof(OfferCategoriesLangRow))]
@@ -32,7 +32,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OffersRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
-        [LookupInclude]
+        [LookupInclude, MinSelectLevel(SelectLevel.List)]
         public Int32? OfferId
         {
             get { return Fields.OfferId[this]; }

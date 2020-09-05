@@ -1697,13 +1697,13 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface OffersForm {
         Name: Serenity.StringEditor;
+        OfferStatusId: Serenity.LookupEditor;
         Discount: Serenity.DecimalEditor;
         MinimumDaysDevelopmentTime: Serenity.IntegerEditor;
         MaximumDaysDevelopmentTime: Serenity.IntegerEditor;
+        CompanyId: Serenity.LookupEditor;
         StartDate: Serenity.DateTimeEditor;
         AdditionalInfo: Serenity.TextAreaEditor;
-        CompanyId: Serenity.LookupEditor;
-        OfferStatusId: Serenity.LookupEditor;
         NoteList: Serenity.StringEditor;
     }
     class OffersForm extends Serenity.PrefixedContext {
@@ -2637,6 +2637,7 @@ declare namespace OMP.Offers {
         protected getUpdatePermission(): string;
         protected getIsActiveProperty(): string;
         protected form: OfferCategoriesForm;
+        constructor();
     }
 }
 declare namespace OMP.Offers {
@@ -2719,6 +2720,7 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         protected form: OffersForm;
         private offerCategoryTasksGrid;
+        private offerCategoriesGrid;
         constructor();
         loadEntity(entity: OffersRow): void;
         onSaveSuccess(response: any): void;
@@ -2771,6 +2773,26 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     class OfferOfferCategoryTasksGrid extends OfferCategoryTasksGrid {
         protected getDialogType(): typeof OfferOfferCategoryTasksDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoriesDialog extends OfferCategoriesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoriesGrid extends OfferCategoriesGrid {
+        protected getDialogType(): typeof OfferOfferCategoriesDialog;
         constructor(container: JQuery);
         protected getColumns(): Slick.Column[];
         protected initEntityDialog(itemType: any, dialog: any): void;

@@ -1,13 +1,13 @@
 ﻿namespace OMP.Offers {
     export interface OffersForm {
         Name: Serenity.StringEditor;
+        OfferStatusId: Serenity.LookupEditor;
         Discount: Serenity.DecimalEditor;
         MinimumDaysDevelopmentTime: Serenity.IntegerEditor;
         MaximumDaysDevelopmentTime: Serenity.IntegerEditor;
+        CompanyId: Serenity.LookupEditor;
         StartDate: Serenity.DateTimeEditor;
         AdditionalInfo: Serenity.TextAreaEditor;
-        CompanyId: Serenity.LookupEditor;
-        OfferStatusId: Serenity.LookupEditor;
         NoteList: Serenity.StringEditor;
     }
 
@@ -23,21 +23,21 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.DecimalEditor;
-                var w2 = s.IntegerEditor;
-                var w3 = s.DateTimeEditor;
-                var w4 = s.TextAreaEditor;
-                var w5 = s.LookupEditor;
+                var w1 = s.LookupEditor;
+                var w2 = s.DecimalEditor;
+                var w3 = s.IntegerEditor;
+                var w4 = s.DateTimeEditor;
+                var w5 = s.TextAreaEditor;
 
                 Q.initFormType(OffersForm, [
                     'Name', w0,
-                    'Discount', w1,
-                    'MinimumDaysDevelopmentTime', w2,
-                    'MaximumDaysDevelopmentTime', w2,
-                    'StartDate', w3,
-                    'AdditionalInfo', w4,
-                    'CompanyId', w5,
-                    'OfferStatusId', w5,
+                    'OfferStatusId', w1,
+                    'Discount', w2,
+                    'MinimumDaysDevelopmentTime', w3,
+                    'MaximumDaysDevelopmentTime', w3,
+                    'CompanyId', w1,
+                    'StartDate', w4,
+                    'AdditionalInfo', w5,
                     'NoteList', w0
                 ]);
             }

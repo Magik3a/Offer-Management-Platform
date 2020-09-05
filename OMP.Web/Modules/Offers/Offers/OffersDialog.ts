@@ -1,6 +1,6 @@
 ﻿
 namespace OMP.Offers {
-
+    @Serenity.Decorators.panel(true)
     @Serenity.Decorators.registerClass()
     export class OffersDialog extends Serenity.EntityDialog<OffersRow, any> {
         protected getFormKey() { return OffersForm.formKey; }
@@ -15,11 +15,14 @@ namespace OMP.Offers {
 
         protected form = new OffersForm(this.idPrefix);
         private offerCategoryTasksGrid: OfferOfferCategoryTasksGrid;
+        private offerCategoriesGrid: OfferOfferCategoriesGrid;
 
         constructor() {
             super();
 
             this.offerCategoryTasksGrid = new OfferOfferCategoryTasksGrid(this.byId('OfferCategoryTasksGrid'));
+
+            this.offerCategoriesGrid = new OfferOfferCategoriesGrid(this.byId('OfferCategoriesGrid'));
 
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
         }
@@ -28,8 +31,11 @@ namespace OMP.Offers {
             super.loadEntity(entity);
 
             Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferCategoryTasks', this.isNewOrDeleted());
-            if (this.isEditMode())
-            this.offerCategoryTasksGrid.offerId = entity.OfferId + "";
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferCategories', this.isNewOrDeleted());
+            if (this.isEditMode()) {
+                this.offerCategoryTasksGrid.offerId = entity.OfferId + "";
+                this.offerCategoriesGrid.offerId = entity.OfferId + "";
+            }
         }
 
         onSaveSuccess(response) {

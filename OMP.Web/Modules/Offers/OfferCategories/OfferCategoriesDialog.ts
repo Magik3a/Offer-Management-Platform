@@ -14,6 +14,14 @@ namespace OMP.Offers {
         protected getIsActiveProperty() { return OfferCategoriesRow.isActiveProperty; }
 
         protected form = new OfferCategoriesForm(this.idPrefix);
+        constructor() {
+            super();
+
+            this.form.CategoryId.change((e) => {
+                if (this.form.CategoryId.value)
+                    this.form.CategoryNameReport.value = CategoriesRow.getLookup().itemById[this.form.CategoryId.value].Name.trim();
+            });
+        }
 
     }
 }
