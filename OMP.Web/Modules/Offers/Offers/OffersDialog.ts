@@ -25,6 +25,16 @@ namespace OMP.Offers {
             this.offerCategoriesGrid = new OfferOfferCategoriesGrid(this.byId('OfferCategoriesGrid'));
 
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+
+
+            this.form.MaximumDaysDevelopmentTime.addValidationRule(this.uniqueName, e => {
+                var minimumDaysDevelopmentTime = this.form.MinimumDaysDevelopmentTime.value;
+                var maximumDaysDevelopmentTime = this.form.MaximumDaysDevelopmentTime.value;
+                if (minimumDaysDevelopmentTime != null && maximumDaysDevelopmentTime != null
+                    && minimumDaysDevelopmentTime >= maximumDaysDevelopmentTime) {
+                    return Q.text("Site.Offers.ValidationErrorMaximumDays");
+                }
+            });
         }
 
         loadEntity(entity: OffersRow) {

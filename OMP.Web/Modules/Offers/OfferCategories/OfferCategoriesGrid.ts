@@ -14,5 +14,26 @@ namespace OMP.Offers {
         constructor(container: JQuery) {
             super(container);
         }
+
+
+        protected createSlickGrid() {
+            var grid = super.createSlickGrid();
+
+            // need to register this plugin for grouping or you'll have errors
+            grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+
+            this.view.setSummaryOptions({
+                aggregators: [
+                    new Slick.Aggregators.Sum('Price')
+                ]
+            });
+
+            return grid;
+        }
+        protected getSlickOptions() {
+            var opt = super.getSlickOptions();
+            opt.showFooterRow = true;
+            return opt;
+        }
     }
 }

@@ -2650,6 +2650,8 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
     }
 }
 declare namespace OMP.Offers {
@@ -2679,6 +2681,8 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         private treeMixin;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
     }
 }
 declare namespace OMP.Offers {
