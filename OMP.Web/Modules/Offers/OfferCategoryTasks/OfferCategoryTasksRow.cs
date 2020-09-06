@@ -65,6 +65,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OfferCategoriesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true, CascadeField = "OfferId", CascadeFrom = "OfferCategoryOfferId"
         )]
+        [LookupInclude]
         public Int32? OfferCategoryId
         {
             get { return Fields.OfferCategoryId[this]; }

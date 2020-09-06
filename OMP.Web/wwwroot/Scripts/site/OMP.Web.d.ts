@@ -2669,6 +2669,7 @@ declare namespace OMP.Offers {
         protected form: OfferCategoryTasksForm;
         constructor();
         loadEntity(entity: OfferCategoryTasksRow): void;
+        onSaveSuccess(response: any): void;
     }
 }
 declare namespace OMP.Offers {

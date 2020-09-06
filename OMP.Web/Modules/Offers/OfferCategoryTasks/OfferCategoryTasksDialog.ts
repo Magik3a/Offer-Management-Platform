@@ -17,6 +17,20 @@ namespace OMP.Offers {
 
         constructor() {
             super();
+
+            this.form.ParentOfferCategoryTaskId.change((e) => {
+                if (this.form.ParentOfferCategoryTaskId.value) {
+                    this.form.OfferCategoryId.value =
+                        OfferCategoryTasksRow.getLookup().itemById[this.form.ParentOfferCategoryTaskId.value]
+                        .OfferCategoryId +
+                        "";
+
+                    Serenity.EditorUtils.setReadOnly(this.form.OfferCategoryId, true);
+                } else {
+
+                    Serenity.EditorUtils.setReadOnly(this.form.OfferCategoryId, false);
+                }
+            });
         }
 
         loadEntity(entity: OfferCategoryTasksRow) {
@@ -25,6 +39,13 @@ namespace OMP.Offers {
             if (this.isEditMode()) {
                 this.form.ParentOfferCategoryTaskId.items = this.form.ParentOfferCategoryTaskId.items.filter(x => x.id !== entity.OfferCategoryTaskId.toString());
             }
+        }
+
+
+        onSaveSuccess(response) {
+            super.onSaveSuccess(response);
+
+            Q.reloadLookup(OfferCategoryTasksRow.lookupKey);
         }
     }
 }
