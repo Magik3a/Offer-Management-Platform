@@ -14,6 +14,7 @@ namespace OMP.Offers.Forms
     public class OffersForm
     {
         [Category("Required")]
+        [DefaultValue("Offer for updating system")]
         public String Name { get; set; }
         public Int32 OfferStatusId { get; set; }
         public Decimal Discount { get; set; }

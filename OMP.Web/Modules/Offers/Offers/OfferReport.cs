@@ -27,23 +27,21 @@ namespace OMP.Offers.Offers
             using (var connection = SqlConnections.NewFor<OffersRow>())
             {
                 var o = OffersRow.Fields;
-
                 data.Offer = connection.TryById<OffersRow>(this.OfferId, q => q
                                  .SelectTableFields()
-                                 //.Select(o.EmployeeFullName)
-                                 //.Select(o.ShipViaCompanyName)
+                                 .Where(o.IsActive == 1)
                              ) ?? new OffersRow();
 
                 var oc = OfferCategoriesRow.Fields;
                 data.OfferCategories = connection.List<OfferCategoriesRow>(q => q
                     .SelectTableFields()
-                    .Where(oc.OfferId == this.OfferId));
+                    .Where(oc.OfferId == this.OfferId && oc.IsActive == 1));
 
                 var oct = OfferCategoryTasksRow.Fields;
                 data.OfferCategoryTasks = connection.List<OfferCategoryTasksRow>(q => q
                     .SelectTableFields()
                     .Select(oct.OfferCategoryOfferId)
-                    .Where(oct.OfferCategoryOfferId == this.OfferId));
+                    .Where(oct.OfferCategoryOfferId == this.OfferId && oct.IsActive == 1));
 
 
                 //var c = CustomerRow.Fields;

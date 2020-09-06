@@ -14,8 +14,9 @@
                 @category.CategoryNameReport
                 
                 <ul>
-                    @foreach (var task in Model.OfferCategoryTasks.Where(octs => octs.OfferCategoryId == category.CategoryId))
+                    @foreach (var task in Model.OfferCategoryTasks.Where(octs => octs.OfferCategoryId == category.OfferCategoryId).OrderBy(oct => oct.ParentOfferCategoryTaskId))
                     {
+
                         <li>
                             @task.Name
                         </li>
