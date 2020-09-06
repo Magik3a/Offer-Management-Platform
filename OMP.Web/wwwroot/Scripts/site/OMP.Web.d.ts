@@ -1697,12 +1697,12 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface OffersForm {
         Name: Serenity.StringEditor;
-        OfferStatusId: Serenity.LookupEditor;
+        StartDate: Serenity.DateEditor;
         Discount: Serenity.DecimalEditor;
         MinimumDaysDevelopmentTime: Serenity.IntegerEditor;
         MaximumDaysDevelopmentTime: Serenity.IntegerEditor;
         CompanyId: Serenity.LookupEditor;
-        StartDate: Serenity.DateTimeEditor;
+        OfferStatusId: Serenity.LookupEditor;
         AdditionalInfo: Serenity.TextAreaEditor;
         NoteList: Serenity.StringEditor;
     }

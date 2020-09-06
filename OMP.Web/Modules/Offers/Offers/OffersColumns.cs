@@ -15,16 +15,30 @@ namespace OMP.Offers.Columns
     [BasedOnRow(typeof(Entities.OffersRow), CheckNames = true)]
     public class OffersColumns : OMPLoggingRowColumns
     {
+
         [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 OfferId { get; set; }
         [EditLink]
+        [Width(400)]
         public String Name { get; set; }
         public Decimal Discount { get; set; }
         public Int32 MinimumDaysDevelopmentTime { get; set; }
         public Int32 MaximumDaysDevelopmentTime { get; set; }
         public DateTime StartDate { get; set; }
+        [Width(300)]
         public String AdditionalInfo { get; set; }
         public String CompanyName { get; set; }
+        [Width(150)]
         public String OfferStatusName { get; set; }
+
+
+        [FilterOnly]
+        public Int32 CompanyId { get; set; }
+
+        [FilterOnly]
+        public Int32 OfferStatusId { get; set; }
+
+        [FilterOnly]
+        public Int32 CompanyCityId { get; set; }
     }
 }

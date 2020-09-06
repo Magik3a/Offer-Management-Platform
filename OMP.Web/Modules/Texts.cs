@@ -188,6 +188,7 @@ namespace OMP
             public static class Offers
             {
                 public static LocalText ValidationErrorMaximumDays = "Maximum Days Development Time can't be higher than Maximum Days Development Time!";
+                public static LocalText OfferReportPage = "page";
             }
         }
 

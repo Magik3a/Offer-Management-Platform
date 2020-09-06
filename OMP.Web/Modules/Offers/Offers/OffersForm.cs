@@ -16,13 +16,22 @@ namespace OMP.Offers.Forms
         [Category("Required")]
         [DefaultValue("Offer for updating system")]
         public String Name { get; set; }
-        public Int32 OfferStatusId { get; set; }
-        public Decimal Discount { get; set; }
-        public Int32 MinimumDaysDevelopmentTime { get; set; }
-        public Int32 MaximumDaysDevelopmentTime { get; set; }
-        [Category("Extra info")]
-        public Int32 CompanyId { get; set; }
+        [QuarterWidth]
         public DateTime StartDate { get; set; }
+        [QuarterWidth]
+        public Decimal Discount { get; set; }
+
+        [QuarterWidth]
+        public Int32 MinimumDaysDevelopmentTime { get; set; }
+        [QuarterWidth]
+
+        public Int32 MaximumDaysDevelopmentTime { get; set; }
+
+        [HalfWidth]
+        public Int32 CompanyId { get; set; }
+        [HalfWidth]
+        public Int32 OfferStatusId { get; set; }
+        [Category("Extra info")]
         public String AdditionalInfo { get; set; }
         public List<object> NoteList { get; set; }
 

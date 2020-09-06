@@ -6,13 +6,31 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+      <meta charset="UTF-8">
+    <style>
+        .offerTitle {
+            width: 100%;
+            text-align: center;
+            font-family: Calibri, 'Trebuchet MS', sans-serif;
+            min-height: 120px;
+            color: #464646;
+            padding-bottom: 20px;
+
+        }
+
+        .offerTitle span {
+            font-size: 24pt;
+        }
+        .offerTitle span:last-child {
+            font-size: 14pt;
+        }
+    </style>
 </head>
 <body style="border: 0; margin: 0;">
-    <h1>
-        @Model.OfferTitle
+    <h1 class="offerTitle">
+        <span>@Model.OfferTitle</span>
         <br />
-        <span class="page">@Context.Request.Query["page"]</span> / <span class="topage">@Context.Request.Query["topage"]</span>
-
+        <span>@Serenity.LocalText.TryGet("Site.Offers.OfferReportPage")  @Context.Request.Query["page"] / @Context.Request.Query["topage"]</span>
     </h1>
 </body>
 </html>

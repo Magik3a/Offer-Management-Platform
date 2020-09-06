@@ -49,7 +49,7 @@ namespace OMP.Migrations.DefaultDB
 
             Insert.IntoTable("Languages").Row(new
             {
-                LanguageId = "bg",
+                LanguageId = "bg-BG",
                 LanguageName = "Bulgarian"
             });
 

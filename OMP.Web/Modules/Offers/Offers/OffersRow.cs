@@ -56,8 +56,8 @@ namespace OMP.Offers.Entities
             set { Fields.MaximumDaysDevelopmentTime[this] = value; }
         }
 
-        [DisplayName("Start Date")]
-        [DateTimeEditor, DefaultValue("now")]
+        [DisplayName("Start Date"), NotNull]
+        [DateEditor, DefaultValue("now")]
         public DateTime? StartDate
         {
             get { return Fields.StartDate[this]; }
@@ -76,6 +76,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
+        [QuickFilter, NotNull]
         public Int32? CompanyId
         {
             get { return Fields.CompanyId[this]; }
@@ -86,6 +87,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OfferStatusesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
+        [QuickFilter]
         public Int32? OfferStatusId
         {
             get { return Fields.OfferStatusId[this]; }
@@ -114,7 +116,11 @@ namespace OMP.Offers.Entities
             set { Fields.CompanyPhone[this] = value; }
         }
 
-        [DisplayName("Company City Id"), Expression("jCompany.[CityId]")]
+        [DisplayName("Company City"), Expression("jCompany.[CityId]")]
+        [QuickFilter]
+        [LookupEditor(typeof(CitiesRow), FilterField = "IsActive", FilterValue = 1
+            , InplaceAdd = true
+        )]
         public Int32? CompanyCityId
         {
             get { return Fields.CompanyCityId[this]; }
