@@ -63,7 +63,7 @@ namespace OMP.Offers {
 
             Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferCategoryTasks', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferCategories', this.isNewOrDeleted());
-            if (this.isEditMode()) {
+            if (!this.isNewOrDeleted()) {
                 this.offerCategoryTasksGrid.offerId = entity.OfferId + "";
                 this.offerCategoriesGrid.offerId = entity.OfferId + "";
             }

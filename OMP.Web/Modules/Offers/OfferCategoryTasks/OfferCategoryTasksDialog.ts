@@ -36,7 +36,7 @@ namespace OMP.Offers {
         loadEntity(entity: OfferCategoryTasksRow) {
             super.loadEntity(entity);
 
-            if (this.isEditMode()) {
+            if (!this.isNewOrDeleted()) {
                 this.form.ParentOfferCategoryTaskId.items = this.form.ParentOfferCategoryTaskId.items.filter(x => x.id !== entity.OfferCategoryTaskId.toString());
             }
         }

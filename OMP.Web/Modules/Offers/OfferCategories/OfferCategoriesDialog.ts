@@ -33,9 +33,10 @@ namespace OMP.Offers {
                             IncludeColumns: ['Localizations', 'Name', 'FontColor']
                         },
                         onSuccess: response => {
-                            this.form.CategoryNameReport.value = response.Entity.Name;
-                            this.form.CategoryFontColorReport.value = response.Entity.FontColor;
-
+                            if (this.isNewOrDeleted()) {
+                                this.form.CategoryNameReport.value = response.Entity.Name;
+                                this.form.CategoryFontColorReport.value = response.Entity.FontColor;
+                            }
                             var copy = Q.extend(new Object(), this.get_entity());
                             if (response.Localizations) {
                                 for (var language of Object.keys(response.Localizations)) {

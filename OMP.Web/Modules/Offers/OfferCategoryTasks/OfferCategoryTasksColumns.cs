@@ -18,10 +18,12 @@ namespace OMP.Offers.Columns
         [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 OfferCategoryTaskId { get; set; }
         [EditLink]
+        [Width(300)]
         public String Name { get; set; }
         [EditLink]
         public Decimal DevelopmentTimeHours { get; set; }
         [EditLink]
+        [Width(300)]
         public String Description { get; set; }
 
         public String OfferName { get; set; }

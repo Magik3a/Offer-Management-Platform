@@ -7,6 +7,7 @@ namespace OMP.Offers {
 
         constructor() {
             super();
+
         }
 
         updateInterface() {
