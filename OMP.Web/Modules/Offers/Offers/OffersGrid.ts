@@ -68,9 +68,12 @@ namespace OMP.Offers {
                 if (target.hasClass('print-invoice')) {
                     OMP.Common.ReportHelper.execute({
                         reportKey: 'Offers.Offer',
+                        extension: "html",
                         params: {
-                            OfferId: item.OfferId
-                        }
+                            OfferId: item.OfferId,
+                            LanguageId: $.cookie('LanguagePreference')
+                        },
+                        
                     });
                 }
             }

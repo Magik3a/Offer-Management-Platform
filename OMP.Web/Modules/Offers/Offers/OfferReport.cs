@@ -12,13 +12,17 @@ namespace OMP.Offers.Offers
     using Serenity.Reporting;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
 
     [Report("Offers.Offer")]
     [ReportDesign(MVC.Views.Offers.Offers_.OfferReport)]
     [RequiredPermission(OffersPermissionKeys.Auditing)]
-    public class OfferReport : IReport, ICustomizeHtmlToPdf
+    public class OfferReport : IReport, IReportWithAdditionalData, ICustomizeHtmlToPdf
     {
+        
         public Int32 OfferId { get; set; }
+
+        public string LanguageId { get; set; }
 
         public object GetData()
         {
@@ -44,23 +48,34 @@ namespace OMP.Offers.Offers
                     .Where(oct.OfferCategoryOfferId == this.OfferId && oct.IsActive == 1));
 
 
-                //var c = CustomerRow.Fields;
-                //data.Customer = connection.TryFirst<CustomerRow>(c.CustomerID == data.Order.CustomerID)
-                //                ?? new CustomerRow();
             }
 
             return data;
         }
         public void Customize(IHtmlToPdfOptions options)
         {
+
+             options.FooterHeaderReplace.Add("languageId", LanguageId);
+
             // you may customize HTML to PDF converter (WKHTML) parameters here, e.g. 
-            // options.MarginsAll = "2cm";
+            //options.MarginLeft = "2cm";
+            //options.MarginRight = "1cm";
+            //options.MarginTop = "1cm";
+            //options.MarginBottom = "1cm";
             var uriForProtocol = new Uri(options.Url.ToString()).GetLeftPart(UriPartial.Authority);
 
             options.CustomArgs.Add("--header-html");
             options.CustomArgs.Add(uriForProtocol + "/Offers/Offers/Header?offerId="+ this.OfferId);
 
-            options.CustomArgs.Add("--disable-smart-shrinking");
+           // options.CustomArgs.Add("--disable-smart-shrinking");
+        }
+
+        public IDictionary<string, object> GetAdditionalData()
+        {
+            var returnDic = new Dictionary<string, object>();
+            returnDic.Add("LanguageId", LanguageId);
+
+            return returnDic;
         }
     }
 

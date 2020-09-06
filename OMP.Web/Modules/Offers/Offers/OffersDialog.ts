@@ -45,7 +45,8 @@ namespace OMP.Offers {
                 cssClass: 'export-pdf-button',
                 reportKey: 'Offers.Offer',
                 getParams: () => ({
-                    OfferId: this.get_entityId()
+                    OfferId: this.get_entityId(),
+                    LanguageId: $.cookie('LanguagePreference')
                 })
             }));
 

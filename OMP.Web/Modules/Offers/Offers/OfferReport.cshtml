@@ -1,10 +1,17 @@
 ﻿@model OMP.Offers.Offers.OfferReportData
+@using System.Globalization
 @using System.Linq;
 
 @if ((bool?)ViewData["Printing"] == true)
 {
     Layout = MVC.Views.Shared._LayoutNoNavigation;
 }
+
+@{
+    var data = (Dictionary<string, object>)ViewData["AdditionalData"];
+    var culture = new System.Globalization.CultureInfo(data["LanguageId"].ToString());
+}
+
 
 <style>
     .invoice .hr-category {
@@ -19,31 +26,36 @@
     .invoice .hr-category hr {
         margin: 0 0 30px 0;
     }
+
     .prices-info {
         margin-top: 100px;
     }
-    .prices-info .total-prices {
-        width: 50%;
-        display: inline-block;
-        margin-right: 10%
-    }
-        .prices-info .total-prices div:first-child {
-            font-size: 11pt;
-            background-color: #0094ff !important;
-            text-align: center;
-            padding: 5px;
-            box-shadow: inset 0 0 10px white !important;
-            margin-bottom: 5px;
-            color: white !important;
+
+        .prices-info .total-prices {
+            width: 45%;
+            display: inline-block;
+            margin-right: 9%
         }
-        .prices-info .total-prices div:last-child {
-            padding: 5px;
-            border: 2px groove #0094ff;
+
+            .prices-info .total-prices div:first-child {
+                font-size: 11pt;
+                background-color: #0094ff !important;
+                text-align: center;
+                padding: 5px;
+                box-shadow: inset 0 0 10px white !important;
+                margin-bottom: 5px;
+                color: white !important;
+            }
+
+            .prices-info .total-prices div:last-child {
+                padding: 5px;
+                border: 2px groove #0094ff;
+            }
+
+        .prices-info .offer-info {
+            display: inline-block;
+            width: 45%;
         }
-    .prices-info .offer-info {
-        display: inline-block;
-        width: 39%;
-    }
 </style>
 
 <section class="invoice">
@@ -55,16 +67,16 @@
 
                 <ul>
                     @foreach (var task in Model.OfferCategoryTasks
-                        .Where(octs => octs.OfferCategoryId == category.OfferCategoryId && octs.ParentOfferCategoryTaskId == null))
+                       .Where(octs => octs.OfferCategoryId == category.OfferCategoryId && octs.ParentOfferCategoryTaskId == null))
                     {
 
                         <li>
                             @task.Name
 
                             @foreach (var taskLevelTwo in Model.OfferCategoryTasks
-                                .Where(octs => octs.ParentOfferCategoryTaskId != null &&
-                                               octs.ParentOfferCategoryTaskId == task.OfferCategoryTaskId
-                                ))
+                               .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                              octs.ParentOfferCategoryTaskId == task.OfferCategoryTaskId
+                               ))
                             {
                                 <ul>
                                     <li>
@@ -72,18 +84,18 @@
 
                                         <ul>
                                             @foreach (var taskLevelThree in Model.OfferCategoryTasks
-                                                .Where(octs => octs.ParentOfferCategoryTaskId != null &&
-                                                               octs.ParentOfferCategoryTaskId == taskLevelTwo.OfferCategoryTaskId
-                                                ))
+                                               .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                                              octs.ParentOfferCategoryTaskId == taskLevelTwo.OfferCategoryTaskId
+                                               ))
                                             {
                                                 <li>
                                                     @taskLevelThree.Name
 
                                                     <ul>
                                                         @foreach (var taskLevelFour in Model.OfferCategoryTasks
-                                                            .Where(octs => octs.ParentOfferCategoryTaskId != null &&
-                                                                           octs.ParentOfferCategoryTaskId == taskLevelThree.OfferCategoryTaskId
-                                                            ))
+                                                           .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                                                          octs.ParentOfferCategoryTaskId == taskLevelThree.OfferCategoryTaskId
+                                                           ))
                                                         {
                                                             <li>
                                                                 @taskLevelFour.Name
@@ -112,21 +124,32 @@
         </div>
 
     }
-    
-    
+
+
     <div class="prices-info">
         <div class="total-prices">
             <div>
-                Total Price
+                @LocalText.TryGet("Site.Offers.OfferReportTotalPrice")
             </div>
-            <div>
-                line 1 (2 hours) - 150 euro
-                <br />
-                line 1 (2 hours) - 150 euro
-                <br />
-                line 1 (2 hours) - 150 euro
-                <br />
-                line 1 (2 hours) - 150 euro
+            <div class=" text-right">
+                @{
+                    var totalPrice = Decimal.Zero;
+                }
+                @foreach (var category in Model.OfferCategories)
+                {
+                    <span class="category-info">
+                        @category.CategoryNameReport - @category.Price?.ToString("#,##0.00", culture)
+                    </span>
+                    <br />
+
+                    {
+                        if (category.Price.HasValue)
+                        {
+                            totalPrice += category.Price.Value;
+                        }
+                    }
+                }
+                @LocalText.TryGet("Site.Offers.OfferReportTotalPrice") - @totalPrice.ToString("#,##0.00", culture)
             </div>
         </div>
         <div class="offer-info">
