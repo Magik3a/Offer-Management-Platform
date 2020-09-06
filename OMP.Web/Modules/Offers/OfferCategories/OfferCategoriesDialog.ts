@@ -18,8 +18,12 @@ namespace OMP.Offers {
             super();
 
             this.form.CategoryId.change((e) => {
-                if (this.form.CategoryId.value)
-                    this.form.CategoryNameReport.value = CategoriesRow.getLookup().itemById[this.form.CategoryId.value].Name.trim();
+                if (this.form.CategoryId.value) {
+                    this.form.CategoryNameReport.value =
+                        CategoriesRow.getLookup().itemById[this.form.CategoryId.value].Name.trim();
+                    this.form.CategoryFontColorReport.value =
+                        CategoriesRow.getLookup().itemById[this.form.CategoryId.value].FontColor;
+                }
             });
         }
 

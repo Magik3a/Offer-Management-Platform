@@ -35,7 +35,7 @@ namespace OMP.Offers.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Development Time Hours"), Size(6), Scale(2), DefaultValue(0)]
+        [DisplayName("Development Time Hours"), Size(6), Scale(2), DefaultValue(0), NotNull]
         public Decimal? DevelopmentTimeHours
         {
             get { return Fields.DevelopmentTimeHours[this]; }
@@ -130,7 +130,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OffersRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
-        [LookupInclude, MinSelectLevel(SelectLevel.List)]
+        [LookupInclude, MinSelectLevel(SelectLevel.List), NotNull]
         public Int32? OfferCategoryOfferId
         {
             get { return Fields.OfferCategoryOfferId[this]; }

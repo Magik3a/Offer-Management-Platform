@@ -764,7 +764,7 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface CategoriesForm {
         Name: Serenity.StringEditor;
-        FontColor: Serenity.StringEditor;
+        FontColor: ColorPickerEditor;
     }
     class CategoriesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1259,7 +1259,7 @@ declare namespace OMP.Offers {
         CategoryId: Serenity.LookupEditor;
         Price: Serenity.DecimalEditor;
         CategoryNameReport: Serenity.StringEditor;
-        CategoryFontColorReport: Serenity.StringEditor;
+        CategoryFontColorReport: ColorPickerEditor;
     }
     class OfferCategoriesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1408,11 +1408,11 @@ declare namespace OMP.Offers {
     interface OfferCategoryTasksForm {
         Name: Serenity.StringEditor;
         DevelopmentTimeHours: Serenity.DecimalEditor;
-        Description: Serenity.TextAreaEditor;
+        TaskStatusId: Serenity.LookupEditor;
         OfferCategoryOfferId: Serenity.LookupEditor;
         ParentOfferCategoryTaskId: Serenity.LookupEditor;
         OfferCategoryId: Serenity.LookupEditor;
-        TaskStatusId: Serenity.LookupEditor;
+        Description: Serenity.TextAreaEditor;
     }
     class OfferCategoryTasksForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1576,8 +1576,8 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface OfferStatusesForm {
         Name: Serenity.StringEditor;
-        BorderColor: Serenity.StringEditor;
-        BackgroundColor: Serenity.StringEditor;
+        BackgroundColor: ColorPickerEditor;
+        BorderColor: ColorPickerEditor;
     }
     class OfferStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1862,8 +1862,8 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface TaskStatusesForm {
         Name: Serenity.StringEditor;
-        BorderColor: Serenity.StringEditor;
-        BackgroundColor: Serenity.StringEditor;
+        BackgroundColor: ColorPickerEditor;
+        BorderColor: ColorPickerEditor;
     }
     class TaskStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2208,6 +2208,11 @@ declare namespace OMP.Administration {
     interface UserRoleDialogOptions {
         userID: number;
         username: string;
+    }
+}
+declare namespace OMP {
+    class ColorPickerEditor extends Serenity.StringEditor {
+        constructor(input: JQuery);
     }
 }
 declare namespace OMP.LanguageList {
@@ -2714,6 +2719,46 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+    class OfferOfferCategoriesDialog extends OfferCategoriesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoriesGrid extends OfferCategoriesGrid {
+        protected getDialogType(): typeof OfferOfferCategoriesDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoryTasksDialog extends OfferCategoryTasksDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoryTasksGrid extends OfferCategoryTasksGrid {
+        protected getDialogType(): typeof OfferOfferCategoryTasksDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
     class OffersDialog extends Serenity.EntityDialog<OffersRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2768,50 +2813,5 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoryTasksDialog extends OfferCategoryTasksDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoryTasksGrid extends OfferCategoryTasksGrid {
-        protected getDialogType(): typeof OfferOfferCategoryTasksDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _offerId;
-        get offerId(): string;
-        set offerId(value: string);
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoriesDialog extends OfferCategoriesDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoriesGrid extends OfferCategoriesGrid {
-        protected getDialogType(): typeof OfferOfferCategoriesDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _offerId;
-        get offerId(): string;
-        set offerId(value: string);
-    }
-}
-declare namespace OMP {
-    class ColorPickerEditor extends Serenity.StringEditor {
-        constructor(input: JQuery);
     }
 }

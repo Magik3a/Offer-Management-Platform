@@ -13,6 +13,7 @@ namespace OMP.Offers.Forms
     [BasedOnRow(typeof(Entities.OfferCategoriesRow), CheckNames = true)]
     public class OfferCategoriesForm
     {
+        [Category("Required")]
         public Int32 OfferId { get; set; }
         public Int32 CategoryId { get; set; }
         public Decimal Price { get; set; }

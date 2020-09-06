@@ -2,11 +2,11 @@
     export interface OfferCategoryTasksForm {
         Name: Serenity.StringEditor;
         DevelopmentTimeHours: Serenity.DecimalEditor;
-        Description: Serenity.TextAreaEditor;
+        TaskStatusId: Serenity.LookupEditor;
         OfferCategoryOfferId: Serenity.LookupEditor;
         ParentOfferCategoryTaskId: Serenity.LookupEditor;
         OfferCategoryId: Serenity.LookupEditor;
-        TaskStatusId: Serenity.LookupEditor;
+        Description: Serenity.TextAreaEditor;
     }
 
     export class OfferCategoryTasksForm extends Serenity.PrefixedContext {
@@ -22,17 +22,17 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.DecimalEditor;
-                var w2 = s.TextAreaEditor;
-                var w3 = s.LookupEditor;
+                var w2 = s.LookupEditor;
+                var w3 = s.TextAreaEditor;
 
                 Q.initFormType(OfferCategoryTasksForm, [
                     'Name', w0,
                     'DevelopmentTimeHours', w1,
-                    'Description', w2,
-                    'OfferCategoryOfferId', w3,
-                    'ParentOfferCategoryTaskId', w3,
-                    'OfferCategoryId', w3,
-                    'TaskStatusId', w3
+                    'TaskStatusId', w2,
+                    'OfferCategoryOfferId', w2,
+                    'ParentOfferCategoryTaskId', w2,
+                    'OfferCategoryId', w2,
+                    'Description', w3
                 ]);
             }
         }

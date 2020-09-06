@@ -36,7 +36,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Font Color"), Size(50)]
-        [ColorPickerEditor]
+        [ColorPickerEditor, LookupInclude]
         public String FontColor
         {
             get { return Fields.FontColor[this]; }

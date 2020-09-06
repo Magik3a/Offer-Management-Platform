@@ -49,7 +49,7 @@ namespace OMP.Offers.Entities
             set { Fields.CategoryId[this] = value; }
         }
 
-        [DisplayName("Price"), Size(19), Scale(4), NotNull]
+        [DisplayName("Price"), Size(19), Scale(2), NotNull, DefaultValue(0)]
         public Decimal? Price
         {
             get { return Fields.Price[this]; }
@@ -63,7 +63,8 @@ namespace OMP.Offers.Entities
             set { Fields.CategoryNameReport[this] = value; }
         }
 
-        [DisplayName("Category Font Color Report"), Size(50)]
+        [DisplayName("Category Font Color Report"), Size(50), NotNull]
+        [ColorPickerEditor]
         public String CategoryFontColorReport
         {
             get { return Fields.CategoryFontColorReport[this]; }

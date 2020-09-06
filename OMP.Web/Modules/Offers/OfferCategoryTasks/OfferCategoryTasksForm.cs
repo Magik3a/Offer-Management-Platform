@@ -13,12 +13,18 @@ namespace OMP.Offers.Forms
     [BasedOnRow(typeof(Entities.OfferCategoryTasksRow), CheckNames = true)]
     public class OfferCategoryTasksForm
     {
+        [Category("Required")]
+
         public String Name { get; set; }
+        [HalfWidth]
         public Decimal DevelopmentTimeHours { get; set; }
-        public String Description { get; set; }
+        [HalfWidth]
+        public Int32 TaskStatusId { get; set; }
         public Int32 OfferCategoryOfferId { get; set; }
+
+        [Category("Extra info")]
         public Int32 ParentOfferCategoryTaskId { get; set; }
         public Int32 OfferCategoryId { get; set; }
-        public Int32 TaskStatusId { get; set; }
+        public String Description { get; set; }
     }
 }
