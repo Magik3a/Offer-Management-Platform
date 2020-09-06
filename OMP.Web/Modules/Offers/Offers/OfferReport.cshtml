@@ -14,11 +14,51 @@
                 @category.CategoryNameReport
                 
                 <ul>
-                    @foreach (var task in Model.OfferCategoryTasks.Where(octs => octs.OfferCategoryId == category.OfferCategoryId).OrderBy(oct => oct.ParentOfferCategoryTaskId))
+                    @foreach (var task in Model.OfferCategoryTasks
+                        .Where(octs => octs.OfferCategoryId == category.OfferCategoryId && octs.ParentOfferCategoryTaskId == null))
                     {
 
                         <li>
                             @task.Name
+                       
+                        @foreach (var taskLevelTwo in Model.OfferCategoryTasks
+                            .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                octs.ParentOfferCategoryTaskId == task.OfferCategoryTaskId 
+                                           ))
+                        {
+                            <ul>
+                                <li>
+                                    @taskLevelTwo.Name
+                                    
+                                    <ul>
+                                        @foreach (var taskLevelThree in Model.OfferCategoryTasks
+                                           .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                                          octs.ParentOfferCategoryTaskId == taskLevelTwo.OfferCategoryTaskId
+                                           ))
+                                        {
+                                            <li>
+                                                @taskLevelThree.Name
+
+                                                <ul>
+                                                    @foreach (var taskLevelFour in Model.OfferCategoryTasks
+                                                        .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                                                       octs.ParentOfferCategoryTaskId == taskLevelThree.OfferCategoryTaskId
+                                                        ))
+                                                    {
+                                                        <li>
+                                                            @taskLevelFour.Name
+
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            </li>
+
+                                        }
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
                         </li>
                     }
                 </ul>
