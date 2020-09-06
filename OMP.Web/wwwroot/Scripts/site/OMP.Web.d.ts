@@ -2729,6 +2729,8 @@ declare namespace OMP.Offers {
         private offerCategoryTasksGrid;
         private offerCategoriesGrid;
         constructor();
+        getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
         loadEntity(entity: OffersRow): void;
         onSaveSuccess(response: any): void;
     }

@@ -34,12 +34,17 @@ namespace OMP.Offers.Offers
                                  //.Select(o.ShipViaCompanyName)
                              ) ?? new OffersRow();
 
-                //var od = OrderDetailRow.Fields;
-                //data.Details = connection.List<OrderDetailRow>(q => q
-                //    .SelectTableFields()
-                //    .Select(od.ProductName)
-                //    .Select(od.LineTotal)
-                //    .Where(od.OrderID == this.OrderID));
+                var oc = OfferCategoriesRow.Fields;
+                data.OfferCategories = connection.List<OfferCategoriesRow>(q => q
+                    .SelectTableFields()
+                    .Where(oc.OfferId == this.OfferId));
+
+                var oct = OfferCategoryTasksRow.Fields;
+                data.OfferCategoryTasks = connection.List<OfferCategoryTasksRow>(q => q
+                    .SelectTableFields()
+                    .Select(oct.OfferCategoryOfferId)
+                    .Where(oct.OfferCategoryOfferId == this.OfferId));
+
 
                 //var c = CustomerRow.Fields;
                 //data.Customer = connection.TryFirst<CustomerRow>(c.CustomerID == data.Order.CustomerID)
@@ -52,6 +57,12 @@ namespace OMP.Offers.Offers
         {
             // you may customize HTML to PDF converter (WKHTML) parameters here, e.g. 
             // options.MarginsAll = "2cm";
+            var uriForProtocol = new Uri(options.Url.ToString()).GetLeftPart(UriPartial.Authority);
+
+            options.CustomArgs.Add("--header-html");
+            options.CustomArgs.Add(uriForProtocol + "/Offers/Offers/Header?offerId="+ this.OfferId);
+
+            options.CustomArgs.Add("--disable-smart-shrinking");
         }
     }
 
@@ -59,5 +70,7 @@ namespace OMP.Offers.Offers
     public class OfferReportData
     {
         public OffersRow Offer { get; set; }
+        public List<OfferCategoriesRow> OfferCategories { get; set; }
+        public List<OfferCategoryTasksRow> OfferCategoryTasks { get; set; }
     }
 }

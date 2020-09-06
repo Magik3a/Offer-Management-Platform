@@ -1,4 +1,5 @@
 ﻿@model OMP.Offers.Offers.OfferReportData
+@using System.Linq;
 
 @if ((bool?)ViewData["Printing"] == true)
 {
@@ -6,5 +7,21 @@
 }
 
 <section class="invoice">
-    
+    @foreach (var category in Model.OfferCategories)
+    {
+        <ul>
+            <li>
+                @category.CategoryNameReport
+                
+                <ul>
+                    @foreach (var task in Model.OfferCategoryTasks.Where(octs => octs.OfferCategoryId == category.CategoryId))
+                    {
+                        <li>
+                            @task.Name
+                        </li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    }
 </section>

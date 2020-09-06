@@ -37,6 +37,27 @@ namespace OMP.Offers {
             });
         }
 
+        getToolbarButtons() {
+            var buttons = super.getToolbarButtons();
+
+            buttons.push(OMP.Common.ReportHelper.createToolButton({
+                title: 'PDF',
+                cssClass: 'export-pdf-button',
+                reportKey: 'Offers.Offer',
+                getParams: () => ({
+                    OfferId: this.get_entityId()
+                })
+            }));
+
+            return buttons;
+        }
+
+        protected updateInterface() {
+            super.updateInterface();
+
+            this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
+        }
+
         loadEntity(entity: OffersRow) {
             super.loadEntity(entity);
 

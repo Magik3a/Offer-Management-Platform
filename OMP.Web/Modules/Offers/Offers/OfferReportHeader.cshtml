@@ -1,0 +1,18 @@
+﻿@model OMP.Offers.Pages.OfferReportHeaderModel
+@if ((bool?)ViewData["Printing"] == true)
+{
+    Layout = MVC.Views.Shared._LayoutNoNavigation;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body style="border: 0; margin: 0;">
+    <h1>
+        @Model.OfferTitle
+        <br />
+        <span class="page">@Context.Request.Query["page"]</span> / <span class="topage">@Context.Request.Query["topage"]</span>
+
+    </h1>
+</body>
+</html>
