@@ -14,15 +14,47 @@ namespace OMP.Offers {
         protected getIsActiveProperty() { return OfferCategoriesRow.isActiveProperty; }
 
         protected form = new OfferCategoriesForm(this.idPrefix);
+
+        private localizationPropertyGrid: Serenity.PropertyGrid;
+
+
         constructor() {
             super();
 
             this.form.CategoryId.change((e) => {
                 if (this.form.CategoryId.value) {
-                    this.form.CategoryNameReport.value =
-                        CategoriesRow.getLookup().itemById[this.form.CategoryId.value].Name.trim();
-                    this.form.CategoryFontColorReport.value =
-                        CategoriesRow.getLookup().itemById[this.form.CategoryId.value].FontColor;
+
+                    var opt = <Q.ServiceOptions<any>>{
+                        service: CategoriesService.baseUrl + '/Retrieve',
+                        blockUI: true,
+                        request: {
+                            EntityId: this.form.CategoryId.value,
+                            ColumnSelection: 'keyOnly',
+                            IncludeColumns: ['Localizations', 'Name', 'FontColor']
+                        },
+                        onSuccess: response => {
+                            this.form.CategoryNameReport.value = response.Entity.Name;
+                            this.form.CategoryFontColorReport.value = response.Entity.FontColor;
+
+                            var copy = Q.extend(new Object(), this.get_entity());
+                            if (response.Localizations) {
+                                for (var language of Object.keys(response.Localizations)) {
+                                    var entity = response.Localizations[language];
+                                    for (var key of Object.keys(entity)) {
+                                        copy[language + '$CategoryNameReport'] = entity[key];
+                                    }
+                                }
+                            }
+
+                            this.localizationGrid.load(copy);
+                            this.setLocalizationGridCurrentValues();
+                            this.localizationPendingValue = this.getLocalizationGridValue();
+                            this.localizationLastValue = this.getLocalizationGridValue();
+                            
+                        }
+                    };
+
+                    Q.serviceCall(opt);
                 }
             });
         }

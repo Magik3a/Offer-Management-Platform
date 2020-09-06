@@ -2642,6 +2642,7 @@ declare namespace OMP.Offers {
         protected getUpdatePermission(): string;
         protected getIsActiveProperty(): string;
         protected form: OfferCategoriesForm;
+        private localizationPropertyGrid;
         constructor();
         onSaveSuccess(response: any): void;
     }

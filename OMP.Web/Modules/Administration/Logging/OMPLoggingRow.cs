@@ -37,6 +37,7 @@ namespace OMP.Administration.Entities
         [NotNull, Insertable(false), Updatable(false)]
         [ReadPermission(OffersPermissionKeys.Auditing)]
         [DisplayName("Insert Date")]
+        [SortOrder(999, true)]
         [DateTimeFormatter]
         public DateTime? InsertDate
         {
