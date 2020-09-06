@@ -764,7 +764,7 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface CategoriesForm {
         Name: Serenity.StringEditor;
-        FontColor: ColorPickerEditor;
+        FontColor: Serenity.StringEditor;
     }
     class CategoriesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1576,8 +1576,8 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface OfferStatusesForm {
         Name: Serenity.StringEditor;
-        BackgroundColor: ColorPickerEditor;
-        BorderColor: ColorPickerEditor;
+        BorderColor: Serenity.StringEditor;
+        BackgroundColor: Serenity.StringEditor;
     }
     class OfferStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1862,8 +1862,8 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface TaskStatusesForm {
         Name: Serenity.StringEditor;
-        BackgroundColor: ColorPickerEditor;
-        BorderColor: ColorPickerEditor;
+        BorderColor: Serenity.StringEditor;
+        BackgroundColor: Serenity.StringEditor;
     }
     class TaskStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2208,11 +2208,6 @@ declare namespace OMP.Administration {
     interface UserRoleDialogOptions {
         userID: number;
         username: string;
-    }
-}
-declare namespace OMP {
-    class ColorPickerEditor extends Serenity.StringEditor {
-        constructor(input: JQuery);
     }
 }
 declare namespace OMP.LanguageList {
@@ -2643,6 +2638,7 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         protected form: OfferCategoriesForm;
         constructor();
+        onSaveSuccess(response: any): void;
     }
 }
 declare namespace OMP.Offers {
@@ -2717,46 +2713,6 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
-    class OfferOfferCategoriesDialog extends OfferCategoriesDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoriesGrid extends OfferCategoriesGrid {
-        protected getDialogType(): typeof OfferOfferCategoriesDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _offerId;
-        get offerId(): string;
-        set offerId(value: string);
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoryTasksDialog extends OfferCategoryTasksDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferCategoryTasksGrid extends OfferCategoryTasksGrid {
-        protected getDialogType(): typeof OfferOfferCategoryTasksDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _offerId;
-        get offerId(): string;
-        set offerId(value: string);
-    }
-}
-declare namespace OMP.Offers {
     class OffersDialog extends Serenity.EntityDialog<OffersRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2811,5 +2767,50 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoryTasksDialog extends OfferCategoryTasksDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoryTasksGrid extends OfferCategoryTasksGrid {
+        protected getDialogType(): typeof OfferOfferCategoryTasksDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoriesDialog extends OfferCategoriesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferCategoriesGrid extends OfferCategoriesGrid {
+        protected getDialogType(): typeof OfferOfferCategoriesDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP {
+    class ColorPickerEditor extends Serenity.StringEditor {
+        constructor(input: JQuery);
     }
 }

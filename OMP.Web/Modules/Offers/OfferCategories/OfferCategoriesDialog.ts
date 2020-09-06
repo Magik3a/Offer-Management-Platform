@@ -23,5 +23,11 @@ namespace OMP.Offers {
             });
         }
 
+
+        onSaveSuccess(response) {
+            super.onSaveSuccess(response);
+
+            Q.reloadLookup(OfferCategoriesRow.lookupKey);
+        }
     }
 }
