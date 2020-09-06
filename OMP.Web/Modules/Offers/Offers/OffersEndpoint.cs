@@ -1,4 +1,8 @@
 ﻿
+using System;
+using Serenity.Reporting;
+using Serenity.Web;
+
 namespace OMP.Offers.Endpoints
 {
     using Serenity;
@@ -46,6 +50,15 @@ namespace OMP.Offers.Endpoints
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+
+        public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.OffersColumns));
+            var bytes = new ReportRepository().Render(report);
+            return ExcelContentResult.Create(bytes, "OffersList_" +
+                                                    DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }
 }

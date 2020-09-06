@@ -126,6 +126,7 @@ namespace MVC
 
             public static class Offers_
             {
+                public const string OfferReport = "~/Modules/Offers/Offers/OfferReport.cshtml";
                 public const string OffersIndex = "~/Modules/Offers/Offers/OffersIndex.cshtml";
             }
 

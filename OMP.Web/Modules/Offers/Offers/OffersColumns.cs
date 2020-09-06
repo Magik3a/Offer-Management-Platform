@@ -15,7 +15,7 @@ namespace OMP.Offers.Columns
     [BasedOnRow(typeof(Entities.OffersRow), CheckNames = true)]
     public class OffersColumns : OMPLoggingRowColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 OfferId { get; set; }
         [EditLink]
         public String Name { get; set; }

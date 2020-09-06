@@ -14,5 +14,66 @@ namespace OMP.Offers {
         constructor(container: JQuery) {
             super(container);
         }
+
+        protected getButtons() {
+            var buttons = super.getButtons();
+
+            buttons.push(Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                service: OffersService.baseUrl + '/ListExcel',
+                onViewSubmit: () => this.onViewSubmit(),
+                separator: true
+            }));
+
+            buttons.push(Common.PdfExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit()
+            }));
+
+            return buttons;
+        }
+
+        protected getColumns() {
+            var columns = super.getColumns();
+
+            columns.splice(1, 0, {
+                field: 'Print PDF',
+                name: '',
+                format: ctx => '<a class="inline-action print-invoice" title="pdf">' +
+                    '<i class="fa fa-file-pdf-o text-red"></i> PDF</a>',
+                width: 64,
+                minWidth: 44,
+                maxWidth: 64
+            });
+
+            return columns;
+        }
+
+        protected onClick(e: JQueryEventObject, row: number, cell: number) {
+            super.onClick(e, row, cell);
+
+            if (e.isDefaultPrevented())
+                return;
+
+            var item = this.itemAt(row);
+            var target = $(e.target);
+
+            // if user clicks "i" element, e.g. icon
+            if (target.parent().hasClass('inline-action'))
+                target = target.parent();
+
+            if (target.hasClass('inline-action')) {
+                e.preventDefault();
+
+                if (target.hasClass('print-invoice')) {
+                    OMP.Common.ReportHelper.execute({
+                        reportKey: 'Offers.Offer',
+                        params: {
+                            OfferId: item.OfferId
+                        }
+                    });
+                }
+            }
+        }
     }
 }
