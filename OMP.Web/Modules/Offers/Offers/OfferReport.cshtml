@@ -8,6 +8,8 @@
 }
 
 @{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Offers.Offers.EntityPlural");
+
     var data = (Dictionary<string, object>)ViewData["AdditionalData"];
     var culture = new System.Globalization.CultureInfo(data["LanguageId"].ToString());
 }
@@ -23,38 +25,64 @@
         margin: 0 0 5px 0;
     }
 
+    .invoice .category-name {
+        font-style: italic;
+        text-decoration: underline;
+        font-weight: 900 !important;
+    }
+
+
     .invoice .hr-category hr {
         margin: 0 0 30px 0;
     }
 
-    .prices-info {
+    .offer-prices-info {
         margin-top: 100px;
     }
 
-        .prices-info .total-prices {
+        .offer-prices-info .offer-total-prices {
             width: 45%;
             display: inline-block;
-            margin-right: 9%
+            margin-right: 9%;
+        }
+        .offer-prices-info .offer-category-info td {
+            color: #0094ff !important;
+            text-align: right;
+            /*text-shadow: 3px 2px 2px #8ad0ff !important;*/
         }
 
-            .prices-info .total-prices div:first-child {
-                font-size: 11pt;
-                background-color: #0094ff !important;
-                text-align: center;
-                padding: 5px;
-                box-shadow: inset 0 0 10px white !important;
-                margin-bottom: 5px;
-                color: white !important;
-            }
+    .offer-prices-info .offer-category-info td:nth-child(1) {
+        
+    }
+    .offer-prices-info .offer-category-info td:nth-child(2) {
+        width: 5%;
+    }
+        .offer-prices-info .offer-category-info td:nth-child(3) {
+            width: 20%;
+        }
+    .offer-prices-info .offer-category-info table {
+        width: 100%
+    }
+        .offer-prices-info .offer-total-prices div:first-child {
+            font-size: 11pt;
+            background-color: #0094ff !important;
+            text-align: center;
+            padding: 5px;
+            box-shadow: inset 0 0 10px white !important;
+            margin-bottom: 5px;
+            color: white !important;
+        }
 
-            .prices-info .total-prices div:last-child {
-                padding: 5px;
-                border: 2px groove #0094ff;
-            }
+        .offer-prices-info .offer-total-prices div:last-child {
+            padding: 5px;
+            border: 2px groove #0094ff;
+        }
 
-        .prices-info .offer-info {
+        .offer-prices-info .offer-info {
             display: inline-block;
             width: 45%;
+            position: fixed;
+            bottom: 0;
         }
 </style>
 
@@ -63,20 +91,22 @@
     {
         <ul>
             <li style="color: @category.CategoryFontColorReport !important;">
-                <span style="color: @category.CategoryFontColorReport !important;"> @category.CategoryNameReport </span>
+                <span style="color: @category.CategoryFontColorReport !important;" class="category-name">
+                    @category.CategoryNameReport
+                </span>
 
                 <ul>
                     @foreach (var task in Model.OfferCategoryTasks
-                       .Where(octs => octs.OfferCategoryId == category.OfferCategoryId && octs.ParentOfferCategoryTaskId == null))
+                      .Where(octs => octs.OfferCategoryId == category.OfferCategoryId && octs.ParentOfferCategoryTaskId == null))
                     {
 
                         <li>
                             @task.Name
 
                             @foreach (var taskLevelTwo in Model.OfferCategoryTasks
-                               .Where(octs => octs.ParentOfferCategoryTaskId != null &&
-                                              octs.ParentOfferCategoryTaskId == task.OfferCategoryTaskId
-                               ))
+                              .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                             octs.ParentOfferCategoryTaskId == task.OfferCategoryTaskId
+                              ))
                             {
                                 <ul>
                                     <li>
@@ -84,18 +114,18 @@
 
                                         <ul>
                                             @foreach (var taskLevelThree in Model.OfferCategoryTasks
-                                               .Where(octs => octs.ParentOfferCategoryTaskId != null &&
-                                                              octs.ParentOfferCategoryTaskId == taskLevelTwo.OfferCategoryTaskId
-                                               ))
+                                              .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                                             octs.ParentOfferCategoryTaskId == taskLevelTwo.OfferCategoryTaskId
+                                              ))
                                             {
                                                 <li>
                                                     @taskLevelThree.Name
 
                                                     <ul>
                                                         @foreach (var taskLevelFour in Model.OfferCategoryTasks
-                                                           .Where(octs => octs.ParentOfferCategoryTaskId != null &&
-                                                                          octs.ParentOfferCategoryTaskId == taskLevelThree.OfferCategoryTaskId
-                                                           ))
+                                                          .Where(octs => octs.ParentOfferCategoryTaskId != null &&
+                                                                         octs.ParentOfferCategoryTaskId == taskLevelThree.OfferCategoryTaskId
+                                                          ))
                                                         {
                                                             <li>
                                                                 @taskLevelFour.Name
@@ -126,30 +156,49 @@
     }
 
 
-    <div class="prices-info">
-        <div class="total-prices">
+    <div class="offer-prices-info">
+        <div class="offer-total-prices">
             <div>
                 @LocalText.TryGet("Site.Offers.OfferReportTotalPrice")
             </div>
-            <div class=" text-right">
+            <div class="offer-category-info">
                 @{
                     var totalPrice = Decimal.Zero;
                 }
-                @foreach (var category in Model.OfferCategories)
-                {
-                    <span class="category-info">
-                        @category.CategoryNameReport - @category.Price?.ToString("#,##0.00", culture)
-                    </span>
-                    <br />
-
+                <table>
+                    
+                    @foreach (var category in Model.OfferCategories)
                     {
+                        <tr>
+                            <td>
+                                @category.CategoryNameReport
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                @category.Price?.ToString("#,##0.00", culture)
+                            </td>
+                        </tr>
+
                         if (category.Price.HasValue)
                         {
                             totalPrice += category.Price.Value;
                         }
+
                     }
-                }
-                @LocalText.TryGet("Site.Offers.OfferReportTotalPrice") - @totalPrice.ToString("#,##0.00", culture)
+                    <tr>
+                        <td>
+                            @LocalText.TryGet("Site.Offers.OfferReportTotalPrice") 
+                        </td>
+                        <td>
+                            -
+                        </td>
+                        <td>
+                            @totalPrice.ToString("#,##0.00", culture)
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="offer-info">
