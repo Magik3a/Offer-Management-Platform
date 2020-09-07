@@ -7,6 +7,8 @@ Serenity Application Platform
 https://github.com/volkanceylan/Serenity
 
 - Added Funckionality:
+  - PDF Reports with custom Header and Footer
+    - Generate PDF from the grid or the dialog https://omp.s2kdesign.com/Offers/Offers 
   - OMPLocalizationBehavior - OMPLocalizationLookupScript 
     - Will translate all grids and Lookup scripts to the user selected language. It uses LocalizationRowAttribute 
     - Switch between Bulgarian and English language to see results https://omp.s2kdesign.com/Offers/Categories
