@@ -1,0 +1,35 @@
+﻿
+@if ((bool?)ViewData["Printing"] == true)
+{
+    Layout = MVC.Views.Shared._LayoutNoNavigation;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+      <meta charset="UTF-8">
+      <style>
+          footer {
+              padding-top: 20px;
+              width: 100%;
+              font-size: 8px;
+              font-family: Calibri, 'Trebuchet MS', sans-serif;
+              
+          }
+           
+      </style>
+</head>
+<body style="border: 0; margin: 0;">
+
+<footer>
+    <h3>
+        Developer: Svetlin Krastanov
+        <br />
+        Mobile: +359888017004
+        <br />
+        Email: svetlin.krastanov90@gmail.com
+        <br />
+        Site: <a href="https://s2kdesign.com">https://s2kdesign.com</a>
+    </h3>
+</footer>
+</body>
+</html>

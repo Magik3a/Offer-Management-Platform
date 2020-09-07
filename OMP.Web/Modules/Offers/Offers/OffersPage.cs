@@ -38,7 +38,14 @@ namespace OMP.Offers.Pages
 
         }
 
-        
+        [HttpGet]
+        [Route("Offers/Offers/[Action]")]
+        public ActionResult Footer()
+        {
+            return PartialView(MVC.Views.Offers.Offers_.OfferReportFooter);
+
+        }
+
     }
     public class OfferReportHeaderModel
     {

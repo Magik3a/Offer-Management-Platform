@@ -66,8 +66,10 @@ namespace OMP.Offers.Offers
 
             options.CustomArgs.Add("--header-html");
             options.CustomArgs.Add(uriForProtocol + "/Offers/Offers/Header?offerId="+ this.OfferId);
+            options.CustomArgs.Add("--footer-html");
+            options.CustomArgs.Add(uriForProtocol + "/Offers/Offers/Footer");
 
-           // options.CustomArgs.Add("--disable-smart-shrinking");
+            // options.CustomArgs.Add("--disable-smart-shrinking");
         }
 
         public IDictionary<string, object> GetAdditionalData()
