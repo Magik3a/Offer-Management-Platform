@@ -193,6 +193,25 @@
                         }
 
                     }
+                    @if (Model.Offer.Discount.HasValue && Model.Offer.Discount.Value > 0)
+                    {
+                        <tr>
+                            
+                            @{
+                                var discountPrice = Decimal.Zero ;
+                                if (totalPrice > Model.Offer.Discount.Value)
+                                {
+                                    discountPrice = totalPrice - (totalPrice - Model.Offer.Discount.Value);
+                                    totalPrice = totalPrice - Model.Offer.Discount.Value;
+                                }
+                            }
+
+                            <td> @LocalText.TryGet("Db.Offers.Offers.Discount")</td>
+                            <td>-</td>
+                            <td>@discountPrice.ToString("#,##0.00", culture)</td>
+                        </tr>
+                    }
+
                     <tr>
                         <td>
                             @LocalText.TryGet("Site.Offers.OfferReportTotalPrice") 

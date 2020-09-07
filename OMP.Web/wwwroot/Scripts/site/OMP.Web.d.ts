@@ -2792,6 +2792,7 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
         protected getColumns(): Slick.Column[];
+        protected addButtonClick(): void;
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }
 }

@@ -49,6 +49,11 @@ namespace OMP.Offers {
             return columns;
         }
 
+        protected addButtonClick() {
+            var additionalInfo = Q.tryGetText("Site.Offers.OfferReportFooterInfoFormat");
+            this.editItem({ AdditionalInfo: additionalInfo });
+        }
+
         protected onClick(e: JQueryEventObject, row: number, cell: number) {
             super.onClick(e, row, cell);
 

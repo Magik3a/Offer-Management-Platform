@@ -28,6 +28,9 @@ namespace OMP.Offers {
         }
 
 
+        //protected usePager() {
+        //    return false;
+        //}
 
         protected createSlickGrid() {
             var grid = super.createSlickGrid();
