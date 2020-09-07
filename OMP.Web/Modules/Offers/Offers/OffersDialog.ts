@@ -46,7 +46,7 @@ namespace OMP.Offers {
                 reportKey: 'Offers.Offer',
                 getParams: () => ({
                     OfferId: this.get_entityId(),
-                    LanguageId: $.cookie('LanguagePreference')
+                    LanguageId: ($.cookie('LanguagePreference')) ? $.cookie('LanguagePreference') : "en"
                 })
             }));
 

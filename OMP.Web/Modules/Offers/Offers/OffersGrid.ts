@@ -66,12 +66,13 @@ namespace OMP.Offers {
                 e.preventDefault();
 
                 if (target.hasClass('print-invoice')) {
+
                     OMP.Common.ReportHelper.execute({
                         reportKey: 'Offers.Offer',
-                        extension: "html",
+                        //extension: "html",
                         params: {
                             OfferId: item.OfferId,
-                            LanguageId: $.cookie('LanguagePreference')
+                            LanguageId: ($.cookie('LanguagePreference')) ? $.cookie('LanguagePreference'):"en"
                         },
                         
                     });
