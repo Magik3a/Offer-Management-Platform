@@ -75,6 +75,9 @@ namespace OMP.Offers.Offers
         public IDictionary<string, object> GetAdditionalData()
         {
             var returnDic = new Dictionary<string, object>();
+            if (string.IsNullOrEmpty(LanguageId))
+                LanguageId = CultureInfo.CurrentCulture.Name;
+
             returnDic.Add("LanguageId", LanguageId);
 
             return returnDic;
