@@ -166,8 +166,8 @@ namespace OMP.Migrations.OffersDB
             Insert.IntoTable("OfferStatuses").Row(new
             {
                 Name = "Open",
-                BorderColor = "#000000",
-                BackgroundColor = "#3498DB",
+                BorderColor = "#ffffff",
+                BackgroundColor = "#5dbefe",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -175,8 +175,8 @@ namespace OMP.Migrations.OffersDB
             Insert.IntoTable("OfferStatuses").Row(new
             {
                 Name = "Confirmed",
-                BorderColor = "#000000",
-                BackgroundColor = "#2ECC71",
+                BorderColor = "#ffffff",
+                BackgroundColor = "#49ee54",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -184,7 +184,7 @@ namespace OMP.Migrations.OffersDB
             Insert.IntoTable("OfferStatuses").Row(new
             {
                 Name = "Completed",
-                BorderColor = "#000000",
+                BorderColor = "#ffffff",
                 BackgroundColor = "#b3bab6",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
@@ -193,8 +193,8 @@ namespace OMP.Migrations.OffersDB
             Insert.IntoTable("OfferStatuses").Row(new
             {
                 Name = "Cancelled",
-                BorderColor = "#000000",
-                BackgroundColor = "#2C3E50",
+                BorderColor = "#ffffff",
+                BackgroundColor = "#ffd500",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -273,7 +273,7 @@ namespace OMP.Migrations.OffersDB
             {
                 Name = "Not Started",
                 BorderColor = "#000000",
-                BackgroundColor = "#3498DB",
+                BackgroundColor = "#fe9ff3",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -282,7 +282,7 @@ namespace OMP.Migrations.OffersDB
             {
                 Name = "Doing",
                 BorderColor = "#000000",
-                BackgroundColor = "#34d3db",
+                BackgroundColor = "#ffdd00",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -291,7 +291,7 @@ namespace OMP.Migrations.OffersDB
             {
                 Name = "Testing",
                 BorderColor = "#000000",
-                BackgroundColor = "#34db9e",
+                BackgroundColor = "#47f3ff",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -300,7 +300,7 @@ namespace OMP.Migrations.OffersDB
             {
                 Name = "Completed",
                 BorderColor = "#000000",
-                BackgroundColor = "#2ECC71",
+                BackgroundColor = "#38ff8b",
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1

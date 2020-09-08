@@ -29,6 +29,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Name"), Size(500), NotNull, QuickSearch]
+        [ColoredColumnFormatter(BackgroundProperty = "BackgroundColor",BorderProperty = "BorderColor")]
         public String Name
         {
             get { return Fields.Name[this]; }

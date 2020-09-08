@@ -2822,3 +2822,11 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
     }
 }
+declare namespace OMP.Offers {
+    class ColoredColumnFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        backgroundProperty: string;
+        borderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}

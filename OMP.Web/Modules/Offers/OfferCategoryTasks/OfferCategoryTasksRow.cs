@@ -173,6 +173,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Task Status Name"), Expression("jTaskStatus.[Name]")]
+        [ColoredColumnFormatter(BackgroundProperty = "TaskStatusBackgroundColor", BorderProperty = "TaskStatusBorderColor")]
         public String TaskStatusName
         {
             get { return Fields.TaskStatusName[this]; }
