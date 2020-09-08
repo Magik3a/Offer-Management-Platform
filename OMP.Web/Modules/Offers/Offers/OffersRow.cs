@@ -134,6 +134,7 @@ namespace OMP.Offers.Entities
             set { Fields.CompanyPrimaryAccountId[this] = value; }
         }
         [DisplayName("Offer Status Name"), Expression("jOfferStatus.[Name]")]
+        [ColoredColumnFormatter(BackgroundProperty = "OfferStatusBackgroundColor", BorderProperty = "OfferStatusBorderColor")]
         public String OfferStatusName
         {
             get { return Fields.OfferStatusName[this]; }

@@ -57,6 +57,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Category Name Report"), Size(500), NotNull, QuickSearch]
+        [FontColorColumnFormatter(FontColorProperty = "CategoryFontColorReport")]
         public String CategoryNameReport
         {
             get { return Fields.CategoryNameReport[this]; }

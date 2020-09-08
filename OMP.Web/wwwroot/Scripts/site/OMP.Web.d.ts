@@ -2830,3 +2830,10 @@ declare namespace OMP.Offers {
         initializeColumn(column: Slick.Column): void;
     }
 }
+declare namespace OMP.Offers {
+    class FontColorColumnFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        fontColorProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}

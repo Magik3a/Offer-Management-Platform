@@ -15,15 +15,14 @@ namespace OMP.Offers.Columns
     [BasedOnRow(typeof(Entities.OfferCategoriesRow), CheckNames = true)]
     public class OfferCategoriesColumns : OMPLoggingRowColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 OfferCategoryId { get; set; }
+        [FilterOnly]
+        public Int32 CategoryId { get; set; }
+
         [EditLink]
-        public String OfferName { get; set; }
-        [EditLink]
-        public String CategoryName { get; set; }
-        public Decimal Price { get; set; }
-        [EditLink]
+        [Width(700)]
         public String CategoryNameReport { get; set; }
-        public String CategoryFontColorReport { get; set; }
+        public Decimal Price { get; set; }
     }
 }
