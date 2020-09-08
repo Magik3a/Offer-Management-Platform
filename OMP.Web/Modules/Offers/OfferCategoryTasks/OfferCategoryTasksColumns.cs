@@ -27,7 +27,7 @@ namespace OMP.Offers.Columns
         public String Description { get; set; }
 
         public String OfferName { get; set; }
-        public String ParentOfferCategoryTaskName { get; set; }
+        //public String ParentOfferCategoryTaskName { get; set; }
         public String OfferCategoryCategoryNameReport { get; set; }
         public String TaskStatusName { get; set; }
     }

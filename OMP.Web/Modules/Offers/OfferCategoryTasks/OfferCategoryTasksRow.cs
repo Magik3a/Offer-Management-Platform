@@ -159,6 +159,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Offer Category Category Name Report"), Expression("jOfferCategory.[CategoryNameReport]")]
+        [FontColorColumnFormatter(FontColorProperty = "OfferCategoryCategoryFontColorReport")]
         public String OfferCategoryCategoryNameReport
         {
             get { return Fields.OfferCategoryCategoryNameReport[this]; }
