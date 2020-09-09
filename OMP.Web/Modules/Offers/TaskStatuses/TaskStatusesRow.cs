@@ -37,6 +37,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Border Color"), Size(50)]
+        [ColoredColumnFormatter(BackgroundProperty = "BorderColor", HideText = true)]
         [ColorPickerEditor]
         public String BorderColor
         {
@@ -46,6 +47,7 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Background Color"), Size(50)]
         [ColorPickerEditor]
+        [ColoredColumnFormatter(BackgroundProperty = "BackgroundColor", HideText = true)]
         public String BackgroundColor
         {
             get { return Fields.BackgroundColor[this]; }

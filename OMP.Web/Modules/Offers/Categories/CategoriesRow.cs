@@ -29,6 +29,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Name"), Size(500), NotNull, QuickSearch]
+        [FontColorColumnFormatter(FontColorProperty = "FontColor")]
         public String Name
         {
             get { return Fields.Name[this]; }
@@ -37,6 +38,7 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Font Color"), Size(50)]
         [ColorPickerEditor, LookupInclude]
+        [ColoredColumnFormatter(BackgroundProperty ="FontColor", HideText = true)]
         public String FontColor
         {
             get { return Fields.FontColor[this]; }

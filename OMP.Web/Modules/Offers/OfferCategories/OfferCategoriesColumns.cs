@@ -21,7 +21,7 @@ namespace OMP.Offers.Columns
         public Int32 CategoryId { get; set; }
 
         [EditLink]
-        [Width(700)]
+        [Width(500)]
         public String CategoryNameReport { get; set; }
         public Decimal Price { get; set; }
     }

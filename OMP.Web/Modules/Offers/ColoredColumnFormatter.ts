@@ -9,25 +9,30 @@ namespace OMP.Offers {
                 return "";
             }
 
-            var text = Q.htmlEncode(ctx.value);
-
+            var text = "";
             var backgroundColor;
             var borderColor;
+
+            if (!this.hideText) {
+                text = Q.htmlEncode(ctx.value);
+            }
+
             if (this.backgroundProperty) {
                 backgroundColor = "background-color: " + ctx.item[this.backgroundProperty] + ";";
             }
             if (this.borderProperty) {
-                borderColor = "border-color: " + ctx.item[this.borderProperty] + ";";
+                borderColor = " border: 1px solid; border-color: " + ctx.item[this.borderProperty] + ";";
             }
 
 
             //return "<span style='background-color: " + color +";'>" + text + '</span>';
 
-            return "<div class='' style='height: 100%; width: 100%; max-width: 100%; border: 1px solid; white-space:pre; " + backgroundColor + " " + borderColor + " ' > " + text + '</div>' ;
+            return "<div class='' style='height: 100%; width: 100%; max-width: 100%; white-space:pre; " + backgroundColor + " " + borderColor + " ' > " + text + '</div>' ;
 
         }
-
-
+        
+        @Serenity.Decorators.option()
+        public hideText: boolean;
         @Serenity.Decorators.option()
         public backgroundProperty: string;
         @Serenity.Decorators.option()

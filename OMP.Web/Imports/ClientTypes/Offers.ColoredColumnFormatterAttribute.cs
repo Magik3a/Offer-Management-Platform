@@ -27,5 +27,11 @@ namespace OMP.Offers
             get { return GetOption<String>("borderProperty"); }
             set { SetOption("borderProperty", value); }
         }
+
+        public Boolean HideText
+        {
+            get { return GetOption<Boolean>("hideText"); }
+            set { SetOption("hideText", value); }
+        }
     }
 }

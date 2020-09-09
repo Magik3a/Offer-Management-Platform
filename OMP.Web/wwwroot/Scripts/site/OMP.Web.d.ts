@@ -2825,6 +2825,7 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     class ColoredColumnFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
+        hideText: boolean;
         backgroundProperty: string;
         borderProperty: string;
         initializeColumn(column: Slick.Column): void;

@@ -18,7 +18,10 @@ namespace OMP.Offers.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 CategoryId { get; set; }
         [EditLink]
+        [Width(400)]
         public String Name { get; set; }
+        [EditLink]
+        [Width(100)]
         public String FontColor { get; set; }
     }
 }

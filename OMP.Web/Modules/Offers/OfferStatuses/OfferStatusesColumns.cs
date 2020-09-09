@@ -18,8 +18,13 @@ namespace OMP.Offers.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OfferStatusId { get; set; }
         [EditLink]
+        [Width(300)]
         public String Name { get; set; }
-        public String BorderColor { get; set; }
+        [Width(100)]
+        [EditLink]
         public String BackgroundColor { get; set; }
+        [Width(100)]
+        [EditLink]
+        public String BorderColor { get; set; }
     }
 }
