@@ -56,7 +56,8 @@ namespace OMP
 
                 public static class Login
                 {
-                    public static LocalText FormTitle = "Welcome to SERENE (Serenity Application Template)";
+                    public static LocalText FormTitle = @"Offer Management Platform <br /> 
+<a href='https://s2kdesign.com' target='_blank' title='S2KDesign.com'> S2KDesign.com </a>";
                     public static LocalText SignInButton = "Sign In";
                     public static LocalText ForgotPassword = "Forgot password?";
                     public static LocalText SignUpButton = "Register a new account";
