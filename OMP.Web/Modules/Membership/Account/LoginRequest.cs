@@ -8,9 +8,9 @@ namespace OMP.Membership
     [BasedOnRow(typeof(Administration.Entities.UserRow), CheckNames = true)]
     public class LoginRequest : ServiceRequest
     {
-        [Placeholder("Enter Username")]
+        [Placeholder("default username is 'admin'")]
         public string Username { get; set; }
-        [PasswordEditor, Placeholder("Enter Password"), Required(true)]
+        [PasswordEditor, Placeholder("default password for 'admin' is 'serenity'"), Required(true)]
         public string Password { get; set; }
     }
 }
