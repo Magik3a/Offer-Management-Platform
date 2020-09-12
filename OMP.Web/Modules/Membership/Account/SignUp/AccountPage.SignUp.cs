@@ -21,12 +21,16 @@ namespace OMP.Membership.Pages
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.DataProtection;
     using System.Web.Hosting;
+    using Microsoft.CodeAnalysis.CSharp.Syntax;
 
     public partial class AccountController : Controller
     {
         [HttpGet]
         public ActionResult SignUp()
         {
+            if (Config.Get<EnvironmentSettings>().RegistrationDisabled)
+                throw new AuthenticationException("Registration is Not Allowed");
+
             if (UseAdminLTELoginBox)
                 return View(MVC.Views.Membership.Account.SignUp.AccountSignUp_AdminLTE);
             else
@@ -36,6 +40,9 @@ namespace OMP.Membership.Pages
         [HttpPost, JsonFilter]
         public Result<ServiceResponse> SignUp(SignUpRequest request)
         {
+            if (Config.Get<EnvironmentSettings>().RegistrationDisabled)
+                throw new AuthenticationException("Registration is Not Allowed");
+
             return this.UseConnection("Default", connection =>
             {
                 request.CheckNotNull();

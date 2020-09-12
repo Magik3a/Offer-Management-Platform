@@ -2501,6 +2501,22 @@ declare namespace OMP.Membership {
     }
 }
 declare namespace OMP.Offers {
+    class ColoredColumnFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        hideText: boolean;
+        backgroundProperty: string;
+        borderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace OMP.Offers {
+    class FontColorColumnFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        fontColorProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace OMP.Offers {
     class AccountsDialog extends Serenity.EntityDialog<AccountsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2820,21 +2836,5 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace OMP.Offers {
-    class ColoredColumnFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        hideText: boolean;
-        backgroundProperty: string;
-        borderProperty: string;
-        initializeColumn(column: Slick.Column): void;
-    }
-}
-declare namespace OMP.Offers {
-    class FontColorColumnFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        fontColorProperty: string;
-        initializeColumn(column: Slick.Column): void;
     }
 }
