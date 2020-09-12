@@ -14,3 +14,5 @@ https://github.com/volkanceylan/Serenity
     - Switch between Bulgarian and English language to see results https://omp-demo.s2kdesign.com/Offers/Categories
   - ColorPickerEditor
     - Can be used directly on columns with the new html color picker editor https://www.w3schools.com/colors/colors_picker.asp
+  - EnvironmentSettings - RegistrationDisabled
+    - Set to false in AppSettings.json to disable registration and the link in the login page
