@@ -1,6 +1,6 @@
 # Offer Management Platform
 
-Check the demo: https://omp.s2kdesign.com/
+Check the demo: https://omp-demo.s2kdesign.com/
 
 Based on 
 Serenity Application Platform
