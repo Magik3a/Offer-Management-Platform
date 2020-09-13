@@ -1257,6 +1257,96 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
 }
 declare namespace OMP.Offers {
+    interface OfferAttachmentsForm {
+        OfferId: Serenity.LookupEditor;
+        Name: Serenity.StringEditor;
+        FilePath: Serenity.MultipleImageUploadEditor;
+        Description: Serenity.HtmlContentEditor;
+    }
+    class OfferAttachmentsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferAttachmentsRow {
+        OfferAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FilePath?: string;
+        OfferId?: number;
+        OfferName?: string;
+        OfferDiscount?: number;
+        OfferMinimumDaysDevelopmentTime?: number;
+        OfferMaximumDaysDevelopmentTime?: number;
+        OfferStartDate?: string;
+        OfferAdditionalInfo?: string;
+        OfferCompanyId?: number;
+        OfferOfferStatusId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace OfferAttachmentsRow {
+        const idProperty = "OfferAttachmentId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.OfferAttachments";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OfferAttachmentId = "OfferAttachmentId",
+            Name = "Name",
+            Description = "Description",
+            FilePath = "FilePath",
+            OfferId = "OfferId",
+            OfferName = "OfferName",
+            OfferDiscount = "OfferDiscount",
+            OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
+            OfferMaximumDaysDevelopmentTime = "OfferMaximumDaysDevelopmentTime",
+            OfferStartDate = "OfferStartDate",
+            OfferAdditionalInfo = "OfferAdditionalInfo",
+            OfferCompanyId = "OfferCompanyId",
+            OfferOfferStatusId = "OfferOfferStatusId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OfferAttachmentsService {
+        const baseUrl = "Offers/OfferAttachments";
+        function Create(request: Serenity.SaveRequest<OfferAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfferAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OfferAttachments/Create",
+            Update = "Offers/OfferAttachments/Update",
+            Delete = "Offers/OfferAttachments/Delete",
+            Retrieve = "Offers/OfferAttachments/Retrieve",
+            List = "Offers/OfferAttachments/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
     interface OfferCategoriesForm {
         OfferId: Serenity.LookupEditor;
         CategoryId: Serenity.LookupEditor;
@@ -2107,12 +2197,14 @@ declare namespace OMP.Offers {
         function Update(request: Serenity.SaveRequest<UserOfferSettingsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function RetrieveForUser(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Offers/UserOfferSettings/Create",
             Update = "Offers/UserOfferSettings/Update",
             Delete = "Offers/UserOfferSettings/Delete",
             Retrieve = "Offers/UserOfferSettings/Retrieve",
+            RetrieveForUser = "Offers/UserOfferSettings/RetrieveForUser",
             List = "Offers/UserOfferSettings/List"
         }
     }
@@ -2656,6 +2748,12 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+    class MultipleFileDownloadFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        showFileNames: boolean;
+    }
+}
+declare namespace OMP.Offers {
     class AccountsDialog extends Serenity.EntityDialog<AccountsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2786,6 +2884,33 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+    class OfferAttachmentsDialog extends Serenity.EntityDialog<OfferAttachmentsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: OfferAttachmentsForm;
+        loadEntity(entity: OffersRow): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferAttachmentsGrid extends Serenity.EntityGrid<OfferAttachmentsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OfferAttachmentsDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
     class OfferCategoriesDialog extends Serenity.EntityDialog<OfferCategoriesRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2875,6 +3000,26 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+    class OfferOfferAttachmentsDialog extends OfferAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferAttachmentsGrid extends OfferAttachmentsGrid {
+        protected getDialogType(): typeof OfferOfferAttachmentsDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
     class OfferOfferCategoriesDialog extends OfferCategoriesDialog {
         constructor();
         updateInterface(): void;
@@ -2948,7 +3093,6 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
         protected getColumns(): Slick.Column[];
-        protected addButtonClick(): void;
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }
 }
@@ -3004,148 +3148,5 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace OMP.Offers {
-    interface OfferAttachmentsForm {
-        OfferId: Serenity.LookupEditor;
-        Name: Serenity.StringEditor;
-        FilePath: Serenity.MultipleImageUploadEditor;
-        Description: Serenity.HtmlContentEditor;
-    }
-    class OfferAttachmentsForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace OMP.Offers {
-    interface OfferAttachmentsRow {
-        OfferAttachmentId?: number;
-        Name?: string;
-        Description?: string;
-        FilePath?: string;
-        OfferId?: number;
-        OfferName?: string;
-        OfferDiscount?: number;
-        OfferMinimumDaysDevelopmentTime?: number;
-        OfferMaximumDaysDevelopmentTime?: number;
-        OfferStartDate?: string;
-        OfferAdditionalInfo?: string;
-        OfferCompanyId?: number;
-        OfferOfferStatusId?: number;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-        NoteList?: Administration.NoteRow[];
-    }
-    namespace OfferAttachmentsRow {
-        const idProperty = "OfferAttachmentId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Offers.OfferAttachments";
-        const deletePermission = "Administration:General";
-        const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
-        const updatePermission = "Administration:General";
-        const enum Fields {
-            OfferAttachmentId = "OfferAttachmentId",
-            Name = "Name",
-            Description = "Description",
-            FilePath = "FilePath",
-            OfferId = "OfferId",
-            OfferName = "OfferName",
-            OfferDiscount = "OfferDiscount",
-            OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
-            OfferMaximumDaysDevelopmentTime = "OfferMaximumDaysDevelopmentTime",
-            OfferStartDate = "OfferStartDate",
-            OfferAdditionalInfo = "OfferAdditionalInfo",
-            OfferCompanyId = "OfferCompanyId",
-            OfferOfferStatusId = "OfferOfferStatusId",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-            NoteList = "NoteList"
-        }
-    }
-}
-declare namespace OMP.Offers {
-    namespace OfferAttachmentsService {
-        const baseUrl = "Offers/OfferAttachments";
-        function Create(request: Serenity.SaveRequest<OfferAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OfferAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Offers/OfferAttachments/Create",
-            Update = "Offers/OfferAttachments/Update",
-            Delete = "Offers/OfferAttachments/Delete",
-            Retrieve = "Offers/OfferAttachments/Retrieve",
-            List = "Offers/OfferAttachments/List"
-        }
-    }
-}
-declare namespace OMP.Offers {
-    class OfferAttachmentsDialog extends Serenity.EntityDialog<OfferAttachmentsRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected getDeletePermission(): string;
-        protected getInsertPermission(): string;
-        protected getUpdatePermission(): string;
-        protected getIsActiveProperty(): string;
-        protected form: OfferAttachmentsForm;
-        loadEntity(entity: OffersRow): void;
-    }
-}
-declare namespace OMP.Offers {
-    class OfferAttachmentsGrid extends Serenity.EntityGrid<OfferAttachmentsRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OfferAttachmentsDialog;
-        protected getIdProperty(): string;
-        protected getInsertPermission(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        protected getIsActiveProperty(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace OMP.Offers {
-}
-declare namespace OMP.Offers {
-    class OfferOfferAttachmentsDialog extends OfferAttachmentsDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace OMP.Offers {
-    class OfferOfferAttachmentsGrid extends OfferAttachmentsGrid {
-        protected getDialogType(): typeof OfferOfferAttachmentsDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _offerId;
-        get offerId(): string;
-        set offerId(value: string);
-    }
-}
-declare namespace OMP.Offers {
-    class MultipleFileDownloadFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        showFileNames: boolean;
     }
 }

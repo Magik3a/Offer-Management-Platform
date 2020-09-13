@@ -120,7 +120,7 @@ namespace OMP.Administration
                             (Int32) foreignKeyField.AsObject(s as Row) ==
                             responseEntity.IdField[responseEntity as Row]);
 
-                    if (entityLang != null)
+                    if (entityLang != null && !string.IsNullOrEmpty(entityLang?.NameField[entityLang as Row]))
                         responseEntity.NameField[responseEntity as Row] = entityLang?.NameField[entityLang as Row];
 
 
