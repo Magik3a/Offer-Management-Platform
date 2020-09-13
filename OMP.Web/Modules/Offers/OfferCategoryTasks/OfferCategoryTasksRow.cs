@@ -49,6 +49,13 @@ namespace OMP.Offers.Entities
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
+        [DisplayName("Order"), SortOrder(1), DefaultValue(0), NotNull]
+        [IntegerEditor(AllowNegatives = false)]
+        public Int32? Order
+        {
+            get { return Fields.Order[this]; }
+            set { Fields.Order[this] = value; }
+        }
 
         [DisplayName("Parent Offer Category Task"), ForeignKey(typeof(OfferCategoryTasksRow), "OfferCategoryTaskId"), LeftJoin("jParentOfferCategoryTask"), TextualField("ParentOfferCategoryTaskName")]
         [LookupEditor(typeof(OfferCategoryTasksRow), FilterField = "IsActive", FilterValue = 1
@@ -221,6 +228,7 @@ namespace OMP.Offers.Entities
             public Int32Field ParentOfferCategoryTaskId;
             public Int32Field OfferCategoryId;
             public Int32Field TaskStatusId;
+            public Int32Field Order;
 
             public StringField ParentOfferCategoryTaskName;
             public DecimalField ParentOfferCategoryTaskDevelopmentTimeHours;

@@ -114,6 +114,11 @@ namespace MVC
                 public const string CountriesIndex = "~/Modules/Offers/Countries/CountriesIndex.cshtml";
             }
 
+            public static class OfferAttachments
+            {
+                public const string OfferAttachmentsIndex = "~/Modules/Offers/OfferAttachments/OfferAttachmentsIndex.cshtml";
+            }
+
             public static class OfferCategories
             {
                 public const string OfferCategoriesIndex = "~/Modules/Offers/OfferCategories/OfferCategoriesIndex.cshtml";
@@ -140,6 +145,11 @@ namespace MVC
             public static class TaskStatuses
             {
                 public const string TaskStatusesIndex = "~/Modules/Offers/TaskStatuses/TaskStatusesIndex.cshtml";
+            }
+
+            public static class UserOfferSettings
+            {
+                public const string UserOfferSettingsIndex = "~/Modules/Offers/UserOfferSettings/UserOfferSettingsIndex.cshtml";
             }
         }
 

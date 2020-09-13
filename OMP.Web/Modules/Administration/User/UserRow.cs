@@ -78,6 +78,7 @@ namespace OMP.Administration.Entities
             set { Fields.Password[this] = value; }
         }
 
+        [LookupInclude]
         [NotNull, Insertable(false), Updatable(true)]
         public Int16? IsActive
         {

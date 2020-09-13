@@ -23,5 +23,7 @@ namespace OMP.Offers.Columns
         [EditLink]
         [Width(100)]
         public String FontColor { get; set; }
+        [EditLink]
+        public Int32 DefaultOrder { get; set; }
     }
 }

@@ -2,6 +2,7 @@
     export interface CategoriesRow {
         CategoryId?: number;
         Name?: string;
+        DefaultOrder?: number;
         FontColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -31,6 +32,7 @@
         export declare const enum Fields {
             CategoryId = "CategoryId",
             Name = "Name",
+            DefaultOrder = "DefaultOrder",
             FontColor = "FontColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

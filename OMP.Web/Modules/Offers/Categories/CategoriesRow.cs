@@ -45,6 +45,14 @@ namespace OMP.Offers.Entities
             set { Fields.FontColor[this] = value; }
         }
 
+        [DisplayName("Default Order"), SortOrder(1), DefaultValue(0), NotNull]
+        [IntegerEditor(AllowNegatives = false)]
+        public Int32? DefaultOrder
+        {
+            get { return Fields.DefaultOrder[this]; }
+            set { Fields.DefaultOrder[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.CategoryId; }
@@ -66,6 +74,7 @@ namespace OMP.Offers.Entities
         {
             public Int32Field CategoryId;
             public StringField Name;
+            public Int32Field DefaultOrder;
             public StringField FontColor;
         }
     }

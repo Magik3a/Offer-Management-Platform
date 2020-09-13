@@ -55,6 +55,14 @@ namespace OMP.Offers.Entities
             get { return Fields.Price[this]; }
             set { Fields.Price[this] = value; }
         }
+        [DisplayName("Order"), SortOrder(1), DefaultValue(0), NotNull]
+        [IntegerEditor(AllowNegatives = false)]
+        public Int32? Order
+        {
+            get { return Fields.Order[this]; }
+            set { Fields.Order[this] = value; }
+        }
+
 
         [DisplayName("Category Name Report"), Size(500), NotNull, QuickSearch]
         [FontColorColumnFormatter(FontColorProperty = "CategoryFontColorReport")]
@@ -167,6 +175,7 @@ namespace OMP.Offers.Entities
             public DecimalField Price;
             public StringField CategoryNameReport;
             public StringField CategoryFontColorReport;
+            public Int32Field Order;
 
             public StringField OfferName;
             public DecimalField OfferDiscount;

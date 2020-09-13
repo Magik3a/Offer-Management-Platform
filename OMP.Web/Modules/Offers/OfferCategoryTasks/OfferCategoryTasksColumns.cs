@@ -30,5 +30,8 @@ namespace OMP.Offers.Columns
         //public String ParentOfferCategoryTaskName { get; set; }
         public String OfferCategoryCategoryNameReport { get; set; }
         public String TaskStatusName { get; set; }
+
+        [EditLink]
+        public Int32 Order { get; set; }
     }
 }

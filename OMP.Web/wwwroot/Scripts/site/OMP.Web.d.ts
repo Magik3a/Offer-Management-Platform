@@ -765,6 +765,7 @@ declare namespace OMP.Offers {
     interface CategoriesForm {
         Name: Serenity.StringEditor;
         FontColor: ColorPickerEditor;
+        DefaultOrder: Serenity.IntegerEditor;
     }
     class CategoriesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -820,6 +821,7 @@ declare namespace OMP.Offers {
     interface CategoriesRow {
         CategoryId?: number;
         Name?: string;
+        DefaultOrder?: number;
         FontColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -844,6 +846,7 @@ declare namespace OMP.Offers {
         const enum Fields {
             CategoryId = "CategoryId",
             Name = "Name",
+            DefaultOrder = "DefaultOrder",
             FontColor = "FontColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -1257,8 +1260,9 @@ declare namespace OMP.Offers {
     interface OfferCategoriesForm {
         OfferId: Serenity.LookupEditor;
         CategoryId: Serenity.LookupEditor;
-        Price: Serenity.DecimalEditor;
         CategoryNameReport: Serenity.StringEditor;
+        Price: Serenity.DecimalEditor;
+        Order: Serenity.IntegerEditor;
         CategoryFontColorReport: ColorPickerEditor;
     }
     class OfferCategoriesForm extends Serenity.PrefixedContext {
@@ -1325,6 +1329,7 @@ declare namespace OMP.Offers {
         Price?: number;
         CategoryNameReport?: string;
         CategoryFontColorReport?: string;
+        Order?: number;
         OfferName?: string;
         OfferDiscount?: number;
         OfferMinimumDaysDevelopmentTime?: number;
@@ -1362,6 +1367,7 @@ declare namespace OMP.Offers {
             Price = "Price",
             CategoryNameReport = "CategoryNameReport",
             CategoryFontColorReport = "CategoryFontColorReport",
+            Order = "Order",
             OfferName = "OfferName",
             OfferDiscount = "OfferDiscount",
             OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
@@ -1407,9 +1413,10 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface OfferCategoryTasksForm {
         Name: Serenity.StringEditor;
-        DevelopmentTimeHours: Serenity.DecimalEditor;
         TaskStatusId: Serenity.LookupEditor;
         OfferCategoryOfferId: Serenity.LookupEditor;
+        DevelopmentTimeHours: Serenity.DecimalEditor;
+        Order: Serenity.IntegerEditor;
         ParentOfferCategoryTaskId: Serenity.LookupEditor;
         OfferCategoryId: Serenity.LookupEditor;
         Description: Serenity.TextAreaEditor;
@@ -1483,6 +1490,7 @@ declare namespace OMP.Offers {
         ParentOfferCategoryTaskId?: number;
         OfferCategoryId?: number;
         TaskStatusId?: number;
+        Order?: number;
         ParentOfferCategoryTaskName?: string;
         ParentOfferCategoryTaskDevelopmentTimeHours?: number;
         ParentOfferCategoryTaskDescription?: string;
@@ -1526,6 +1534,7 @@ declare namespace OMP.Offers {
             ParentOfferCategoryTaskId = "ParentOfferCategoryTaskId",
             OfferCategoryId = "OfferCategoryId",
             TaskStatusId = "TaskStatusId",
+            Order = "Order",
             ParentOfferCategoryTaskName = "ParentOfferCategoryTaskName",
             ParentOfferCategoryTaskDevelopmentTimeHours = "ParentOfferCategoryTaskDevelopmentTimeHours",
             ParentOfferCategoryTaskDescription = "ParentOfferCategoryTaskDescription",
@@ -1975,6 +1984,136 @@ declare namespace OMP.Offers {
             Undelete = "Offers/TaskStatuses/Undelete",
             Retrieve = "Offers/TaskStatuses/Retrieve",
             List = "Offers/TaskStatuses/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface UserOfferSettingsForm {
+        OfferInvoiceAdditionalInfoFormatter: Serenity.TextAreaEditor;
+        OfferInvoiceFooterText: Serenity.TextAreaEditor;
+        OfferInvoiceFooterImage: Serenity.ImageUploadEditor;
+        UserId: Serenity.LookupEditor;
+    }
+    class UserOfferSettingsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface UserOfferSettingsLangRow {
+        Id?: number;
+        UserOfferSettingId?: number;
+        LanguageId?: number;
+        OfferInvoiceAdditionalInfoFormatter?: string;
+        OfferInvoiceFooterText?: string;
+        OfferInvoiceFooterImage?: string;
+        UserOfferSettingOfferInvoiceAdditionalInfoFormatter?: string;
+        UserOfferSettingOfferInvoiceFooterText?: string;
+        UserOfferSettingOfferInvoiceFooterImage?: string;
+        UserOfferSettingUserId?: number;
+    }
+    namespace UserOfferSettingsLangRow {
+        const idProperty = "Id";
+        const nameProperty = "OfferInvoiceAdditionalInfoFormatter";
+        const localTextPrefix = "Offers.UserOfferSettingsLang";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            Id = "Id",
+            UserOfferSettingId = "UserOfferSettingId",
+            LanguageId = "LanguageId",
+            OfferInvoiceAdditionalInfoFormatter = "OfferInvoiceAdditionalInfoFormatter",
+            OfferInvoiceFooterText = "OfferInvoiceFooterText",
+            OfferInvoiceFooterImage = "OfferInvoiceFooterImage",
+            UserOfferSettingOfferInvoiceAdditionalInfoFormatter = "UserOfferSettingOfferInvoiceAdditionalInfoFormatter",
+            UserOfferSettingOfferInvoiceFooterText = "UserOfferSettingOfferInvoiceFooterText",
+            UserOfferSettingOfferInvoiceFooterImage = "UserOfferSettingOfferInvoiceFooterImage",
+            UserOfferSettingUserId = "UserOfferSettingUserId"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace UserOfferSettingsLangService {
+        const baseUrl = "Offers/UserOfferSettingsLang";
+        function Create(request: Serenity.SaveRequest<UserOfferSettingsLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<UserOfferSettingsLangRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserOfferSettingsLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserOfferSettingsLangRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/UserOfferSettingsLang/Create",
+            Update = "Offers/UserOfferSettingsLang/Update",
+            Delete = "Offers/UserOfferSettingsLang/Delete",
+            Retrieve = "Offers/UserOfferSettingsLang/Retrieve",
+            List = "Offers/UserOfferSettingsLang/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    interface UserOfferSettingsRow {
+        UserOfferSettingId?: number;
+        OfferInvoiceAdditionalInfoFormatter?: string;
+        OfferInvoiceFooterText?: string;
+        OfferInvoiceFooterImage?: string;
+        UserId?: number;
+        UserName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace UserOfferSettingsRow {
+        const idProperty = "UserOfferSettingId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "OfferInvoiceAdditionalInfoFormatter";
+        const localTextPrefix = "Offers.UserOfferSettings";
+        const lookupKey = "Offers.UserOfferSettings";
+        function getLookup(): Q.Lookup<UserOfferSettingsRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            UserOfferSettingId = "UserOfferSettingId",
+            OfferInvoiceAdditionalInfoFormatter = "OfferInvoiceAdditionalInfoFormatter",
+            OfferInvoiceFooterText = "OfferInvoiceFooterText",
+            OfferInvoiceFooterImage = "OfferInvoiceFooterImage",
+            UserId = "UserId",
+            UserName = "UserName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace UserOfferSettingsService {
+        const baseUrl = "Offers/UserOfferSettings";
+        function Create(request: Serenity.SaveRequest<UserOfferSettingsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<UserOfferSettingsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/UserOfferSettings/Create",
+            Update = "Offers/UserOfferSettings/Update",
+            Delete = "Offers/UserOfferSettings/Delete",
+            Retrieve = "Offers/UserOfferSettings/Retrieve",
+            List = "Offers/UserOfferSettings/List"
         }
     }
 }
@@ -2789,6 +2928,7 @@ declare namespace OMP.Offers {
         protected form: OffersForm;
         private offerCategoryTasksGrid;
         private offerCategoriesGrid;
+        private offerOfferAttachmentsGrid;
         constructor();
         getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
@@ -2836,5 +2976,176 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class UserOfferSettingsDialog extends Serenity.EntityDialog<UserOfferSettingsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: UserOfferSettingsForm;
+        constructor();
+        loadEntity(entity: UserOfferSettingsRow): void;
+    }
+}
+declare namespace OMP.Offers {
+    class UserOfferSettingsGrid extends Serenity.EntityGrid<UserOfferSettingsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof UserOfferSettingsDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferAttachmentsForm {
+        OfferId: Serenity.LookupEditor;
+        Name: Serenity.StringEditor;
+        FilePath: Serenity.MultipleImageUploadEditor;
+        Description: Serenity.HtmlContentEditor;
+    }
+    class OfferAttachmentsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface OfferAttachmentsRow {
+        OfferAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FilePath?: string;
+        OfferId?: number;
+        OfferName?: string;
+        OfferDiscount?: number;
+        OfferMinimumDaysDevelopmentTime?: number;
+        OfferMaximumDaysDevelopmentTime?: number;
+        OfferStartDate?: string;
+        OfferAdditionalInfo?: string;
+        OfferCompanyId?: number;
+        OfferOfferStatusId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace OfferAttachmentsRow {
+        const idProperty = "OfferAttachmentId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.OfferAttachments";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OfferAttachmentId = "OfferAttachmentId",
+            Name = "Name",
+            Description = "Description",
+            FilePath = "FilePath",
+            OfferId = "OfferId",
+            OfferName = "OfferName",
+            OfferDiscount = "OfferDiscount",
+            OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
+            OfferMaximumDaysDevelopmentTime = "OfferMaximumDaysDevelopmentTime",
+            OfferStartDate = "OfferStartDate",
+            OfferAdditionalInfo = "OfferAdditionalInfo",
+            OfferCompanyId = "OfferCompanyId",
+            OfferOfferStatusId = "OfferOfferStatusId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace OfferAttachmentsService {
+        const baseUrl = "Offers/OfferAttachments";
+        function Create(request: Serenity.SaveRequest<OfferAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OfferAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OfferAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OfferAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/OfferAttachments/Create",
+            Update = "Offers/OfferAttachments/Update",
+            Delete = "Offers/OfferAttachments/Delete",
+            Retrieve = "Offers/OfferAttachments/Retrieve",
+            List = "Offers/OfferAttachments/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    class OfferAttachmentsDialog extends Serenity.EntityDialog<OfferAttachmentsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: OfferAttachmentsForm;
+        loadEntity(entity: OffersRow): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferAttachmentsGrid extends Serenity.EntityGrid<OfferAttachmentsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OfferAttachmentsDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    class OfferOfferAttachmentsDialog extends OfferAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferAttachmentsGrid extends OfferAttachmentsGrid {
+        protected getDialogType(): typeof OfferOfferAttachmentsDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
+    class MultipleFileDownloadFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        showFileNames: boolean;
     }
 }

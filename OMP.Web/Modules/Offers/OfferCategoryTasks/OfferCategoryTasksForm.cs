@@ -16,11 +16,14 @@ namespace OMP.Offers.Forms
         [Category("Required")]
 
         public String Name { get; set; }
+        public Int32 TaskStatusId { get; set; }
+        public Int32 OfferCategoryOfferId { get; set; }
+
         [HalfWidth]
         public Decimal DevelopmentTimeHours { get; set; }
         [HalfWidth]
-        public Int32 TaskStatusId { get; set; }
-        public Int32 OfferCategoryOfferId { get; set; }
+        public Int32 Order { get; set; }
+
 
         [Category("Extra info")]
         public Int32 ParentOfferCategoryTaskId { get; set; }

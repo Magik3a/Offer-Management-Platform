@@ -16,8 +16,12 @@ namespace OMP.Offers.Forms
         [Category("Required")]
         public Int32 OfferId { get; set; }
         public Int32 CategoryId { get; set; }
-        public Decimal Price { get; set; }
         public String CategoryNameReport { get; set; }
+        [HalfWidth]
+        public Decimal Price { get; set; }
+        [HalfWidth]
+        public Int32 Order { get; set; }
+
         public String CategoryFontColorReport { get; set; }
     }
 }

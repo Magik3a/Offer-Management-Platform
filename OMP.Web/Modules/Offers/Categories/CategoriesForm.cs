@@ -13,7 +13,12 @@ namespace OMP.Offers.Forms
     [BasedOnRow(typeof(Entities.CategoriesRow), CheckNames = true)]
     public class CategoriesForm
     {
+        [Category("Required")]
         public String Name { get; set; }
+        [HalfWidth]
         public String FontColor { get; set; }
+        [HalfWidth]
+        public Int32 DefaultOrder { get; set; }
+
     }
 }

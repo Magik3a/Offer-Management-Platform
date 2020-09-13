@@ -6,6 +6,7 @@
         Price?: number;
         CategoryNameReport?: string;
         CategoryFontColorReport?: string;
+        Order?: number;
         OfferName?: string;
         OfferDiscount?: number;
         OfferMinimumDaysDevelopmentTime?: number;
@@ -48,6 +49,7 @@
             Price = "Price",
             CategoryNameReport = "CategoryNameReport",
             CategoryFontColorReport = "CategoryFontColorReport",
+            Order = "Order",
             OfferName = "OfferName",
             OfferDiscount = "OfferDiscount",
             OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
