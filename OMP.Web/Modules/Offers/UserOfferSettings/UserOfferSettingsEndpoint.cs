@@ -9,6 +9,10 @@ namespace OMP.Offers.Endpoints
     using MyRepository = Repositories.UserOfferSettingsRepository;
     using MyRow = Entities.UserOfferSettingsRow;
     using System;
+    using OMP.Offers.Entities;
+    using System.Linq;
+    using Microsoft.AspNetCore.Mvc.Formatters;
+    using Microsoft.CodeAnalysis.CSharp.Syntax;
 
     [Route("Services/Offers/UserOfferSettings/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
@@ -19,7 +23,7 @@ namespace OMP.Offers.Endpoints
         {
             if (!request.Entity.UserId.HasValue)
             {
-                request.Entity.UserId =Int32.Parse(Authorization.UserDefinition.Id);
+                request.Entity.UserId = Int32.Parse(Authorization.UserDefinition.Id);
             }
             return new MyRepository().Create(uow, request);
         }
@@ -29,7 +33,7 @@ namespace OMP.Offers.Endpoints
         {
             return new MyRepository().Update(uow, request);
         }
- 
+
         [HttpPost, AuthorizeDelete(typeof(MyRow))]
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
@@ -40,6 +44,21 @@ namespace OMP.Offers.Endpoints
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
             return new MyRepository().Retrieve(connection, request);
+        }
+
+        [HttpPost]
+        public RetrieveResponse<MyRow> RetrieveForUser(IDbConnection connection, RetrieveRequest request)
+        {
+            var userOfferSettings = connection.List<MyRow>(MyRow.Fields.UserId == Authorization.UserId
+                                                           && MyRow.Fields.IsActive == 1)
+                                                                                        .OrderByDescending(s => s.InsertDate).ToList();
+            if (userOfferSettings.Any())
+            {
+                request.EntityId = userOfferSettings.FirstOrDefault().UserOfferSettingId.Value;
+                return new MyRepository().Retrieve(connection, request);
+            }
+
+            return new RetrieveResponse<MyRow>();
         }
 
         [HttpPost]

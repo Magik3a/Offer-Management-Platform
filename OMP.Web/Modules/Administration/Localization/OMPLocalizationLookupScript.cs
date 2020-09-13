@@ -61,7 +61,7 @@ namespace OMP.Administration.Services
                 {
                     var translated = translationsResponse.Entities.Cast<IOMPLocalizationLangRow>().FirstOrDefault(
                     t => (Int32)foreignKeyField.AsObject(t as Row) == item.IdField[item]);
-                    if (translated != null)
+                    if (translated != null && !string.IsNullOrEmpty(translated.NameField[translated as Row]))
                         item.NameField[item] = translated.NameField[translated as Row];
                 }
             }

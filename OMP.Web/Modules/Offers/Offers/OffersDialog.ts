@@ -38,6 +38,8 @@ namespace OMP.Offers {
                     return Q.text("Site.Offers.ValidationErrorMaximumDays");
                 }
             });
+
+
         }
 
         getToolbarButtons() {
@@ -73,6 +75,49 @@ namespace OMP.Offers {
                 this.offerCategoryTasksGrid.offerId = entity.OfferId + "";
                 this.offerCategoriesGrid.offerId = entity.OfferId + "";
                 this.offerOfferAttachmentsGrid.offerId = entity.OfferId + "";
+
+
+            } else {
+
+                var opt = <Q.ServiceOptions<any>>{
+                    service: UserOfferSettingsService.baseUrl + '/RetrieveForUser',
+                    blockUI: true,
+                    request: {
+                        ColumnSelection: Serenity.ColumnSelection.KeyOnly,
+                        IncludeColumns: ['Localizations', 'OfferInvoiceAdditionalInfoFormatter']
+                    },
+                    onSuccess: response => {
+                        if (response.Entity) {
+                            this.form.AdditionalInfo.value = response.Entity.OfferInvoiceAdditionalInfoFormatter;
+
+                            var copy = Q.extend(new Object(), this.get_entity());
+                            if (response.Localizations) {
+                                for (var language of Object.keys(response.Localizations)) {
+                                    var entity = response.Localizations[language];
+
+                                    console.log(Object.keys(entity));
+
+                                    for (var key of Object.keys(entity)) {
+                                        if (key === UserOfferSettingsRow.Fields.OfferInvoiceAdditionalInfoFormatter) {
+                                            copy[language + '$AdditionalInfo'] = entity[key];
+
+                                        }
+
+                                        //copy[language + '$' + key] = entity[key];
+                                    }
+                                }
+                            }
+                       
+
+                        this.localizationGrid.load(copy);
+                        this.setLocalizationGridCurrentValues();
+                        this.localizationPendingValue = this.getLocalizationGridValue();
+                        this.localizationLastValue = this.getLocalizationGridValue();
+                        }
+                    }
+                };
+
+                Q.serviceCall(opt);
             }
         }
 

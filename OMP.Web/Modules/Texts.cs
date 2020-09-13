@@ -190,10 +190,10 @@ namespace OMP
                 public static LocalText ValidationErrorMaximumDays = "Maximum Days Development Time can't be higher than Maximum Days Development Time!";
                 public static LocalText OfferReportPage = "page";
                 public static LocalText OfferReportTotalPrice = "Total Price";
-                public static LocalText OfferReportFooterInfoFormat = 
-@"Development time {0} ~ {1} days. The offer does not include a hosting plan and a domain.
-During construction, the system will be hosted on a personal server. After completing the functionality and the steps described,
-it must be replaced by a client hosting with a specified name (domain). The offer is valid for 30 days from {2}";
+//                public static LocalText OfferReportFooterInfoFormat = 
+//@"Development time {0} ~ {1} days. The offer does not include a hosting plan and a domain.
+//During construction, the system will be hosted on a personal server. After completing the functionality and the steps described,
+//it must be replaced by a client hosting with a specified name (domain). The offer is valid for 30 days from {2}";
             }
         }
 
