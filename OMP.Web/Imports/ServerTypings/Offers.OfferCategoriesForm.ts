@@ -2,8 +2,9 @@
     export interface OfferCategoriesForm {
         OfferId: Serenity.LookupEditor;
         CategoryId: Serenity.LookupEditor;
-        Price: Serenity.DecimalEditor;
         CategoryNameReport: Serenity.StringEditor;
+        Price: Serenity.DecimalEditor;
+        Order: Serenity.IntegerEditor;
         CategoryFontColorReport: ColorPickerEditor;
     }
 
@@ -19,16 +20,18 @@
 
                 var s = Serenity;
                 var w0 = s.LookupEditor;
-                var w1 = s.DecimalEditor;
-                var w2 = s.StringEditor;
-                var w3 = ColorPickerEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.DecimalEditor;
+                var w3 = s.IntegerEditor;
+                var w4 = ColorPickerEditor;
 
                 Q.initFormType(OfferCategoriesForm, [
                     'OfferId', w0,
                     'CategoryId', w0,
-                    'Price', w1,
-                    'CategoryNameReport', w2,
-                    'CategoryFontColorReport', w3
+                    'CategoryNameReport', w1,
+                    'Price', w2,
+                    'Order', w3,
+                    'CategoryFontColorReport', w4
                 ]);
             }
         }

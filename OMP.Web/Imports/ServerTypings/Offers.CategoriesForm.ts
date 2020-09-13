@@ -2,6 +2,7 @@
     export interface CategoriesForm {
         Name: Serenity.StringEditor;
         FontColor: ColorPickerEditor;
+        DefaultOrder: Serenity.IntegerEditor;
     }
 
     export class CategoriesForm extends Serenity.PrefixedContext {
@@ -17,10 +18,12 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = ColorPickerEditor;
+                var w2 = s.IntegerEditor;
 
                 Q.initFormType(CategoriesForm, [
                     'Name', w0,
-                    'FontColor', w1
+                    'FontColor', w1,
+                    'DefaultOrder', w2
                 ]);
             }
         }

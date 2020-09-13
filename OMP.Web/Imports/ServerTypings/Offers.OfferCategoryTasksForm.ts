@@ -1,9 +1,10 @@
 ﻿namespace OMP.Offers {
     export interface OfferCategoryTasksForm {
         Name: Serenity.StringEditor;
-        DevelopmentTimeHours: Serenity.DecimalEditor;
         TaskStatusId: Serenity.LookupEditor;
         OfferCategoryOfferId: Serenity.LookupEditor;
+        DevelopmentTimeHours: Serenity.DecimalEditor;
+        Order: Serenity.IntegerEditor;
         ParentOfferCategoryTaskId: Serenity.LookupEditor;
         OfferCategoryId: Serenity.LookupEditor;
         Description: Serenity.TextAreaEditor;
@@ -21,18 +22,20 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.DecimalEditor;
-                var w2 = s.LookupEditor;
-                var w3 = s.TextAreaEditor;
+                var w1 = s.LookupEditor;
+                var w2 = s.DecimalEditor;
+                var w3 = s.IntegerEditor;
+                var w4 = s.TextAreaEditor;
 
                 Q.initFormType(OfferCategoryTasksForm, [
                     'Name', w0,
-                    'DevelopmentTimeHours', w1,
-                    'TaskStatusId', w2,
-                    'OfferCategoryOfferId', w2,
-                    'ParentOfferCategoryTaskId', w2,
-                    'OfferCategoryId', w2,
-                    'Description', w3
+                    'TaskStatusId', w1,
+                    'OfferCategoryOfferId', w1,
+                    'DevelopmentTimeHours', w2,
+                    'Order', w3,
+                    'ParentOfferCategoryTaskId', w1,
+                    'OfferCategoryId', w1,
+                    'Description', w4
                 ]);
             }
         }

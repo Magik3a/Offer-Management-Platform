@@ -23,6 +23,10 @@ namespace OMP.Offers.Columns
         [EditLink]
         [Width(500)]
         public String CategoryNameReport { get; set; }
+        [EditLink]
         public Decimal Price { get; set; }
+
+        [EditLink]
+        public Int32 Order { get; set; }
     }
 }

@@ -7,6 +7,7 @@
         ParentOfferCategoryTaskId?: number;
         OfferCategoryId?: number;
         TaskStatusId?: number;
+        Order?: number;
         ParentOfferCategoryTaskName?: string;
         ParentOfferCategoryTaskDevelopmentTimeHours?: number;
         ParentOfferCategoryTaskDescription?: string;
@@ -55,6 +56,7 @@
             ParentOfferCategoryTaskId = "ParentOfferCategoryTaskId",
             OfferCategoryId = "OfferCategoryId",
             TaskStatusId = "TaskStatusId",
+            Order = "Order",
             ParentOfferCategoryTaskName = "ParentOfferCategoryTaskName",
             ParentOfferCategoryTaskDevelopmentTimeHours = "ParentOfferCategoryTaskDevelopmentTimeHours",
             ParentOfferCategoryTaskDescription = "ParentOfferCategoryTaskDescription",

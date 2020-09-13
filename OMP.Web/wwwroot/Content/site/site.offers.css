@@ -73,3 +73,18 @@
 .s-Offers-OfferCategoryTasksDialog .caption {
   width: 150px;
 }
+.s-Offers-UserOfferSettingsDialog > .size {
+  width: 650px;
+}
+.s-Offers-UserOfferSettingsDialog .caption {
+  width: 150px;
+}
+.s-Offers-OfferAttachmentsDialog > .size {
+  min-width: 850px;
+  width: 850px;
+  min-height: 780px;
+  height: 780px;
+}
+.s-Offers-OfferAttachmentsDialog .caption {
+  width: 150px;
+}

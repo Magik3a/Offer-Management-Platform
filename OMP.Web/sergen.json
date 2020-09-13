@@ -69,6 +69,12 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.OfferAttachments",
+          "Identifier": "OfferAttachments",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.OfferCategories",
           "Identifier": "OfferCategories",
           "Module": "Offers",
@@ -125,6 +131,18 @@
         {
           "Tablename": "dbo.TaskStatusesLang",
           "Identifier": "TaskStatusesLang",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.UserOfferSettings",
+          "Identifier": "UserOfferSettings",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.UserOfferSettingsLang",
+          "Identifier": "UserOfferSettingsLang",
           "Module": "Offers",
           "PermissionKey": "Administration:General"
         }

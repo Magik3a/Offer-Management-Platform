@@ -1,12 +1,10 @@
 ﻿namespace OMP.Offers {
-    export interface OfferCategoriesRow {
-        OfferCategoryId?: number;
+    export interface OfferAttachmentsRow {
+        OfferAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FilePath?: string;
         OfferId?: number;
-        CategoryId?: number;
-        Price?: number;
-        CategoryNameReport?: string;
-        CategoryFontColorReport?: string;
-        Order?: number;
         OfferName?: string;
         OfferDiscount?: number;
         OfferMinimumDaysDevelopmentTime?: number;
@@ -15,8 +13,6 @@
         OfferAdditionalInfo?: string;
         OfferCompanyId?: number;
         OfferOfferStatusId?: number;
-        CategoryName?: string;
-        CategoryFontColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -27,29 +23,22 @@
         NoteList?: Administration.NoteRow[];
     }
 
-    export namespace OfferCategoriesRow {
-        export const idProperty = 'OfferCategoryId';
+    export namespace OfferAttachmentsRow {
+        export const idProperty = 'OfferAttachmentId';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'CategoryNameReport';
-        export const localTextPrefix = 'Offers.OfferCategories';
-        export const lookupKey = 'Offers.OfferCategories';
-
-        export function getLookup(): Q.Lookup<OfferCategoriesRow> {
-            return Q.getLookup<OfferCategoriesRow>('Offers.OfferCategories');
-        }
+        export const nameProperty = 'Name';
+        export const localTextPrefix = 'Offers.OfferAttachments';
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';
         export const updatePermission = 'Administration:General';
 
         export declare const enum Fields {
-            OfferCategoryId = "OfferCategoryId",
+            OfferAttachmentId = "OfferAttachmentId",
+            Name = "Name",
+            Description = "Description",
+            FilePath = "FilePath",
             OfferId = "OfferId",
-            CategoryId = "CategoryId",
-            Price = "Price",
-            CategoryNameReport = "CategoryNameReport",
-            CategoryFontColorReport = "CategoryFontColorReport",
-            Order = "Order",
             OfferName = "OfferName",
             OfferDiscount = "OfferDiscount",
             OfferMinimumDaysDevelopmentTime = "OfferMinimumDaysDevelopmentTime",
@@ -58,8 +47,6 @@
             OfferAdditionalInfo = "OfferAdditionalInfo",
             OfferCompanyId = "OfferCompanyId",
             OfferOfferStatusId = "OfferOfferStatusId",
-            CategoryName = "CategoryName",
-            CategoryFontColor = "CategoryFontColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
