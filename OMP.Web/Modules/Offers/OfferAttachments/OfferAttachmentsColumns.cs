@@ -20,8 +20,11 @@ namespace OMP.Offers.Columns
         [FilterOnly]
         public Int32 OfferId { get; set; }
         [EditLink]
+        [Width(200)]
         public String Name { get; set; }
+        [Width(400)]
         public String Description { get; set; }
+        [Width(800)]
         public String FilePath { get; set; }
         public String OfferName { get; set; }
     }

@@ -2928,6 +2928,7 @@ declare namespace OMP.Offers {
         protected form: OffersForm;
         private offerCategoryTasksGrid;
         private offerCategoriesGrid;
+        private offerOfferAttachmentsGrid;
         constructor();
         getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
@@ -3121,4 +3122,30 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    class OfferOfferAttachmentsDialog extends OfferAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OfferOfferAttachmentsGrid extends OfferAttachmentsGrid {
+        protected getDialogType(): typeof OfferOfferAttachmentsDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _offerId;
+        get offerId(): string;
+        set offerId(value: string);
+    }
+}
+declare namespace OMP.Offers {
+    class MultipleFileDownloadFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        showFileNames: boolean;
+    }
 }

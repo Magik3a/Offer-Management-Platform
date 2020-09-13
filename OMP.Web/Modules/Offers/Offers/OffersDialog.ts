@@ -16,6 +16,7 @@ namespace OMP.Offers {
         protected form = new OffersForm(this.idPrefix);
         private offerCategoryTasksGrid: OfferOfferCategoryTasksGrid;
         private offerCategoriesGrid: OfferOfferCategoriesGrid;
+        private offerOfferAttachmentsGrid: OfferOfferAttachmentsGrid;
 
         constructor() {
             super();
@@ -23,6 +24,8 @@ namespace OMP.Offers {
             this.offerCategoryTasksGrid = new OfferOfferCategoryTasksGrid(this.byId('OfferCategoryTasksGrid'));
 
             this.offerCategoriesGrid = new OfferOfferCategoriesGrid(this.byId('OfferCategoriesGrid'));
+
+            this.offerOfferAttachmentsGrid = new OfferOfferAttachmentsGrid(this.byId('OfferAttachmentsGrid'));
 
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
 
@@ -64,9 +67,12 @@ namespace OMP.Offers {
 
             Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferCategoryTasks', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferCategories', this.isNewOrDeleted());
-            if (!this.isNewOrDeleted()) {
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'OfferAttachments', this.isNewOrDeleted());
+
+            if (!this.isNew()) {
                 this.offerCategoryTasksGrid.offerId = entity.OfferId + "";
                 this.offerCategoriesGrid.offerId = entity.OfferId + "";
+                this.offerOfferAttachmentsGrid.offerId = entity.OfferId + "";
             }
         }
 
