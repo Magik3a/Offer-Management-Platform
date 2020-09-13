@@ -1,8 +1,8 @@
 pipeline {
  agent any
-   libraries {
-      lib('github.com/Magik3a/Jenkinsfile_Gitflow_Versioning')
-    }
+  // libraries {
+  //    lib('github.com/s2kdesign-com/Jenkinsfile_Gitflow_Versioning')
+   // }
     environment {
         PROJECT_VERSION = get_version(GIT_BRANCH, '1.1.000')
         PROJECT_PATH = "OMP.Web\\OMP.Web.csproj"
