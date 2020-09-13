@@ -37,7 +37,6 @@ namespace OMP.Administration.Entities
         [NotNull, Insertable(false), Updatable(false)]
         [ReadPermission(OffersPermissionKeys.Auditing)]
         [DisplayName("Insert Date")]
-        [SortOrder(999, true)]
         [DateTimeFormatter]
         public DateTime? InsertDate
         {
@@ -47,13 +46,12 @@ namespace OMP.Administration.Entities
 
         [Insertable(false), Updatable(false)]
         [ReadPermission(OffersPermissionKeys.Auditing)]
-      //  [ForeignKey(typeof(UserRow)), LeftJoin("usrU"), TextualField("UpdateUserName")]
         public Int32? UpdateUserId
         {
             get { return loggingFields.UpdateUserId[this]; }
             set { loggingFields.UpdateUserId[this] = value; }
         }
-       // [Expression("usrU.DisplayName")]
+
         [DisplayName("Last updated by"), NotMapped]
         [ReadPermission(OffersPermissionKeys.Auditing)]
         public String UpdateUserName
