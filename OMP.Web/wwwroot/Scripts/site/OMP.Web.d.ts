@@ -3078,6 +3078,8 @@ declare namespace OMP.Offers {
         getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         loadEntity(entity: OffersRow): void;
+        private setLocalization;
+        private formatAdditionalInfo;
         onSaveSuccess(response: any): void;
     }
 }
