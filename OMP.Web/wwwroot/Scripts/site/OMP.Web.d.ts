@@ -2196,6 +2196,7 @@ declare namespace OMP.Offers {
         function Create(request: Serenity.SaveRequest<UserOfferSettingsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<UserOfferSettingsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function RetrieveForUser(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<UserOfferSettingsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -2203,6 +2204,7 @@ declare namespace OMP.Offers {
             Create = "Offers/UserOfferSettings/Create",
             Update = "Offers/UserOfferSettings/Update",
             Delete = "Offers/UserOfferSettings/Delete",
+            Undelete = "Offers/UserOfferSettings/Undelete",
             Retrieve = "Offers/UserOfferSettings/Retrieve",
             RetrieveForUser = "Offers/UserOfferSettings/RetrieveForUser",
             List = "Offers/UserOfferSettings/List"
