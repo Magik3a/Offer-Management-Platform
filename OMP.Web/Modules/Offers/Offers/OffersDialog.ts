@@ -39,7 +39,27 @@ namespace OMP.Offers {
                 }
             });
 
+            this.form.StartDate.change(e => {
+                if (!this.form.StartDate.value) {
+                    return;
+                }
 
+                this.setLocalization();
+            });
+
+            this.form.MinimumDaysDevelopmentTime.change(e => {
+                if (!this.form.MinimumDaysDevelopmentTime.value) {
+                    return;
+                }
+                this.setLocalization();
+            });
+
+            this.form.MaximumDaysDevelopmentTime.change(e => {
+                if (!this.form.MaximumDaysDevelopmentTime.value) {
+                    return;
+                }
+                this.setLocalization();
+            });
         }
 
         getToolbarButtons() {
@@ -78,48 +98,70 @@ namespace OMP.Offers {
 
 
             } else {
+                this.setLocalization();
+            }
+        }
 
-                var opt = <Q.ServiceOptions<any>>{
-                    service: UserOfferSettingsService.baseUrl + '/RetrieveForUser',
-                    blockUI: true,
-                    request: {
-                        ColumnSelection: Serenity.ColumnSelection.KeyOnly,
-                        IncludeColumns: ['Localizations', 'OfferInvoiceAdditionalInfoFormatter']
-                    },
-                    onSuccess: response => {
-                        if (response.Entity) {
-                            this.form.AdditionalInfo.value = response.Entity.OfferInvoiceAdditionalInfoFormatter;
+        private setLocalization() {
 
-                            var copy = Q.extend(new Object(), this.get_entity());
-                            if (response.Localizations) {
-                                for (var language of Object.keys(response.Localizations)) {
-                                    var entity = response.Localizations[language];
+            let opt = {
+                service: UserOfferSettingsService.baseUrl + '/RetrieveForUser',
+                blockUI: true,
+                request: {
+                    ColumnSelection: Serenity.ColumnSelection.KeyOnly,
+                    IncludeColumns: [
+                        'Localizations', 'OfferInvoiceAdditionalInfoFormatter'
+                    ]
+                },
+                onSuccess: response => {
+                    if (response.Entity) {
+                        this.form.AdditionalInfo.value =
+                            this.formatAdditionalInfo(response.Entity
+                                .OfferInvoiceAdditionalInfoFormatter);
 
-                                    console.log(Object.keys(entity));
+                        var copy = Q.extend(new Object(), this.get_entity());
+                        if (response.Localizations) {
+                            for (var language of Object.keys(response.Localizations)) {
+                                var entity = response.Localizations[language];
 
-                                    for (var key of Object.keys(entity)) {
-                                        if (key === UserOfferSettingsRow.Fields.OfferInvoiceAdditionalInfoFormatter) {
+
+                                for (var key of Object.keys(entity)) {
+                                    if (key ===
+                                        UserOfferSettingsRow.Fields
+                                            .OfferInvoiceAdditionalInfoFormatter) {
+
+                                        if (key ===
+                                            "OfferInvoiceAdditionalInfoFormatter"
+                                        ) {
+                                            copy[language + '$AdditionalInfo'] =
+                                                this.formatAdditionalInfo(entity[key]);
+
+                                        } else {
+
                                             copy[language + '$AdditionalInfo'] = entity[key];
-
                                         }
-
-                                        //copy[language + '$' + key] = entity[key];
                                     }
+
+                                    //copy[language + '$' + key] = entity[key];
                                 }
                             }
-                       
-
+                        }
                         this.localizationGrid.load(copy);
                         this.setLocalizationGridCurrentValues();
                         this.localizationPendingValue = this.getLocalizationGridValue();
                         this.localizationLastValue = this.getLocalizationGridValue();
-                        }
                     }
-                };
+                }
+            } as Q.ServiceOptions<any>;
 
-                Q.serviceCall(opt);
-            }
+            Q.serviceCall(opt);
         }
+
+        private formatAdditionalInfo(formatter: string) {
+
+            return Q.format(formatter, this.form.MinimumDaysDevelopmentTime.value, this.form.MaximumDaysDevelopmentTime.value, this.form.StartDate.valueAsDate);
+        }
+
 
         onSaveSuccess(response) {
             super.onSaveSuccess(response);

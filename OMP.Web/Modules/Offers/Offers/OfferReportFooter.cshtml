@@ -1,4 +1,5 @@
-﻿
+﻿@model OMP.Offers.Pages.OfferReportFooterModel
+
 @if ((bool?)ViewData["Printing"] == true)
 {
     Layout = MVC.Views.Shared._LayoutNoNavigation;
@@ -6,35 +7,52 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-      <meta charset="UTF-8">
-      <style>
-          footer {
-              padding-top: 2px;
-              padding-bottom: 10px;
-              width: 100%;
-              color: #464646;
-              border-top: 1px solid #464646;
-              font-size: 8px;
-              font-family: Calibri, 'Trebuchet MS', sans-serif;
-          }
-          footer h3 {
-              margin: 0;
-              padding: 0;
-          }
-      </style>
+    <meta charset="UTF-8">
+    <style>
+        footer {
+            min-height: 50px;
+            padding-top: 2px;
+            padding-bottom: 10px;
+            width: 100%;
+            color: #464646;
+            border-top: 1px solid #464646;
+            font-size: 8px;
+            font-family: Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+            footer h3:first-child {
+                margin: 0;
+                padding: 0;
+                width: 49%;
+                display: inline-block;
+            }
+
+            footer .image-holder {
+                margin: 0;
+                padding: 0;
+                
+                float: right;
+                width: 49%;
+            }
+        footer .image-holder img {
+            margin: 0;
+            padding: 0;
+            float: right;
+        }
+    </style>
 </head>
 <body style="border: 0; margin: 0;">
 
-<footer>
-    <h3>
-        Developer: Svetlin Krastanov
-        <br />
-        Mobile: +359888017004
-        <br />
-        Email: svetlin.krastanov90@gmail.com
-        <br />
-        Site: <a href="https://s2kdesign.com">https://s2kdesign.com</a>
-    </h3>
-</footer>
+    <footer>
+        <h3>
+            @Html.Raw(Model.FooterText)
+        </h3>
+        <div class="image-holder">
+            @if (!Model.FooterImagePath.IsEmptyOrNull())
+            {
+                <img class="footer-logo"  height="50" src="@System.Web.VirtualPathUtility.ToAbsolute("~/upload/" + Model.FooterImagePath)" />
+            }
+        </div>
+    </footer>
 </body>
 </html>

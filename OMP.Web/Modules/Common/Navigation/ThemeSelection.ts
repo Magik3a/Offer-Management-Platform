@@ -9,7 +9,8 @@
                     path = path.substr(0, path.length - 1);
 
                 $.cookie('ThemePreference', select.val(), {
-                    path: path,
+                    //path: path,
+                    path: '/',
                     expires: 365
                 });
 
