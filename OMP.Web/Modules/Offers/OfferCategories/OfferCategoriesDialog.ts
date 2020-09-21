@@ -22,7 +22,7 @@ namespace OMP.Offers {
             super();
 
             this.form.CategoryId.change((e) => {
-                if (this.form.CategoryId.value) {
+                if (this.form.CategoryId.value && this.isNew()) {
 
                     var opt = <Q.ServiceOptions<any>>{
                         service: CategoriesService.baseUrl + '/Retrieve',
@@ -33,10 +33,9 @@ namespace OMP.Offers {
                             IncludeColumns: ['Localizations', 'Name', 'FontColor']
                         },
                         onSuccess: response => {
-                            if (this.isNewOrDeleted()) {
-                                this.form.CategoryNameReport.value = response.Entity.Name;
-                                this.form.CategoryFontColorReport.value = response.Entity.FontColor;
-                            }
+                            this.form.CategoryNameReport.value = response.Entity.Name;
+                            this.form.CategoryFontColorReport.value = response.Entity.FontColor;
+                            
                             var copy = Q.extend(new Object(), this.get_entity());
                             if (response.Localizations) {
                                 for (var language of Object.keys(response.Localizations)) {

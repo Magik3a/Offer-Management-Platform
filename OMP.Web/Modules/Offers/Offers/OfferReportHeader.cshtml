@@ -30,7 +30,7 @@
     <h1 class="offerTitle">
         <span>@Model.OfferTitle</span>
         <br />
-        <span>@Serenity.LocalText.TryGet("Site.Offers.OfferReportPage")  @Context.Request.Query["page"] / @Context.Request.Query["topage"]</span>
+        <span>@Model.PageStringLocalized  @Context.Request.Query["page"] / @Context.Request.Query["topage"]</span>
     </h1>
 </body>
 </html>

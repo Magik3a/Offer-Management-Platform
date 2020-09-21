@@ -20,9 +20,9 @@
             font-family: Calibri, 'Trebuchet MS', sans-serif;
         }
 
-            footer h3:first-child {
+            footer h3 {
                 margin: 0;
-                padding: 0;
+                padding: 0 0 0 0;
                 width: 49%;
                 display: inline-block;
             }
@@ -33,6 +33,7 @@
                 
                 float: right;
                 width: 49%;
+                padding-top: 5px;
             }
         footer .image-holder img {
             margin: 0;
@@ -50,7 +51,7 @@
         <div class="image-holder">
             @if (!Model.FooterImagePath.IsEmptyOrNull())
             {
-                <img class="footer-logo"  height="50" src="@System.Web.VirtualPathUtility.ToAbsolute("~/upload/" + Model.FooterImagePath)" />
+                <img class="footer-logo"  height="45" src="@System.Web.VirtualPathUtility.ToAbsolute("~/upload/" + Model.FooterImagePath)" />
             }
         </div>
     </footer>
