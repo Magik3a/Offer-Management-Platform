@@ -42,7 +42,19 @@ namespace OMP.Offers.Pages
         [Route("Offers/Offers/[Action]")]
         public ActionResult Footer()
         {
-            return PartialView(MVC.Views.Offers.Offers_.OfferReportFooter);
+            var model = new OfferReportFooterModel();
+
+            using (var connection = SqlConnections.NewFor<UserOfferSettingsRow>())
+            {
+                var row = connection.First<UserOfferSettingsRow>(r => r.SelectTableFields()
+                    .Where(new Criteria(UserOfferSettingsRow.Fields.UserId) == Authorization.UserId && new Criteria(UserOfferSettingsRow.Fields.IsActive) == 1)
+                    .OrderBy(UserOfferSettingsRow.Fields.InsertDate, true));
+
+                model.FooterText = row.OfferInvoiceFooterText;
+                model.FooterImagePath = row.OfferInvoiceFooterImage;
+            }
+
+            return PartialView(MVC.Views.Offers.Offers_.OfferReportFooter, model);
 
         }
 
@@ -50,5 +62,11 @@ namespace OMP.Offers.Pages
     public class OfferReportHeaderModel
     {
         public string OfferTitle { get; set; }
+    }
+
+    public class OfferReportFooterModel
+    {
+        public string FooterText { get; set; }
+        public string FooterImagePath { get; set; }
     }
 }
