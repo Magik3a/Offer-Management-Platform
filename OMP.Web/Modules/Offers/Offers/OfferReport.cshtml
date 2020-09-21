@@ -206,7 +206,7 @@
                                 }
                             }
 
-                            <td> @LocalText.TryGet("Db.Offers.Offers.Discount")</td>
+                            <td> @Model.OfferReportDiscountString</td>
                             <td>-</td>
                             <td>@discountPrice.ToString("#,##0.00", culture)</td>
                         </tr>
@@ -214,7 +214,7 @@
 
                     <tr>
                         <td>
-                            @LocalText.TryGet("Site.Offers.OfferReportTotalPrice") 
+                            @Model.OfferReportTotalPriceString
                         </td>
                         <td>
                             -
