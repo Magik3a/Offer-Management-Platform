@@ -17,9 +17,21 @@ namespace OMP.Offers {
                 if (this.showFileNames) {
                     fileDownloadName = Q.htmlEncode(files[i].OriginalName);
                 }
+                var backgroundStyle = "background: ";
+                if (Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".doc") || Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".docx")) {
+                    backgroundStyle += "url(/Content/serenity/images/docx.png) no-repeat left 1px;";
+                } else if (Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".xls") || Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".xlsx")) {
+                    backgroundStyle += "url(/Content/serenity/images/xlsx.png) no-repeat left 1px;";
 
-                columnValue += "<a class='file-download-link' target='_blank' title='" + files[i].OriginalName + "' href='" +
-                    Q.attrEncode(downloadUrl) + "'>" + fileDownloadName + '</a>';
+                } else if (Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".pdf")) {
+                    backgroundStyle += "url(/Content/serenity/images/pdf.png) no-repeat left 1px;";
+
+                } else if (Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".png") || Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".jpg")) {
+                    backgroundStyle += "url(/Content/serenity/images/jpg.png) no-repeat left 1px;";
+
+                }
+                columnValue += "<a style='" + backgroundStyle + "' class='file-download-link' target='_blank' title='" + files[i].OriginalName + "' href='" +
+                    Q.attrEncode(downloadUrl) + "'>" + fileDownloadName + ' </a>';
             }
             return columnValue;
 

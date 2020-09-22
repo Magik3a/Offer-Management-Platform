@@ -41,7 +41,7 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Files"), Size(500), NotNull]
         [MultipleFileUploadEditor(AllowNonImage = true)]
-        [MultipleFileDownloadFormatter(ShowFileNames = true)]
+        [MultipleFileDownloadFormatter(ShowFileNames = false)]
         public String FilePath
         {
             get { return Fields.FilePath[this]; }

@@ -24,7 +24,7 @@ namespace OMP.Offers.Columns
         public String Name { get; set; }
         [Width(400)]
         public String Description { get; set; }
-        [Width(800)]
+        [Width(200)]
         public String FilePath { get; set; }
         public String OfferName { get; set; }
     }
