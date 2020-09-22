@@ -35,6 +35,7 @@ namespace OMP.Offers.Offers
             var data = new OfferReportData();
             var language = OffersLanguageHelpers.getCurrentUIlanguageID(LanguageId).ToString();
             data.OfferReportTotalPriceString = Dependency.TryResolve<ILocalTextRegistry>()?.TryGet(LanguageId, "Site.Offers.OfferReportTotalPrice");
+            data.OfferReportDiscountString = Dependency.TryResolve<ILocalTextRegistry>()?.TryGet(LanguageId, "Db.Offers.Offers.Discount");
 
             using (var connection = SqlConnections.NewFor<OffersRow>())
             {
@@ -151,6 +152,7 @@ namespace OMP.Offers.Offers
     public class OfferReportData
     {
         public string OfferReportTotalPriceString { get; set; }
+        public string OfferReportDiscountString { get; set; }
         public OffersRow Offer { get; set; }
         public List<OfferCategoriesRow> OfferCategories { get; set; }
         public List<OfferCategoryTasksRow> OfferCategoryTasks { get; set; }
