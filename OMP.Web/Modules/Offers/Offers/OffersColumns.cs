@@ -21,15 +21,17 @@ namespace OMP.Offers.Columns
         [EditLink]
         [Width(400)]
         public String Name { get; set; }
+
+        public String CompanyName { get; set; }
+        [Width(150)]
+        public String OfferStatusName { get; set; }
+
         public Decimal Discount { get; set; }
         public Int32 MinimumDaysDevelopmentTime { get; set; }
         public Int32 MaximumDaysDevelopmentTime { get; set; }
         public DateTime StartDate { get; set; }
         [Width(300)]
         public String AdditionalInfo { get; set; }
-        public String CompanyName { get; set; }
-        [Width(150)]
-        public String OfferStatusName { get; set; }
 
 
         [FilterOnly]

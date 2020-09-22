@@ -23,7 +23,11 @@ namespace OMP.Offers {
             super.initEntityDialog(itemType, dialog);
             Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
         }
-
+        protected onViewProcessData(response: Serenity.ListResponse<OfferCategoryTasksRow>): Serenity.ListResponse<OfferCategoryTasksRow> {
+          var listResponse = super.onViewProcessData(response);
+            TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'OfferCategoryTasks');
+          return listResponse;
+        }
         protected addButtonClick() {
             this.editItem({ OfferCategoryOfferId: this.offerId });
         }
