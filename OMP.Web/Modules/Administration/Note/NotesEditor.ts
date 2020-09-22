@@ -31,6 +31,9 @@
             var noteList = this.byId('NoteList');
             noteList.children().remove();
             if (this.items) {
+              // Notes counter in Tabs 
+                TabsExtensions.setCounter(this.element, this.items.length, 'Notes');
+
                 var index = 0;
                 for (var t1 = 0; t1 < this.items.length; t1++) {
                     var item = this.items[t1];

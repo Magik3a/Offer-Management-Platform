@@ -3015,6 +3015,7 @@ declare namespace OMP.Offers {
         protected initEntityDialog(itemType: any, dialog: any): void;
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
+        protected onViewProcessData(response: Serenity.ListResponse<OfferAttachmentsRow>): Serenity.ListResponse<OfferAttachmentsRow>;
         protected getGridCanLoad(): boolean;
         private _offerId;
         get offerId(): string;
@@ -3033,6 +3034,7 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
         protected getColumns(): Slick.Column[];
         protected initEntityDialog(itemType: any, dialog: any): void;
+        protected onViewProcessData(response: Serenity.ListResponse<OfferCategoriesRow>): Serenity.ListResponse<OfferCategoriesRow>;
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
@@ -3053,6 +3055,7 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
         protected getColumns(): Slick.Column[];
         protected initEntityDialog(itemType: any, dialog: any): void;
+        protected onViewProcessData(response: Serenity.ListResponse<OfferCategoryTasksRow>): Serenity.ListResponse<OfferCategoryTasksRow>;
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
@@ -3153,4 +3156,7 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
     }
+}
+declare namespace OMP.TabsExtensions {
+    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
 }

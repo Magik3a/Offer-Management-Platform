@@ -31,7 +31,11 @@ namespace OMP.Offers {
         protected getInitialTitle() {
             return null;
         }
-
+        protected onViewProcessData(response: Serenity.ListResponse<OfferAttachmentsRow>): Serenity.ListResponse<OfferAttachmentsRow> {
+          var listResponse = super.onViewProcessData(response);
+          TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'OfferAttachments');
+          return listResponse;
+        }
         protected getGridCanLoad() {
             return super.getGridCanLoad() && !!this.offerId;
         }
