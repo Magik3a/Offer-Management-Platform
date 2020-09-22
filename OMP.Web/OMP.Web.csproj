@@ -3,6 +3,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>OMP.Web</AssemblyName>
+    <Version>1.0.1.69</Version>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <DotNetSergen>dotnet sergen</DotNetSergen>
     <DotNetSergen Condition="Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\sergen.exe')">..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\sergen.exe</DotNetSergen>
