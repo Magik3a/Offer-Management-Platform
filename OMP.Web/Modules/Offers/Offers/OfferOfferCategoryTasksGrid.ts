@@ -11,12 +11,39 @@ namespace OMP.Offers {
         constructor(container: JQuery) {
             super(container);
         }
-
+        protected markupReady() {
+          super.markupReady();
+          this.view.setGrouping([{
+            formatter: x => 'Offer Category: ' + x.value + ' (' + x.count + ' items)',
+            getter: fld.OfferCategoryCategoryNameReport
+          }]);
+          // expanding all level 0 (Country) and level 1 (City) groups initially
+          this.view.expandAllGroups(null);
+        }
         protected getColumns(): Slick.Column[] {
             let columns = super.getColumns();
 
             columns = columns.filter(x => x.field !== fld.OfferName + "");
             return columns;
+        }
+
+        protected getButtons() {
+            var buttons = super.getButtons();
+            buttons = buttons.filter(b => b.cssClass.indexOf("offer-group-button") === -1);
+
+
+
+            buttons.push({
+                title: 'Group By Offer Category',
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [{
+                      formatter: x => 'Offer Category: ' + x.value + ' (' + x.count + ' items)',
+                        getter: fld.OfferCategoryCategoryNameReport
+                  }])
+            }, buttons.pop());
+
+            return buttons;
         }
 
         protected initEntityDialog(itemType, dialog) {
