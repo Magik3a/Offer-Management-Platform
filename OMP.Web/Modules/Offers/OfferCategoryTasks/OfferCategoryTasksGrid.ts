@@ -28,6 +28,48 @@ namespace OMP.Offers {
 
         }
 
+        protected getButtons() {
+          var buttons = super.getButtons();
+
+          buttons.push(Common.ExcelExportHelper.createToolButton({
+            grid: this,
+            service: OffersService.baseUrl + '/ListExcel',
+            onViewSubmit: () => this.onViewSubmit(),
+            separator: true
+          }));
+
+          buttons.push(Common.PdfExportHelper.createToolButton({
+            grid: this,
+            onViewSubmit: () => this.onViewSubmit()
+          }));
+
+          buttons.push({
+              title: 'Group By Offer',
+              cssClass: 'expand-all-button offer-group-button',
+              onClick: () => this.view.setGrouping(
+                [{
+                  getter: fld.OfferName
+                }])
+            },
+            {
+              title: 'Group By Offer and Category',
+                cssClass: 'expand-all-button offer-group-button',
+              onClick: () => this.view.setGrouping(
+                [{
+                  formatter: x => 'Offer: ' + x.value + ' (' + x.count + ' items)',
+                    getter: fld.OfferName
+                }, {
+                        formatter: x => 'Offer Category: ' + x.value + ' (' + x.count + ' items)',
+                        getter: fld.OfferCategoryCategoryNameReport
+                }])
+            }, {
+              title: 'No Grouping',
+              cssClass: 'collapse-all-button',
+              onClick: () => this.view.setGrouping([])
+            });
+
+          return buttons;
+        }
 
         //protected usePager() {
         //    return false;
@@ -67,6 +109,18 @@ namespace OMP.Offers {
             var opt = super.getSlickOptions();
             opt.showFooterRow = true;
             return opt;
+        }
+        protected markupReady() {
+          super.markupReady();
+            this.view.setGrouping([{
+              formatter: x => 'Offer: ' + x.value + ' (' + x.count + ' items)',
+              getter: fld.OfferName
+            }, {
+              formatter: x => 'Offer Category: ' + x.value + ' (' + x.count + ' items)',
+              getter: fld.OfferCategoryCategoryNameReport
+            }]);
+          // expanding all level 0 (Country) and level 1 (City) groups initially
+          this.view.expandAllGroups(null);
         }
     }
 }

@@ -3000,9 +3000,11 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         private treeMixin;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
+        protected markupReady(): void;
     }
 }
 declare namespace OMP.Offers {
@@ -3084,7 +3086,9 @@ declare namespace OMP.Offers {
     class OfferOfferCategoryTasksGrid extends OfferCategoryTasksGrid {
         protected getDialogType(): typeof OfferOfferCategoryTasksDialog;
         constructor(container: JQuery);
+        protected markupReady(): void;
         protected getColumns(): Slick.Column[];
+        protected getButtons(): Serenity.ToolButton[];
         protected initEntityDialog(itemType: any, dialog: any): void;
         protected onViewProcessData(response: Serenity.ListResponse<OfferCategoryTasksRow>): Serenity.ListResponse<OfferCategoryTasksRow>;
         protected addButtonClick(): void;
