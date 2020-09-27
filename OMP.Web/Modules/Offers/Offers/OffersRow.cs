@@ -155,7 +155,23 @@ namespace OMP.Offers.Entities
             get { return Fields.OfferStatusBackgroundColor[this]; }
             set { Fields.OfferStatusBackgroundColor[this] = value; }
         }
-        
+
+        [DisplayName("Not Completed Tasks"), Expression(@"
+(
+SELECT COUNT(*)
+  FROM [dbo].[OfferCategoryTasks] jOfferCategoryTasks
+LEFT JOIN [dbo].[TaskStatuses] jTaskStatuses ON (jTaskStatuses.TaskStatusId = jOfferCategoryTasks.TaskStatusId) 
+LEFT JOIN [dbo].[OfferCategories] jOfferCategories ON (jOfferCategories.OfferCategoryId = jOfferCategoryTasks.OfferCategoryId) 
+WHERE (jOfferCategoryTasks.TaskStatusId is null OR jTaskStatuses.CountForCompleted <> 1)  AND jOfferCategories.OfferId = T0.[OfferId]
+)
+")]
+        [ColoredColumnFormatter(BackgroundColor = "#FFF700")]
+        public Int32? NotCompletedTasks
+        {
+            get { return Fields.NotCompletedTasks[this]; }
+            set { Fields.NotCompletedTasks[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OfferId; }
@@ -194,6 +210,9 @@ namespace OMP.Offers.Entities
             public StringField OfferStatusName;
             public StringField OfferStatusBorderColor;
             public StringField OfferStatusBackgroundColor;
+
+
+            public Int32Field NotCompletedTasks;
         }
     }
 }

@@ -16,10 +16,22 @@ namespace OMP.Offers
         {
         }
 
+        public String BackgroundColor
+        {
+            get { return GetOption<String>("backgroundColor"); }
+            set { SetOption("backgroundColor", value); }
+        }
+
         public String BackgroundProperty
         {
             get { return GetOption<String>("backgroundProperty"); }
             set { SetOption("backgroundProperty", value); }
+        }
+
+        public String BorderColor
+        {
+            get { return GetOption<String>("borderColor"); }
+            set { SetOption("borderColor", value); }
         }
 
         public String BorderProperty

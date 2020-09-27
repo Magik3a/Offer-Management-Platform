@@ -27,6 +27,7 @@ namespace OMP.Offers.Columns
         public String OfferStatusName { get; set; }
 
         public Decimal Discount { get; set; }
+        public Int32 NotCompletedTasks { get; set; }
         public Int32 MinimumDaysDevelopmentTime { get; set; }
         public Int32 MaximumDaysDevelopmentTime { get; set; }
         public DateTime StartDate { get; set; }

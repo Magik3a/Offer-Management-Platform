@@ -17,6 +17,7 @@
         OfferStatusName?: string;
         OfferStatusBorderColor?: string;
         OfferStatusBackgroundColor?: string;
+        NotCompletedTasks?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -60,6 +61,7 @@
             OfferStatusName = "OfferStatusName",
             OfferStatusBorderColor = "OfferStatusBorderColor",
             OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
+            NotCompletedTasks = "NotCompletedTasks",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
