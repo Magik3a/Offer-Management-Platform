@@ -33,6 +33,9 @@ namespace OMP.Offers.Columns
         public Int32 MinimumDaysDevelopmentTime { get; set; }
         public Int32 MaximumDaysDevelopmentTime { get; set; }
         public DateTime StartDate { get; set; }
+        [Width(150)]
+        public String SoftwareFrameworkName { get; set; }
+
         [Width(300)]
         public String AdditionalInfo { get; set; }
 

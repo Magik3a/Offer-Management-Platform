@@ -129,6 +129,12 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.SoftwareFrameworks",
+          "Identifier": "SoftwareFrameworks",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.TaskStatuses",
           "Identifier": "TaskStatuses",
           "Module": "Offers",

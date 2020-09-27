@@ -31,6 +31,8 @@ namespace OMP.Offers.Forms
         public Int32 CompanyId { get; set; }
         [HalfWidth]
         public Int32 OfferStatusId { get; set; }
+        [HalfWidth]
+        public Int32 SoftwareFrameworkId { get; set; }
         [Category("Extra info")]
         public String AdditionalInfo { get; set; }
         public List<object> NoteList { get; set; }

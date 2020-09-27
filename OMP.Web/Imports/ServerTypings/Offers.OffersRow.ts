@@ -9,6 +9,7 @@
         AdditionalInfo?: string;
         CompanyId?: number;
         OfferStatusId?: number;
+        SoftwareFrameworkId?: number;
         CompanyName?: string;
         CompanyAddress?: string;
         CompanyPhone?: string;
@@ -17,6 +18,9 @@
         OfferStatusName?: string;
         OfferStatusBorderColor?: string;
         OfferStatusBackgroundColor?: string;
+        SoftwareFrameworkName?: string;
+        SoftwareFrameworkBorderColor?: string;
+        SoftwareFrameworkBackgroundColor?: string;
         NotCompletedTasks?: number;
         Price?: number;
         TotalPrice?: number;
@@ -55,6 +59,7 @@
             AdditionalInfo = "AdditionalInfo",
             CompanyId = "CompanyId",
             OfferStatusId = "OfferStatusId",
+            SoftwareFrameworkId = "SoftwareFrameworkId",
             CompanyName = "CompanyName",
             CompanyAddress = "CompanyAddress",
             CompanyPhone = "CompanyPhone",
@@ -63,6 +68,9 @@
             OfferStatusName = "OfferStatusName",
             OfferStatusBorderColor = "OfferStatusBorderColor",
             OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
+            SoftwareFrameworkName = "SoftwareFrameworkName",
+            SoftwareFrameworkBorderColor = "SoftwareFrameworkBorderColor",
+            SoftwareFrameworkBackgroundColor = "SoftwareFrameworkBackgroundColor",
             NotCompletedTasks = "NotCompletedTasks",
             Price = "Price",
             TotalPrice = "TotalPrice",

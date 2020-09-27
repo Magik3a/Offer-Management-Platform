@@ -1919,6 +1919,7 @@ declare namespace OMP.Offers {
         MaximumDaysDevelopmentTime: Serenity.IntegerEditor;
         CompanyId: Serenity.LookupEditor;
         OfferStatusId: Serenity.LookupEditor;
+        SoftwareFrameworkId: Serenity.LookupEditor;
         AdditionalInfo: Serenity.TextAreaEditor;
         NoteList: Serenity.StringEditor;
     }
@@ -1997,6 +1998,7 @@ declare namespace OMP.Offers {
         AdditionalInfo?: string;
         CompanyId?: number;
         OfferStatusId?: number;
+        SoftwareFrameworkId?: number;
         CompanyName?: string;
         CompanyAddress?: string;
         CompanyPhone?: string;
@@ -2005,6 +2007,9 @@ declare namespace OMP.Offers {
         OfferStatusName?: string;
         OfferStatusBorderColor?: string;
         OfferStatusBackgroundColor?: string;
+        SoftwareFrameworkName?: string;
+        SoftwareFrameworkBorderColor?: string;
+        SoftwareFrameworkBackgroundColor?: string;
         NotCompletedTasks?: number;
         Price?: number;
         TotalPrice?: number;
@@ -2038,6 +2043,7 @@ declare namespace OMP.Offers {
             AdditionalInfo = "AdditionalInfo",
             CompanyId = "CompanyId",
             OfferStatusId = "OfferStatusId",
+            SoftwareFrameworkId = "SoftwareFrameworkId",
             CompanyName = "CompanyName",
             CompanyAddress = "CompanyAddress",
             CompanyPhone = "CompanyPhone",
@@ -2046,6 +2052,9 @@ declare namespace OMP.Offers {
             OfferStatusName = "OfferStatusName",
             OfferStatusBorderColor = "OfferStatusBorderColor",
             OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
+            SoftwareFrameworkName = "SoftwareFrameworkName",
+            SoftwareFrameworkBorderColor = "SoftwareFrameworkBorderColor",
+            SoftwareFrameworkBackgroundColor = "SoftwareFrameworkBackgroundColor",
             NotCompletedTasks = "NotCompletedTasks",
             Price = "Price",
             TotalPrice = "TotalPrice",
@@ -2076,6 +2085,87 @@ declare namespace OMP.Offers {
             Undelete = "Offers/Offers/Undelete",
             Retrieve = "Offers/Offers/Retrieve",
             List = "Offers/Offers/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface SoftwareFrameworksForm {
+        Name: Serenity.StringEditor;
+        SpecificVersion: Serenity.StringEditor;
+        BorderColor: ColorPickerEditor;
+        BackgroundColor: ColorPickerEditor;
+        Description: Serenity.TextAreaEditor;
+    }
+    class SoftwareFrameworksForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface SoftwareFrameworksRow {
+        SoftwareFrameworkId?: number;
+        Name?: string;
+        Description?: string;
+        SpecificVersion?: string;
+        BorderColor?: string;
+        BackgroundColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace SoftwareFrameworksRow {
+        const idProperty = "SoftwareFrameworkId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.SoftwareFrameworks";
+        const lookupKey = "Offers.SoftwareFrameworks";
+        function getLookup(): Q.Lookup<SoftwareFrameworksRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            SoftwareFrameworkId = "SoftwareFrameworkId",
+            Name = "Name",
+            Description = "Description",
+            SpecificVersion = "SpecificVersion",
+            BorderColor = "BorderColor",
+            BackgroundColor = "BackgroundColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace SoftwareFrameworksService {
+        const baseUrl = "Offers/SoftwareFrameworks";
+        function Create(request: Serenity.SaveRequest<SoftwareFrameworksRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SoftwareFrameworksRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SoftwareFrameworksRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SoftwareFrameworksRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/SoftwareFrameworks/Create",
+            Update = "Offers/SoftwareFrameworks/Update",
+            Delete = "Offers/SoftwareFrameworks/Delete",
+            Undelete = "Offers/SoftwareFrameworks/Undelete",
+            Retrieve = "Offers/SoftwareFrameworks/Retrieve",
+            List = "Offers/SoftwareFrameworks/List"
         }
     }
 }
@@ -3278,6 +3368,32 @@ declare namespace OMP.Offers {
         protected getButtons(): Serenity.ToolButton[];
         protected getColumns(): Slick.Column[];
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;
+    }
+}
+declare namespace OMP.Offers {
+    class SoftwareFrameworksDialog extends Serenity.EntityDialog<SoftwareFrameworksRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: SoftwareFrameworksForm;
+    }
+}
+declare namespace OMP.Offers {
+    class SoftwareFrameworksGrid extends Serenity.EntityGrid<SoftwareFrameworksRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SoftwareFrameworksDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace OMP.Offers {
