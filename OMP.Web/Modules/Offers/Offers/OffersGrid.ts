@@ -15,6 +15,25 @@ namespace OMP.Offers {
             super(container);
         }
 
+        protected getQuickFilters() {
+          var flt = super.getQuickFilters();
+
+          var q = Q.parseQueryString();
+            if (q["OfferStatusId"]) {
+            var category = Q.tryFirst(flt, x => x.field == "OfferStatusId");
+            category.init = e => {
+                e.element.getWidget(Serenity.LookupEditor).value = q["OfferStatusId"];
+            };
+          }
+            if (q["SoftwareFrameworkId"]) {
+                var category = Q.tryFirst(flt, x => x.field == "SoftwareFrameworkId");
+              category.init = e => {
+                  e.element.getWidget(Serenity.LookupEditor).value = q["SoftwareFrameworkId"];
+              };
+            }
+          return flt;
+        }
+
         protected getButtons() {
             var buttons = super.getButtons();
 
