@@ -53,7 +53,9 @@
         $(".sortable .box-header, .sortable .nav-tabs-custom, .sortable .small-box").css("cursor", "move");
     });
 </script>
-
+@{
+    var defaultSmallBoxSize = "col-lg-2 col-xs-6";
+}
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <section class="col-lg-12 sortable">
@@ -74,7 +76,7 @@
             <div class="box-body offer-statuses-box">
                 @foreach (var offerStatus in Model.OfferStatuses)
                 {
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="@defaultSmallBoxSize">
                         <!-- small box -->
                         <div class="small-box" style="background-color: @offerStatus.BackgroundColor; border: 2px solid @offerStatus.BorderColor; color: white">
                             <div class="inner">
@@ -121,7 +123,7 @@
             <div class="box-body software-frameworks-box">
                 @foreach (var softwareFrameworks in Model.SoftwareFrameworks)
                 {
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="@defaultSmallBoxSize">
                         <!-- small box -->
                         <div class="small-box" style="background-color: @softwareFrameworks.BackgroundColor; border: 2px solid @softwareFrameworks.BorderColor; color: white">
                             <div class="inner">
@@ -160,7 +162,7 @@
             <div class="box-body task-statuses-box">
                 @foreach (var taskStatus in Model.TaskStatuses)
                 {
-                    <div class="col-lg-2 col-xs-6">
+                    <div class="@defaultSmallBoxSize">
                         <!-- small box -->
                         <div class="small-box" style="background-color: @taskStatus.BackgroundColor; border: 2px solid @taskStatus.BorderColor; color: white">
                             <div class="inner">
@@ -179,7 +181,7 @@
                     </div>
                     <!-- ./col -->
                 }
-                <div class="col-lg-3 col-xs-6">
+                <div class="@defaultSmallBoxSize">
                     <!-- small box -->
                     <div class="small-box bg-gray" style="color: white">
                         <div class="inner">
