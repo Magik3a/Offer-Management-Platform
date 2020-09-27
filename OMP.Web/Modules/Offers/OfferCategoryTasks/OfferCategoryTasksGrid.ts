@@ -1,6 +1,7 @@
 ﻿
 namespace OMP.Offers {
 
+    import fld = OfferCategoryTasksRow.Fields;
     @Serenity.Decorators.registerClass()
     export class OfferCategoryTasksGrid extends Serenity.EntityGrid<OfferCategoryTasksRow, any> {
         protected getColumnsKey() { return 'Offers.OfferCategoryTasks'; }
@@ -31,7 +32,23 @@ namespace OMP.Offers {
         //protected usePager() {
         //    return false;
         //}
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
 
+            // get quick filter list from base class, e.g. columns
+            let filters = super.getQuickFilters();
+
+            let filter = Q.first(filters, x => x.field == fld.TaskStatusId);
+            filter.title = "Task Status Different Than";
+            filter.cssClass = "task-status-id";
+            filter.handler = h => {
+                // if filter is active, e.g. editor has some value
+                if (h.active) {
+                    h.request.Criteria = Serenity.Criteria.or(h.request.Criteria, ['is null', [fld.TaskStatusId]],
+                        [[fld.TaskStatusId], 'not in', [h.value]]);
+                }
+            };
+            return filters;
+        }
         protected createSlickGrid() {
             var grid = super.createSlickGrid();
 

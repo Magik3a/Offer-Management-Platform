@@ -8185,6 +8185,9 @@ section.content > .s-DataGrid {
 .s-Offers-CompanyWebSitesEditorDialog .caption {
   width: 50px;
 }
+.task-status-id .select2-container {
+  min-width: 200px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

@@ -100,3 +100,6 @@
 .s-Offers-CompanyWebSitesEditorDialog .caption {
   width: 50px;
 }
+.task-status-id .select2-container {
+  min-width: 200px;
+}

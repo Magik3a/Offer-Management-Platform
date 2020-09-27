@@ -2998,6 +2998,7 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         private treeMixin;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
     }

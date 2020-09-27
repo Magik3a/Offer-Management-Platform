@@ -80,9 +80,8 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Task Status"), ForeignKey(typeof(TaskStatusesRow), "TaskStatusId"), LeftJoin("jTaskStatus"), TextualField("TaskStatusName")]
-        [LookupEditor(typeof(TaskStatusesRow), FilterField = "IsActive", FilterValue = 1
-            , InplaceAdd = true
-        )]
+        [LookupEditor(typeof(TaskStatusesRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public Int32? TaskStatusId
         {
             get { return Fields.TaskStatusId[this]; }
