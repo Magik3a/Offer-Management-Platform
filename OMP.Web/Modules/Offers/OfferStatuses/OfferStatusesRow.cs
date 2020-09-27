@@ -14,7 +14,7 @@ namespace OMP.Offers.Entities
     using System.IO;
 
     [ConnectionKey("Offers"), Module("Offers"), TableName("[dbo].[OfferStatuses]")]
-    [DisplayName("Offer Statuses"), InstanceName("Offer Statuses")]
+    [DisplayName("Offer Statuses"), InstanceName("Offer Status")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LocalizationRow(typeof(OfferStatusesLangRow))]
