@@ -103,3 +103,9 @@
 .task-status-id .select2-container {
   min-width: 200px;
 }
+.s-Offers-SoftwareFrameworksDialog > .size {
+  width: 750px;
+}
+.s-Offers-SoftwareFrameworksDialog .caption {
+  width: 100px;
+}

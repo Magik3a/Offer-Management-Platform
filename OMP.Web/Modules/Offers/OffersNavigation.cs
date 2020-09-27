@@ -20,3 +20,4 @@ using MyPages = OMP.Offers.Pages;
 #endif
 [assembly: NavigationLink(1000, "Offers Settings/User Offer Settings", typeof(MyPages.UserOfferSettingsController), icon: null)]
 [assembly: NavigationLink(1000, "Offers Settings/Offer Attachments", typeof(MyPages.OfferAttachmentsController), icon: null)]
+[assembly: NavigationLink(1000, "Offers Settings/Software Frameworks", typeof(MyPages.SoftwareFrameworksController), icon: null)]

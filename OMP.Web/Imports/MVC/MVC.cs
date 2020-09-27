@@ -147,6 +147,11 @@ namespace MVC
                 public const string OfferStatusesIndex = "~/Modules/Offers/OfferStatuses/OfferStatusesIndex.cshtml";
             }
 
+            public static class SoftwareFrameworks
+            {
+                public const string SoftwareFrameworksIndex = "~/Modules/Offers/SoftwareFrameworks/SoftwareFrameworksIndex.cshtml";
+            }
+
             public static class TaskStatuses
             {
                 public const string TaskStatusesIndex = "~/Modules/Offers/TaskStatuses/TaskStatusesIndex.cshtml";

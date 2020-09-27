@@ -96,6 +96,16 @@ namespace OMP.Offers.Entities
             set { Fields.OfferStatusId[this] = value; }
         }
 
+        [DisplayName("Software Frameworks"), NotNull, ForeignKey(typeof(SoftwareFrameworksRow), "SoftwareFrameworkId"), LeftJoin("jSoftwareFrameworks"), TextualField("SoftwareFrameworkName")]
+        [LookupEditor(typeof(SoftwareFrameworksRow), FilterField = "IsActive", FilterValue = 1
+            , InplaceAdd = true
+        )]
+        [QuickFilter]
+        public Int32? SoftwareFrameworkId
+        {
+            get { return Fields.SoftwareFrameworkId[this]; }
+            set { Fields.SoftwareFrameworkId[this] = value; }
+        }
 
         [DisplayName("Company Name"), Expression("jCompany.[Name]")]
         public String CompanyName
@@ -155,6 +165,28 @@ namespace OMP.Offers.Entities
         {
             get { return Fields.OfferStatusBackgroundColor[this]; }
             set { Fields.OfferStatusBackgroundColor[this] = value; }
+        }
+
+        [DisplayName("Software Framework Name"), Expression("jSoftwareFrameworks.[Name]")]
+        [ColoredColumnFormatter(BackgroundProperty = "SoftwareFrameworkBackgroundColor", BorderProperty = "SoftwareFrameworkBorderColor")]
+        public String SoftwareFrameworkName
+        {
+            get { return Fields.SoftwareFrameworkName[this]; }
+            set { Fields.SoftwareFrameworkName[this] = value; }
+        }
+
+        [DisplayName("Software Framework Border Color"), Expression("jSoftwareFrameworks.[BorderColor]")]
+        public String SoftwareFrameworkBorderColor
+        {
+            get { return Fields.SoftwareFrameworkBorderColor[this]; }
+            set { Fields.SoftwareFrameworkBorderColor[this] = value; }
+        }
+
+        [DisplayName("Software Framework Background Color"), Expression("jSoftwareFrameworks.[BackgroundColor]")]
+        public String SoftwareFrameworkBackgroundColor
+        {
+            get { return Fields.SoftwareFrameworkBackgroundColor[this]; }
+            set { Fields.SoftwareFrameworkBackgroundColor[this] = value; }
         }
 
         [DisplayName("Not Completed Tasks"), Expression(@"
@@ -232,6 +264,7 @@ WHERE jOfferCategories.OfferId = T0.[OfferId]
             public StringField AdditionalInfo;
             public Int32Field CompanyId;
             public Int32Field OfferStatusId;
+            public Int32Field SoftwareFrameworkId;
 
             public StringField CompanyName;
             public StringField CompanyAddress;
@@ -242,6 +275,10 @@ WHERE jOfferCategories.OfferId = T0.[OfferId]
             public StringField OfferStatusName;
             public StringField OfferStatusBorderColor;
             public StringField OfferStatusBackgroundColor;
+
+            public StringField SoftwareFrameworkName;
+            public StringField SoftwareFrameworkBorderColor;
+            public StringField SoftwareFrameworkBackgroundColor;
 
 
             public Int32Field NotCompletedTasks;

@@ -7,6 +7,7 @@
         MaximumDaysDevelopmentTime: Serenity.IntegerEditor;
         CompanyId: Serenity.LookupEditor;
         OfferStatusId: Serenity.LookupEditor;
+        SoftwareFrameworkId: Serenity.LookupEditor;
         AdditionalInfo: Serenity.TextAreaEditor;
         NoteList: Serenity.StringEditor;
     }
@@ -37,6 +38,7 @@
                     'MaximumDaysDevelopmentTime', w3,
                     'CompanyId', w4,
                     'OfferStatusId', w4,
+                    'SoftwareFrameworkId', w4,
                     'AdditionalInfo', w5,
                     'NoteList', w0
                 ]);
