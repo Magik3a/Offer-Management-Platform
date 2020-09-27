@@ -72,7 +72,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OfferCategoriesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true, CascadeField = "OfferId", CascadeFrom = "OfferCategoryOfferId"
         )]
-        [LookupInclude, SortOrder(1)]
+        [LookupInclude]
         public Int32? OfferCategoryId
         {
             get { return Fields.OfferCategoryId[this]; }
@@ -167,7 +167,6 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Offer Category Category Name Report"), Expression("jOfferCategory.[CategoryNameReport]")]
         [FontColorColumnFormatter(FontColorProperty = "OfferCategoryCategoryFontColorReport")]
-        [SortOrder(1)]
         public String OfferCategoryCategoryNameReport
         {
             get { return Fields.OfferCategoryCategoryNameReport[this]; }
@@ -180,6 +179,15 @@ namespace OMP.Offers.Entities
             get { return Fields.OfferCategoryCategoryFontColorReport[this]; }
             set { Fields.OfferCategoryCategoryFontColorReport[this] = value; }
         }
+
+
+        [DisplayName("Offer Category Order"), SortOrder(1), Expression("jOfferCategory.[Order]")]
+        public Int32? OfferCategoryOrder
+        {
+            get { return Fields.OfferCategoryOrder[this]; }
+            set { Fields.OfferCategoryOrder[this] = value; }
+        }
+
 
         [DisplayName("Task Status Name"), Expression("jTaskStatus.[Name]")]
         [ColoredColumnFormatter(BackgroundProperty = "TaskStatusBackgroundColor", BorderProperty = "TaskStatusBorderColor")]
@@ -243,6 +251,7 @@ namespace OMP.Offers.Entities
             public DecimalField OfferCategoryPrice;
             public StringField OfferCategoryCategoryNameReport;
             public StringField OfferCategoryCategoryFontColorReport;
+            public Int32Field OfferCategoryOrder;
 
             public StringField TaskStatusName;
             public StringField TaskStatusBorderColor;

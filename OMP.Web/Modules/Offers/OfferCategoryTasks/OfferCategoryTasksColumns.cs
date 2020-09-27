@@ -33,5 +33,6 @@ namespace OMP.Offers.Columns
 
         [EditLink]
         public Int32 Order { get; set; }
+        public Int32 OfferCategoryOrder { get; set; }
     }
 }
