@@ -4,7 +4,9 @@
         Name?: string;
         Address?: string;
         Phone?: string;
+        CompanyId?: number;
         CityId?: number;
+        CompanyName?: string;
         CityName?: string;
         CityCountryId?: number;
         InsertUserId?: number;
@@ -37,7 +39,9 @@
             Name = "Name",
             Address = "Address",
             Phone = "Phone",
+            CompanyId = "CompanyId",
             CityId = "CityId",
+            CompanyName = "CompanyName",
             CityName = "CityName",
             CityCountryId = "CityCountryId",
             InsertUserId = "InsertUserId",

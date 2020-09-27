@@ -23,5 +23,8 @@ namespace OMP.Offers.Columns
         public String Phone { get; set; }
         public String CityName { get; set; }
         public String PrimaryAccountName { get; set; }
+
+        [Width(300)]
+        public String AdditionalInfo { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using OMP.Administration.Entities;
 using OMP.Administration.Services;
 using OMP.Localization;
@@ -154,8 +155,7 @@ namespace OMP.Offers.Entities
             get { return Fields.OfferStatusBackgroundColor[this]; }
             set { Fields.OfferStatusBackgroundColor[this] = value; }
         }
-
-
+        
         IIdField IIdRow.IdField
         {
             get { return Fields.OfferId; }

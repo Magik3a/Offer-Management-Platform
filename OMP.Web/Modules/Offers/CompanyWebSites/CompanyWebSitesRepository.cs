@@ -6,9 +6,9 @@ namespace OMP.Offers.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.CompaniesRow;
+    using MyRow = Entities.CompanyWebSitesRow;
 
-    public class CompaniesRepository
+    public class CompanyWebSitesRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -32,7 +32,7 @@ namespace OMP.Offers.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, CompaniesListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -45,28 +45,6 @@ namespace OMP.Offers.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-
-        private class MyListHandler : ListRequestHandler<MyRow, CompaniesListRequest>
-        {
-
-            protected override void ApplyFilters(SqlQuery query)
-            {
-                base.ApplyFilters(query);
-
-                if (Request.CompanyWebSiteId != null)
-                {
-                    var od = Entities.CompanyWebSitesRow.Fields.As("od");
-
-                    query.Where(Criteria.Exists(
-                        query.SubQuery()
-                            .Select("1")
-                            .From(od)
-                            .Where(
-                                od.CompanyId == fld.CompanyId &
-                                od.CompanyWebSiteId == Request.CompanyWebSiteId.Value)
-                            .ToString()));
-                }
-            }
-        }
+        private class MyListHandler : ListRequestHandler<MyRow> { }
     }
 }

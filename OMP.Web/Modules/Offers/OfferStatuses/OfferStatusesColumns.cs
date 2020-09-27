@@ -26,5 +26,8 @@ namespace OMP.Offers.Columns
         [Width(100)]
         [EditLink]
         public String BorderColor { get; set; }
+
+        public bool CountForCompleted { get; set; }
+
     }
 }

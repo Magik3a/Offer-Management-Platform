@@ -1,6 +1,8 @@
 ﻿
 namespace OMP.Offers {
 
+
+    @Serenity.Decorators.panel(true)
     @Serenity.Decorators.registerClass()
     export class CompaniesDialog extends Serenity.EntityDialog<CompaniesRow, any> {
         protected getFormKey() { return CompaniesForm.formKey; }

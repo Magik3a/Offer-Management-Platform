@@ -54,6 +54,13 @@ namespace OMP.Offers.Entities
             set { Fields.BackgroundColor[this] = value; }
         }
 
+        [DisplayName("Count For Completed")]
+        [BooleanEditor, BooleanFormatter]
+        public Boolean? CountForCompleted
+        {
+            get { return Fields.CountForCompleted[this]; }
+            set { Fields.CountForCompleted[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.TaskStatusId; }
@@ -77,6 +84,8 @@ namespace OMP.Offers.Entities
             public StringField Name;
             public StringField BorderColor;
             public StringField BackgroundColor;
+            public BooleanField CountForCompleted;
+
         }
     }
 }

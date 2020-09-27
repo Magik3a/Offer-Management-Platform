@@ -49,7 +49,7 @@ namespace OMP.Offers.Entities
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
-        [DisplayName("Order"), SortOrder(1), DefaultValue(0), NotNull]
+        [DisplayName("Order"), SortOrder(2), DefaultValue(0), NotNull]
         [IntegerEditor(AllowNegatives = false)]
         public Int32? Order
         {
@@ -72,7 +72,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OfferCategoriesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true, CascadeField = "OfferId", CascadeFrom = "OfferCategoryOfferId"
         )]
-        [LookupInclude]
+        [LookupInclude, SortOrder(1)]
         public Int32? OfferCategoryId
         {
             get { return Fields.OfferCategoryId[this]; }
@@ -167,6 +167,7 @@ namespace OMP.Offers.Entities
 
         [DisplayName("Offer Category Category Name Report"), Expression("jOfferCategory.[CategoryNameReport]")]
         [FontColorColumnFormatter(FontColorProperty = "OfferCategoryCategoryFontColorReport")]
+        [SortOrder(1)]
         public String OfferCategoryCategoryNameReport
         {
             get { return Fields.OfferCategoryCategoryNameReport[this]; }

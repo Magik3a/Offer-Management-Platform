@@ -109,6 +109,11 @@ namespace MVC
                 public const string CompaniesIndex = "~/Modules/Offers/Companies/CompaniesIndex.cshtml";
             }
 
+            public static class CompanyWebSites
+            {
+                public const string CompanyWebSitesIndex = "~/Modules/Offers/CompanyWebSites/CompanyWebSitesIndex.cshtml";
+            }
+
             public static class Countries
             {
                 public const string CountriesIndex = "~/Modules/Offers/Countries/CountriesIndex.cshtml";

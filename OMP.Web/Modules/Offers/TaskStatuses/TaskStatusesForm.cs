@@ -18,5 +18,7 @@ namespace OMP.Offers.Forms
         public String BackgroundColor { get; set; }
         [HalfWidth]
         public String BorderColor { get; set; }
+        public bool CountForCompleted { get; set; }
+
     }
 }

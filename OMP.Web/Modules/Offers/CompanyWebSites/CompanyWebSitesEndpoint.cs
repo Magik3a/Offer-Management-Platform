@@ -6,12 +6,12 @@ namespace OMP.Offers.Endpoints
     using Serenity.Services;
     using System.Data;
     using Microsoft.AspNetCore.Mvc;
-    using MyRepository = Repositories.CompaniesRepository;
-    using MyRow = Entities.CompaniesRow;
+    using MyRepository = Repositories.CompanyWebSitesRepository;
+    using MyRow = Entities.CompanyWebSitesRow;
 
-    [Route("Services/Offers/Companies/[action]")]
+    [Route("Services/Offers/CompanyWebSites/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class CompaniesController : ServiceEndpoint
+    public class CompanyWebSitesController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
@@ -24,17 +24,17 @@ namespace OMP.Offers.Endpoints
         {
             return new MyRepository().Update(uow, request);
         }
+ 
+        [HttpPost, AuthorizeDelete(typeof(MyRow))]
+        public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
+        {
+            return new MyRepository().Delete(uow, request);
+        }
 
         [HttpPost, AuthorizeDelete(typeof(MyRow))]
         public UndeleteResponse Undelete(IUnitOfWork uow, UndeleteRequest request)
         {
             return new MyRepository().Undelete(uow, request);
-        }
-
-        [HttpPost, AuthorizeDelete(typeof(MyRow))]
-        public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
-        {
-            return new MyRepository().Delete(uow, request);
         }
 
         [HttpPost]
@@ -44,7 +44,7 @@ namespace OMP.Offers.Endpoints
         }
 
         [HttpPost]
-        public ListResponse<MyRow> List(IDbConnection connection, CompaniesListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
         }

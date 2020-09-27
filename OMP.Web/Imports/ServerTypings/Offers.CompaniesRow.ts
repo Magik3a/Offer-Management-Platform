@@ -4,6 +4,7 @@
         Name?: string;
         Address?: string;
         Phone?: string;
+        AdditionalInfo?: string;
         CityId?: number;
         PrimaryAccountId?: number;
         CityName?: string;
@@ -12,6 +13,7 @@
         PrimaryAccountAddress?: string;
         PrimaryAccountPhone?: string;
         PrimaryAccountCityId?: number;
+        CompanyWebSites?: CompanyWebSitesRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -42,6 +44,7 @@
             Name = "Name",
             Address = "Address",
             Phone = "Phone",
+            AdditionalInfo = "AdditionalInfo",
             CityId = "CityId",
             PrimaryAccountId = "PrimaryAccountId",
             CityName = "CityName",
@@ -50,6 +53,7 @@
             PrimaryAccountAddress = "PrimaryAccountAddress",
             PrimaryAccountPhone = "PrimaryAccountPhone",
             PrimaryAccountCityId = "PrimaryAccountCityId",
+            CompanyWebSites = "CompanyWebSites",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

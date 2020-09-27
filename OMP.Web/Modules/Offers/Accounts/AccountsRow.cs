@@ -49,6 +49,16 @@ namespace OMP.Offers.Entities
             set { Fields.Phone[this] = value; }
         }
 
+        [DisplayName("Company"), ForeignKey(typeof(CompaniesRow), "CompanyId"), LeftJoin("jCompany"), TextualField("CompanyName")]
+        [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1
+            , InplaceAdd = true
+        )]
+        public Int32? CompanyId
+        {
+            get { return Fields.CompanyId[this]; }
+            set { Fields.CompanyId[this] = value; }
+        }
+
         [DisplayName("City"), ForeignKey(typeof(CitiesRow), "CityId"), LeftJoin("jCity"), TextualField("CityName")]
         [LookupEditor(typeof(CitiesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
@@ -58,6 +68,14 @@ namespace OMP.Offers.Entities
             get { return Fields.CityId[this]; }
             set { Fields.CityId[this] = value; }
         }
+
+        [DisplayName("Company Name"), Expression("jCompany.[Name]")]
+        public String CompanyName
+        {
+            get { return Fields.CompanyName[this]; }
+            set { Fields.CompanyName[this] = value; }
+        }
+
 
         [DisplayName("City Name"), Expression("jCity.[Name]")]
         public String CityName
@@ -96,8 +114,10 @@ namespace OMP.Offers.Entities
             public StringField Name;
             public StringField Address;
             public StringField Phone;
+            public Int32Field CompanyId;
             public Int32Field CityId;
 
+            public StringField CompanyName;
             public StringField CityName;
             public Int32Field CityCountryId;
         }

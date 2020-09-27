@@ -1,10 +1,14 @@
 ﻿namespace OMP.Offers {
-    export interface TaskStatusesRow {
-        TaskStatusId?: number;
+    export interface CompanyWebSitesRow {
+        CompanyWebSiteId?: number;
         Name?: string;
-        BorderColor?: string;
-        BackgroundColor?: string;
-        CountForCompleted?: boolean;
+        CompanyId?: number;
+        CompanyName?: string;
+        CompanyAddress?: string;
+        CompanyPhone?: string;
+        CompanyCityId?: number;
+        CompanyPrimaryAccountId?: number;
+        CompanyAdditionalInfo?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -15,15 +19,15 @@
         NoteList?: Administration.NoteRow[];
     }
 
-    export namespace TaskStatusesRow {
-        export const idProperty = 'TaskStatusId';
+    export namespace CompanyWebSitesRow {
+        export const idProperty = 'CompanyWebSiteId';
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'Name';
-        export const localTextPrefix = 'Offers.TaskStatuses';
-        export const lookupKey = 'Offers.TaskStatuses';
+        export const localTextPrefix = 'Offers.CompanyWebSites';
+        export const lookupKey = 'Offers.CompanyWebSites';
 
-        export function getLookup(): Q.Lookup<TaskStatusesRow> {
-            return Q.getLookup<TaskStatusesRow>('Offers.TaskStatuses');
+        export function getLookup(): Q.Lookup<CompanyWebSitesRow> {
+            return Q.getLookup<CompanyWebSitesRow>('Offers.CompanyWebSites');
         }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
@@ -31,11 +35,15 @@
         export const updatePermission = 'Administration:General';
 
         export declare const enum Fields {
-            TaskStatusId = "TaskStatusId",
+            CompanyWebSiteId = "CompanyWebSiteId",
             Name = "Name",
-            BorderColor = "BorderColor",
-            BackgroundColor = "BackgroundColor",
-            CountForCompleted = "CountForCompleted",
+            CompanyId = "CompanyId",
+            CompanyName = "CompanyName",
+            CompanyAddress = "CompanyAddress",
+            CompanyPhone = "CompanyPhone",
+            CompanyCityId = "CompanyCityId",
+            CompanyPrimaryAccountId = "CompanyPrimaryAccountId",
+            CompanyAdditionalInfo = "CompanyAdditionalInfo",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

@@ -11,17 +11,13 @@ namespace OMP.Offers.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("Offers.Accounts")]
-    [BasedOnRow(typeof(Entities.AccountsRow), CheckNames = true)]
-    public class AccountsColumns : OMPLoggingRowColumns
+    [ColumnsScript("Offers.CompanyWebSitesEditor")]
+    [BasedOnRow(typeof(Entities.CompanyWebSitesRow), CheckNames = true)]
+    public class CompanyWebSitesEditorColumns : OMPLoggingRowColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 AccountId { get; set; }
+        public Int32 CompanyWebSiteId { get; set; }
         [EditLink]
         public String Name { get; set; }
-        public String Address { get; set; }
-        public String Phone { get; set; }
-        public String CompanyName { get; set; }
-        public String CityName { get; set; }
     }
 }

@@ -9,14 +9,11 @@ namespace OMP.Offers.Forms
     using System.Collections.Generic;
     using System.IO;
 
-    [FormScript("Offers.Accounts")]
-    [BasedOnRow(typeof(Entities.AccountsRow), CheckNames = true)]
-    public class AccountsForm
+    [FormScript("Offers.CompanyWebSites")]
+    [BasedOnRow(typeof(Entities.CompanyWebSitesRow), CheckNames = true)]
+    public class CompanyWebSitesForm
     {
         public String Name { get; set; }
-        public String Address { get; set; }
-        public String Phone { get; set; }
         public Int32 CompanyId { get; set; }
-        public Int32 CityId { get; set; }
     }
 }
