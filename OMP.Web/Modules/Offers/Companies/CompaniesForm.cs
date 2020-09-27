@@ -19,8 +19,10 @@ namespace OMP.Offers.Forms
         [Category("Extra info")]
         public String Address { get; set; }
         public String Phone { get; set; }
+        [HalfWidth]
         public String AdditionalInfo { get; set; }
 
+        [HalfWidth]
         public List<Entities.CompanyWebSitesRow> CompanyWebSites { get; set; }
 
     }

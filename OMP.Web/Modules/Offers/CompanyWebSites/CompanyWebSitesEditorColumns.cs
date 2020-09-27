@@ -13,11 +13,12 @@ namespace OMP.Offers.Columns
 
     [ColumnsScript("Offers.CompanyWebSitesEditor")]
     [BasedOnRow(typeof(Entities.CompanyWebSitesRow), CheckNames = true)]
-    public class CompanyWebSitesEditorColumns : OMPLoggingRowColumns
+    public class CompanyWebSitesEditorColumns
     {
-        [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 CompanyWebSiteId { get; set; }
+        //[EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
+        //public Int32 CompanyWebSiteId { get; set; }
         [EditLink]
-        public String Name { get; set; }
+        [Width(350)]
+        public String Name { get; set; } 
     }
 }
