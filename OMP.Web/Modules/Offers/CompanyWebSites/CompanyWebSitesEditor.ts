@@ -15,7 +15,7 @@ namespace OMP.Offers {
         validateEntity(row, id) {
             row.CompanyWebSiteId = Q.toId(row.CompanyWebSiteId);
 
-            var sameProduct = Q.tryFirst(this.view.getItems(), x => x.CompanyWebSiteId === row.CompanyWebSiteId);
+            var sameProduct = Q.tryFirst(this.view.getItems(), x => x.Name === row.Name);
             if (sameProduct && this.id(sameProduct) !== id) {
                 Q.alert('This website is already existing!');
                 return false;
