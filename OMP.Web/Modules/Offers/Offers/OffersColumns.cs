@@ -39,12 +39,15 @@ namespace OMP.Offers.Columns
         [Width(300)]
         public String AdditionalInfo { get; set; }
 
+        [FilterOnly]
+        public Int32 OfferStatusId { get; set; }
+
+
+        [FilterOnly]
+        public Int32 SoftwareFrameworkId { get; set; }
 
         [FilterOnly]
         public Int32 CompanyId { get; set; }
-
-        [FilterOnly]
-        public Int32 OfferStatusId { get; set; }
 
         [FilterOnly]
         public Int32 CompanyCityId { get; set; }
