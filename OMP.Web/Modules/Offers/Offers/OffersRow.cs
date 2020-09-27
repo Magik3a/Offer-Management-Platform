@@ -37,6 +37,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Discount"), Size(19), Scale(2), NotNull, DefaultValue(0)]
+        [DisplayFormat("#,##0.00")]
         public Decimal? Discount
         {
             get { return Fields.Discount[this]; }
@@ -172,6 +173,37 @@ WHERE (jOfferCategoryTasks.TaskStatusId is null OR jTaskStatuses.CountForComplet
             set { Fields.NotCompletedTasks[this] = value; }
         }
 
+        [DisplayName("Price"), Size(19), Scale(2), DefaultValue(0)]
+        [Expression(@"
+ (
+SELECT SUM(jOfferCategories.Price)
+  FROM [dbo].[OfferCategories] jOfferCategories 
+WHERE jOfferCategories.OfferId = T0.[OfferId]
+)
+")]
+        [DisplayFormat("#,##0.00")]
+        public Decimal? Price
+        {
+            get { return Fields.Price[this]; }
+            set { Fields.Price[this] = value; }
+        }
+
+
+        [DisplayName("Total Price"), Size(19), Scale(2), DefaultValue(0)]
+        [Expression(@"
+ (
+SELECT SUM(jOfferCategories.Price) - T0.[Discount]
+  FROM [dbo].[OfferCategories] jOfferCategories 
+WHERE jOfferCategories.OfferId = T0.[OfferId]
+)
+")]
+        [DisplayFormat("#,##0.00")]
+        public Decimal? TotalPrice
+        {
+            get { return Fields.TotalPrice[this]; }
+            set { Fields.TotalPrice[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OfferId; }
@@ -213,6 +245,8 @@ WHERE (jOfferCategoryTasks.TaskStatusId is null OR jTaskStatuses.CountForComplet
 
 
             public Int32Field NotCompletedTasks;
+            public DecimalField Price;
+            public DecimalField TotalPrice;
         }
     }
 }

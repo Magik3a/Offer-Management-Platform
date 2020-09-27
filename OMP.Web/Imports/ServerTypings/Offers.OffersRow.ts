@@ -18,6 +18,8 @@
         OfferStatusBorderColor?: string;
         OfferStatusBackgroundColor?: string;
         NotCompletedTasks?: number;
+        Price?: number;
+        TotalPrice?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -62,6 +64,8 @@
             OfferStatusBorderColor = "OfferStatusBorderColor",
             OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
             NotCompletedTasks = "NotCompletedTasks",
+            Price = "Price",
+            TotalPrice = "TotalPrice",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

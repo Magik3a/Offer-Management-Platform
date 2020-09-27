@@ -39,6 +39,13 @@ namespace OMP.Offers {
         protected getGridCanLoad() {
             return super.getGridCanLoad() && !!this.offerId;
         }
+        // Remove quick filters that are not needed here
+        protected createQuickFilters() {
+            super.createQuickFilters();
+
+            var lookupOfferId = this.findQuickFilter(Serenity.LookupEditor, fld.OfferId);
+            lookupOfferId.element.parent().remove("*");
+        }
 
         private _offerId: string;
 
