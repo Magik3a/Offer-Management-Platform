@@ -20,6 +20,7 @@ namespace OMP.Offers.Columns
         [FilterOnly]
         public Int32 CategoryId { get; set; }
 
+        public String OfferName { get; set; }
         [EditLink]
         [Width(500)]
         public String CategoryNameReport { get; set; }

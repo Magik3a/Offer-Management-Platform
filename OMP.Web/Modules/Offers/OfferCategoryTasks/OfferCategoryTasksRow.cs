@@ -49,7 +49,7 @@ namespace OMP.Offers.Entities
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
-        [DisplayName("Order"), SortOrder(1), DefaultValue(0), NotNull]
+        [DisplayName("Order"), SortOrder(2), DefaultValue(0), NotNull]
         [IntegerEditor(AllowNegatives = false)]
         public Int32? Order
         {
@@ -80,9 +80,8 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Task Status"), ForeignKey(typeof(TaskStatusesRow), "TaskStatusId"), LeftJoin("jTaskStatus"), TextualField("TaskStatusName")]
-        [LookupEditor(typeof(TaskStatusesRow), FilterField = "IsActive", FilterValue = 1
-            , InplaceAdd = true
-        )]
+        [LookupEditor(typeof(TaskStatusesRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public Int32? TaskStatusId
         {
             get { return Fields.TaskStatusId[this]; }
@@ -180,6 +179,15 @@ namespace OMP.Offers.Entities
             set { Fields.OfferCategoryCategoryFontColorReport[this] = value; }
         }
 
+
+        [DisplayName("Offer Category Order"), SortOrder(1), Expression("jOfferCategory.[Order]")]
+        public Int32? OfferCategoryOrder
+        {
+            get { return Fields.OfferCategoryOrder[this]; }
+            set { Fields.OfferCategoryOrder[this] = value; }
+        }
+
+
         [DisplayName("Task Status Name"), Expression("jTaskStatus.[Name]")]
         [ColoredColumnFormatter(BackgroundProperty = "TaskStatusBackgroundColor", BorderProperty = "TaskStatusBorderColor")]
         public String TaskStatusName
@@ -242,6 +250,7 @@ namespace OMP.Offers.Entities
             public DecimalField OfferCategoryPrice;
             public StringField OfferCategoryCategoryNameReport;
             public StringField OfferCategoryCategoryFontColorReport;
+            public Int32Field OfferCategoryOrder;
 
             public StringField TaskStatusName;
             public StringField TaskStatusBorderColor;

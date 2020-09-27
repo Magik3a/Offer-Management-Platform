@@ -3,6 +3,7 @@
         Name: Serenity.StringEditor;
         Address: Serenity.StringEditor;
         Phone: Serenity.StringEditor;
+        CompanyId: Serenity.LookupEditor;
         CityId: Serenity.LookupEditor;
     }
 
@@ -24,6 +25,7 @@
                     'Name', w0,
                     'Address', w0,
                     'Phone', w0,
+                    'CompanyId', w1,
                     'CityId', w1
                 ]);
             }

@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using OMP.Administration.Entities;
 using OMP.Administration.Services;
 using OMP.Localization;
@@ -36,6 +37,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Discount"), Size(19), Scale(2), NotNull, DefaultValue(0)]
+        [DisplayFormat("#,##0.00")]
         public Decimal? Discount
         {
             get { return Fields.Discount[this]; }
@@ -155,6 +157,52 @@ namespace OMP.Offers.Entities
             set { Fields.OfferStatusBackgroundColor[this] = value; }
         }
 
+        [DisplayName("Not Completed Tasks"), Expression(@"
+(
+SELECT COUNT(*)
+  FROM [dbo].[OfferCategoryTasks] jOfferCategoryTasks
+LEFT JOIN [dbo].[TaskStatuses] jTaskStatuses ON (jTaskStatuses.TaskStatusId = jOfferCategoryTasks.TaskStatusId) 
+LEFT JOIN [dbo].[OfferCategories] jOfferCategories ON (jOfferCategories.OfferCategoryId = jOfferCategoryTasks.OfferCategoryId) 
+WHERE (jOfferCategoryTasks.TaskStatusId is null OR jTaskStatuses.CountForCompleted <> 1)  AND jOfferCategories.OfferId = T0.[OfferId]
+)
+")]
+        [ColoredColumnFormatter(BackgroundColor = "#FFF700")]
+        public Int32? NotCompletedTasks
+        {
+            get { return Fields.NotCompletedTasks[this]; }
+            set { Fields.NotCompletedTasks[this] = value; }
+        }
+
+        [DisplayName("Price"), Size(19), Scale(2), DefaultValue(0)]
+        [Expression(@"
+ (
+SELECT SUM(jOfferCategories.Price)
+  FROM [dbo].[OfferCategories] jOfferCategories 
+WHERE jOfferCategories.OfferId = T0.[OfferId]
+)
+")]
+        [DisplayFormat("#,##0.00")]
+        public Decimal? Price
+        {
+            get { return Fields.Price[this]; }
+            set { Fields.Price[this] = value; }
+        }
+
+
+        [DisplayName("Total Price"), Size(19), Scale(2), DefaultValue(0)]
+        [Expression(@"
+ (
+SELECT SUM(jOfferCategories.Price) - T0.[Discount]
+  FROM [dbo].[OfferCategories] jOfferCategories 
+WHERE jOfferCategories.OfferId = T0.[OfferId]
+)
+")]
+        [DisplayFormat("#,##0.00")]
+        public Decimal? TotalPrice
+        {
+            get { return Fields.TotalPrice[this]; }
+            set { Fields.TotalPrice[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -194,6 +242,11 @@ namespace OMP.Offers.Entities
             public StringField OfferStatusName;
             public StringField OfferStatusBorderColor;
             public StringField OfferStatusBackgroundColor;
+
+
+            public Int32Field NotCompletedTasks;
+            public DecimalField Price;
+            public DecimalField TotalPrice;
         }
     }
 }

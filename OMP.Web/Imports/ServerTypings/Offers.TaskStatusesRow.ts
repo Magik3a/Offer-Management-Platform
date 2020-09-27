@@ -4,6 +4,7 @@
         Name?: string;
         BorderColor?: string;
         BackgroundColor?: string;
+        CountForCompleted?: boolean;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -34,6 +35,7 @@
             Name = "Name",
             BorderColor = "BorderColor",
             BackgroundColor = "BackgroundColor",
+            CountForCompleted = "CountForCompleted",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

@@ -16,6 +16,7 @@ namespace OMP.Offers.Forms
         public String Name { get; set; }
         public String Address { get; set; }
         public String Phone { get; set; }
+        public Int32 CompanyId { get; set; }
         public Int32 CityId { get; set; }
     }
 }

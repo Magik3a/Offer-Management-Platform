@@ -22,7 +22,7 @@ https://github.com/volkanceylan/Serenity
     - Set to false in AppSettings.json to disable registration and the link in the login page
   - MultipleFileDownloadFormatter(ShowFileNames = false)
     - Like FileDownloadFormatter but for multiple files 
-  - ColoredColumnFormatter(BackgroundProperty = "", BorderProperty = "", HideText = false)
+  - ColoredColumnFormatter(BackgroundColor = "#000000", BackgroundProperty = "", BorderColor ="#000000", BorderProperty = "", HideText = false)
     - Can be used on columns with color to hide the hex color code and to show background color for the column. 
   - FontColorColumnFormatter(FontColorProperty = "")
     - Use to set font color on column text

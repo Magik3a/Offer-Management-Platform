@@ -88,3 +88,18 @@
 .s-Offers-OfferAttachmentsDialog .caption {
   width: 150px;
 }
+.s-Offers-CompanyWebSitesDialog > .size {
+  width: 450px;
+}
+.s-Offers-CompanyWebSitesDialog .caption {
+  width: 50px;
+}
+.s-Offers-CompanyWebSitesEditorDialog > .size {
+  width: 450px;
+}
+.s-Offers-CompanyWebSitesEditorDialog .caption {
+  width: 50px;
+}
+.task-status-id .select2-container {
+  min-width: 200px;
+}

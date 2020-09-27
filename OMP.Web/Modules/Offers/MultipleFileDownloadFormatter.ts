@@ -29,6 +29,9 @@ namespace OMP.Offers {
                 } else if (Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".png") || Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".jpg")) {
                     backgroundStyle += "url(/Content/serenity/images/jpg.png) no-repeat left 1px;";
 
+                } else if (Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".pptx") || Q.endsWith(Q.htmlEncode(files[i].OriginalName), ".ppsx")) {
+                    backgroundStyle += "url(/Content/serenity/images/projection-screen-presentation.png) no-repeat left 1px;";
+
                 }
                 columnValue += "<a style='" + backgroundStyle + "' class='file-download-link' target='_blank' title='" + files[i].OriginalName + "' href='" +
                     Q.attrEncode(downloadUrl) + "'>" + fileDownloadName + ' </a>';

@@ -50,6 +50,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Price"), Size(19), Scale(2), NotNull, DefaultValue(0)]
+        [DisplayFormat("#,##0.00")]
         public Decimal? Price
         {
             get { return Fields.Price[this]; }

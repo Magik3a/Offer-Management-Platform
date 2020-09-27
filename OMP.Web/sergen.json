@@ -57,6 +57,12 @@
           "PermissionKey": "Administration:General"
         },
         {
+          "Tablename": "dbo.CompanyWebSites",
+          "Identifier": "CompanyWebSites",
+          "Module": "Offers",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Countries",
           "Identifier": "Countries",
           "Module": "Offers",

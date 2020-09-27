@@ -634,6 +634,7 @@ declare namespace OMP.Offers {
         Name: Serenity.StringEditor;
         Address: Serenity.StringEditor;
         Phone: Serenity.StringEditor;
+        CompanyId: Serenity.LookupEditor;
         CityId: Serenity.LookupEditor;
     }
     class AccountsForm extends Serenity.PrefixedContext {
@@ -698,7 +699,9 @@ declare namespace OMP.Offers {
         Name?: string;
         Address?: string;
         Phone?: string;
+        CompanyId?: number;
         CityId?: number;
+        CompanyName?: string;
         CityName?: string;
         CityCountryId?: number;
         InsertUserId?: number;
@@ -726,7 +729,9 @@ declare namespace OMP.Offers {
             Name = "Name",
             Address = "Address",
             Phone = "Phone",
+            CompanyId = "CompanyId",
             CityId = "CityId",
+            CompanyName = "CompanyName",
             CityName = "CityName",
             CityCountryId = "CityCountryId",
             InsertUserId = "InsertUserId",
@@ -1003,10 +1008,12 @@ declare namespace OMP.Offers {
 declare namespace OMP.Offers {
     interface CompaniesForm {
         Name: Serenity.StringEditor;
-        Address: Serenity.StringEditor;
-        Phone: Serenity.StringEditor;
         CityId: Serenity.LookupEditor;
         PrimaryAccountId: Serenity.LookupEditor;
+        Address: Serenity.StringEditor;
+        Phone: Serenity.StringEditor;
+        AdditionalInfo: Serenity.TextAreaEditor;
+        CompanyWebSites: CompanyWebSitesEditor;
     }
     class CompaniesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1067,11 +1074,17 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
+    interface CompaniesListRequest extends Serenity.ListRequest {
+        CompanyWebSiteId?: number;
+    }
+}
+declare namespace OMP.Offers {
     interface CompaniesRow {
         CompanyId?: number;
         Name?: string;
         Address?: string;
         Phone?: string;
+        AdditionalInfo?: string;
         CityId?: number;
         PrimaryAccountId?: number;
         CityName?: string;
@@ -1080,6 +1093,7 @@ declare namespace OMP.Offers {
         PrimaryAccountAddress?: string;
         PrimaryAccountPhone?: string;
         PrimaryAccountCityId?: number;
+        CompanyWebSites?: CompanyWebSitesRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1105,6 +1119,7 @@ declare namespace OMP.Offers {
             Name = "Name",
             Address = "Address",
             Phone = "Phone",
+            AdditionalInfo = "AdditionalInfo",
             CityId = "CityId",
             PrimaryAccountId = "PrimaryAccountId",
             CityName = "CityName",
@@ -1113,6 +1128,7 @@ declare namespace OMP.Offers {
             PrimaryAccountAddress = "PrimaryAccountAddress",
             PrimaryAccountPhone = "PrimaryAccountPhone",
             PrimaryAccountCityId = "PrimaryAccountCityId",
+            CompanyWebSites = "CompanyWebSites",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1132,7 +1148,7 @@ declare namespace OMP.Offers {
         function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: CompaniesListRequest, onSuccess?: (response: Serenity.ListResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Offers/Companies/Create",
             Update = "Offers/Companies/Update",
@@ -1140,6 +1156,102 @@ declare namespace OMP.Offers {
             Delete = "Offers/Companies/Delete",
             Retrieve = "Offers/Companies/Retrieve",
             List = "Offers/Companies/List"
+        }
+    }
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+}
+declare namespace OMP.Offers {
+    interface CompanyWebSitesEditorForm {
+        Name: Serenity.StringEditor;
+    }
+    class CompanyWebSitesEditorForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface CompanyWebSitesForm {
+        Name: Serenity.StringEditor;
+        CompanyId: Serenity.LookupEditor;
+    }
+    class CompanyWebSitesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace OMP.Offers {
+    interface CompanyWebSitesRow {
+        CompanyWebSiteId?: number;
+        Name?: string;
+        CompanyId?: number;
+        CompanyName?: string;
+        CompanyAddress?: string;
+        CompanyPhone?: string;
+        CompanyCityId?: number;
+        CompanyPrimaryAccountId?: number;
+        CompanyAdditionalInfo?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+        NoteList?: Administration.NoteRow[];
+    }
+    namespace CompanyWebSitesRow {
+        const idProperty = "CompanyWebSiteId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Offers.CompanyWebSites";
+        const lookupKey = "Offers.CompanyWebSites";
+        function getLookup(): Q.Lookup<CompanyWebSitesRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CompanyWebSiteId = "CompanyWebSiteId",
+            Name = "Name",
+            CompanyId = "CompanyId",
+            CompanyName = "CompanyName",
+            CompanyAddress = "CompanyAddress",
+            CompanyPhone = "CompanyPhone",
+            CompanyCityId = "CompanyCityId",
+            CompanyPrimaryAccountId = "CompanyPrimaryAccountId",
+            CompanyAdditionalInfo = "CompanyAdditionalInfo",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+            NoteList = "NoteList"
+        }
+    }
+}
+declare namespace OMP.Offers {
+    namespace CompanyWebSitesService {
+        const baseUrl = "Offers/CompanyWebSites";
+        function Create(request: Serenity.SaveRequest<CompanyWebSitesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CompanyWebSitesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Undelete(request: Serenity.UndeleteRequest, onSuccess?: (response: Serenity.UndeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CompanyWebSitesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CompanyWebSitesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Offers/CompanyWebSites/Create",
+            Update = "Offers/CompanyWebSites/Update",
+            Delete = "Offers/CompanyWebSites/Delete",
+            Undelete = "Offers/CompanyWebSites/Undelete",
+            Retrieve = "Offers/CompanyWebSites/Retrieve",
+            List = "Offers/CompanyWebSites/List"
         }
     }
 }
@@ -1592,6 +1704,7 @@ declare namespace OMP.Offers {
         OfferCategoryPrice?: number;
         OfferCategoryCategoryNameReport?: string;
         OfferCategoryCategoryFontColorReport?: string;
+        OfferCategoryOrder?: number;
         TaskStatusName?: string;
         TaskStatusBorderColor?: string;
         TaskStatusBackgroundColor?: string;
@@ -1636,6 +1749,7 @@ declare namespace OMP.Offers {
             OfferCategoryPrice = "OfferCategoryPrice",
             OfferCategoryCategoryNameReport = "OfferCategoryCategoryNameReport",
             OfferCategoryCategoryFontColorReport = "OfferCategoryCategoryFontColorReport",
+            OfferCategoryOrder = "OfferCategoryOrder",
             TaskStatusName = "TaskStatusName",
             TaskStatusBorderColor = "TaskStatusBorderColor",
             TaskStatusBackgroundColor = "TaskStatusBackgroundColor",
@@ -1677,6 +1791,7 @@ declare namespace OMP.Offers {
         Name: Serenity.StringEditor;
         BackgroundColor: ColorPickerEditor;
         BorderColor: ColorPickerEditor;
+        CountForCompleted: Serenity.BooleanEditor;
     }
     class OfferStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1736,6 +1851,7 @@ declare namespace OMP.Offers {
         Name?: string;
         BorderColor?: string;
         BackgroundColor?: string;
+        CountForCompleted?: boolean;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1761,6 +1877,7 @@ declare namespace OMP.Offers {
             Name = "Name",
             BorderColor = "BorderColor",
             BackgroundColor = "BackgroundColor",
+            CountForCompleted = "CountForCompleted",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1888,6 +2005,9 @@ declare namespace OMP.Offers {
         OfferStatusName?: string;
         OfferStatusBorderColor?: string;
         OfferStatusBackgroundColor?: string;
+        NotCompletedTasks?: number;
+        Price?: number;
+        TotalPrice?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1926,6 +2046,9 @@ declare namespace OMP.Offers {
             OfferStatusName = "OfferStatusName",
             OfferStatusBorderColor = "OfferStatusBorderColor",
             OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
+            NotCompletedTasks = "NotCompletedTasks",
+            Price = "Price",
+            TotalPrice = "TotalPrice",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1963,6 +2086,7 @@ declare namespace OMP.Offers {
         Name: Serenity.StringEditor;
         BackgroundColor: ColorPickerEditor;
         BorderColor: ColorPickerEditor;
+        CountForCompleted: Serenity.BooleanEditor;
     }
     class TaskStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2022,6 +2146,7 @@ declare namespace OMP.Offers {
         Name?: string;
         BorderColor?: string;
         BackgroundColor?: string;
+        CountForCompleted?: boolean;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -2047,6 +2172,7 @@ declare namespace OMP.Offers {
             Name = "Name",
             BorderColor = "BorderColor",
             BackgroundColor = "BackgroundColor",
+            CountForCompleted = "CountForCompleted",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2453,6 +2579,9 @@ declare namespace OMP.LanguageList {
 }
 declare namespace OMP.ScriptInitialization {
 }
+declare namespace OMP.TabsExtensions {
+    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
+}
 declare namespace OMP {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
         constructor();
@@ -2738,7 +2867,9 @@ declare namespace OMP.Offers {
         format(ctx: Slick.FormatterContext): string;
         hideText: boolean;
         backgroundProperty: string;
+        backgroundColor: string;
         borderProperty: string;
+        borderColor: string;
         initializeColumn(column: Slick.Column): void;
     }
 }
@@ -2851,6 +2982,50 @@ declare namespace OMP.Offers {
     class CompaniesGrid extends Serenity.EntityGrid<CompaniesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof CompaniesDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+    }
+}
+declare namespace OMP.Offers {
+    class CompanyWebSitesDialog extends Serenity.EntityDialog<CompanyWebSitesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected getIsActiveProperty(): string;
+        protected form: CompanyWebSitesForm;
+    }
+}
+declare namespace OMP.Offers {
+    class CompanyWebSitesEditor extends Common.GridEditorBase<CompanyWebSitesRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CompanyWebSitesEditorDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
+    }
+}
+declare namespace OMP.Offers {
+    class CompanyWebSitesEditorDialog extends Common.GridEditorDialog<CompanyWebSitesRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected form: CompanyWebSitesEditorForm;
+    }
+}
+declare namespace OMP.Offers {
+    class CompanyWebSitesGrid extends Serenity.EntityGrid<CompanyWebSitesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CompanyWebSitesDialog;
         protected getIdProperty(): string;
         protected getInsertPermission(): string;
         protected getLocalTextPrefix(): string;
@@ -2971,6 +3146,7 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         private treeMixin;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
     }
@@ -3017,6 +3193,7 @@ declare namespace OMP.Offers {
         protected getInitialTitle(): any;
         protected onViewProcessData(response: Serenity.ListResponse<OfferAttachmentsRow>): Serenity.ListResponse<OfferAttachmentsRow>;
         protected getGridCanLoad(): boolean;
+        protected createQuickFilters(): void;
         private _offerId;
         get offerId(): string;
         set offerId(value: string);
@@ -3156,7 +3333,4 @@ declare namespace OMP.Offers {
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
     }
-}
-declare namespace OMP.TabsExtensions {
-    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
 }

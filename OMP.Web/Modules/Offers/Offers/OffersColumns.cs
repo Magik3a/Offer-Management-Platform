@@ -25,8 +25,11 @@ namespace OMP.Offers.Columns
         public String CompanyName { get; set; }
         [Width(150)]
         public String OfferStatusName { get; set; }
+        public Decimal Price { get; set; }
 
         public Decimal Discount { get; set; }
+        public Decimal TotalPrice { get; set; }
+        public Int32 NotCompletedTasks { get; set; }
         public Int32 MinimumDaysDevelopmentTime { get; set; }
         public Int32 MaximumDaysDevelopmentTime { get; set; }
         public DateTime StartDate { get; set; }

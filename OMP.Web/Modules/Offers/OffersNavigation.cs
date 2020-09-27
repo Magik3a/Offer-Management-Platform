@@ -6,6 +6,7 @@ using MyPages = OMP.Offers.Pages;
 [assembly: NavigationMenu(1000, "Organization", icon: "fa-sitemap")]
 [assembly: NavigationLink(1000, "Organization/Accounts", typeof(MyPages.AccountsController), icon: "fa-credit-card")]
 [assembly: NavigationLink(1000, "Organization/Companies", typeof(MyPages.CompaniesController), icon: "fa-industry")]
+[assembly: NavigationLink(1000, "Organization/Company Web Sites", typeof(MyPages.CompanyWebSitesController), icon: "fa-external-link")]
 [assembly: NavigationLink(1000, "Organization/Countries", typeof(MyPages.CountriesController), icon: "fa-map-o")]
 [assembly: NavigationLink(1000, "Organization/Cities", typeof(MyPages.CitiesController), icon: "fa-puzzle-piece")]
 

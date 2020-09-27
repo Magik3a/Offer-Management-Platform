@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using OMP.Administration.Entities;
 using OMP.Administration.Services;
 using OMP.Localization;
@@ -11,10 +12,11 @@ namespace OMP.Offers.Entities
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.IO;
 
     [ConnectionKey("Offers"), Module("Offers"), TableName("[dbo].[Companies]")]
-    [DisplayName("Companies"), InstanceName("Companies")]
+    [DisplayName("Companies"), InstanceName("Company")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LocalizationRow(typeof(CompaniesLangRow))]
@@ -47,6 +49,14 @@ namespace OMP.Offers.Entities
         {
             get { return Fields.Phone[this]; }
             set { Fields.Phone[this] = value; }
+        }
+
+        [DisplayName("Additional Info")]
+        [TextAreaEditor(Rows = 10)]
+        public String AdditionalInfo
+        {
+            get { return Fields.AdditionalInfo[this]; }
+            set { Fields.AdditionalInfo[this] = value; }
         }
 
         [DisplayName("City"), ForeignKey(typeof(CitiesRow), "CityId"), LeftJoin("jCity"), TextualField("CityName")]
@@ -111,6 +121,13 @@ namespace OMP.Offers.Entities
             set { Fields.PrimaryAccountCityId[this] = value; }
         }
 
+        [DisplayName("Company Web Sites"), MasterDetailRelation(foreignKey: "CompanyId"), NotMapped]
+        [CompanyWebSitesEditor]
+        public List<CompanyWebSitesRow> CompanyWebSites
+        {
+            get { return Fields.CompanyWebSites[this]; }
+            set { Fields.CompanyWebSites[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.CompanyId; }
@@ -134,6 +151,7 @@ namespace OMP.Offers.Entities
             public StringField Name;
             public StringField Address;
             public StringField Phone;
+            public StringField AdditionalInfo;
             public Int32Field CityId;
             public Int32Field PrimaryAccountId;
 
@@ -144,6 +162,9 @@ namespace OMP.Offers.Entities
             public StringField PrimaryAccountAddress;
             public StringField PrimaryAccountPhone;
             public Int32Field PrimaryAccountCityId;
+
+
+            public RowListField<CompanyWebSitesRow> CompanyWebSites;
         }
     }
 }

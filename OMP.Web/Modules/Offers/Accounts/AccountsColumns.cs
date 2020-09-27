@@ -21,6 +21,7 @@ namespace OMP.Offers.Columns
         public String Name { get; set; }
         public String Address { get; set; }
         public String Phone { get; set; }
+        public String CompanyName { get; set; }
         public String CityName { get; set; }
     }
 }

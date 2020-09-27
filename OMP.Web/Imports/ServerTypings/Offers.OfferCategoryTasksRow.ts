@@ -19,6 +19,7 @@
         OfferCategoryPrice?: number;
         OfferCategoryCategoryNameReport?: string;
         OfferCategoryCategoryFontColorReport?: string;
+        OfferCategoryOrder?: number;
         TaskStatusName?: string;
         TaskStatusBorderColor?: string;
         TaskStatusBackgroundColor?: string;
@@ -68,6 +69,7 @@
             OfferCategoryPrice = "OfferCategoryPrice",
             OfferCategoryCategoryNameReport = "OfferCategoryCategoryNameReport",
             OfferCategoryCategoryFontColorReport = "OfferCategoryCategoryFontColorReport",
+            OfferCategoryOrder = "OfferCategoryOrder",
             TaskStatusName = "TaskStatusName",
             TaskStatusBorderColor = "TaskStatusBorderColor",
             TaskStatusBackgroundColor = "TaskStatusBackgroundColor",

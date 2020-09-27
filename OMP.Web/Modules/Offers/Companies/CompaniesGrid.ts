@@ -14,5 +14,25 @@ namespace OMP.Offers {
         constructor(container: JQuery) {
             super(container);
         }
+
+
+        protected getQuickFilters() {
+            var filters = super.getQuickFilters();
+
+            filters.push({
+                type: Serenity.LookupEditor,
+                options: {
+                    lookupKey: CompanyWebSitesRow.lookupKey
+                },
+                field: 'CompanyWebSiteId',
+                title: 'Contains Web Site',
+                handler: w => {
+                    (this.view.params as CompaniesListRequest).CompanyWebSiteId = Q.toId(w.value);
+                },
+                cssClass: 'hidden-xs'
+            });
+
+            return filters;
+        }
     }
 }

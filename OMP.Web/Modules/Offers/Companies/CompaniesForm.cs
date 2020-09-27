@@ -14,9 +14,14 @@ namespace OMP.Offers.Forms
     public class CompaniesForm
     {
         public String Name { get; set; }
-        public String Address { get; set; }
-        public String Phone { get; set; }
         public Int32 CityId { get; set; }
         public Int32 PrimaryAccountId { get; set; }
+        [Category("Extra info")]
+        public String Address { get; set; }
+        public String Phone { get; set; }
+        public String AdditionalInfo { get; set; }
+
+        public List<Entities.CompanyWebSitesRow> CompanyWebSites { get; set; }
+
     }
 }
