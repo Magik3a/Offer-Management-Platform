@@ -3135,6 +3135,7 @@ declare namespace OMP.Offers {
         constructor(container: JQuery);
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected getButtons(): Serenity.ToolButton[];
+        protected markupReady(): void;
         protected getColumns(): Slick.Column[];
         protected onClick(e: JQueryEventObject, row: number, cell: number): void;
     }

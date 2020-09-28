@@ -1,6 +1,7 @@
 ﻿
 namespace OMP.Offers {
 
+    import fld = OffersRow.Fields;
     @Serenity.Decorators.registerClass()
     export class OffersGrid extends Serenity.EntityGrid<OffersRow, any> {
         protected getColumnsKey() { return 'Offers.Offers'; }
@@ -49,9 +50,43 @@ namespace OMP.Offers {
                 onViewSubmit: () => this.onViewSubmit()
             }));
 
+            buttons.push({
+                title: 'Group by Company',
+                cssClass: 'expand-all-button offer-group-button',
+                onClick: () => this.view.setGrouping(
+                    [{
+                        getter: fld.CompanyName
+                  }])
+              },
+              {
+                title: 'Group By Company and Offer Status',
+                cssClass: 'expand-all-button offer-group-button',
+                onClick: () => this.view.setGrouping(
+                  [{
+                      formatter: x => '' + x.value + ' (' + x.count + ' items)',
+                      getter: fld.CompanyName
+                  }, {
+                          formatter: x => '' + x.value + ' (' + x.count + ' items)',
+                          getter: fld.OfferStatusName
+                  }])
+              }, {
+                title: 'No Grouping',
+                cssClass: 'collapse-all-button',
+                onClick: () => this.view.setGrouping([])
+              });
             return buttons;
         }
 
+        protected markupReady() {
+          super.markupReady();
+          this.view.setGrouping(
+            [{
+              formatter: x => '' + x.value + ' (' + x.count + ' items)',
+              getter: fld.CompanyName
+            }]);
+          // expanding all level 0 (Country) and level 1 (City) groups initially
+          this.view.expandAllGroups(null);
+        }
         protected getColumns() {
             var columns = super.getColumns();
 

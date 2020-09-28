@@ -78,7 +78,7 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
-        [QuickFilter, NotNull]
+        [QuickFilter(CssClass ="filter-add-button-hidden"), NotNull]
         public Int32? CompanyId
         {
             get { return Fields.CompanyId[this]; }
@@ -89,18 +89,18 @@ namespace OMP.Offers.Entities
         [LookupEditor(typeof(OfferStatusesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
-        [QuickFilter]
+        [QuickFilter(CssClass = "filter-add-button-hidden")]
         public Int32? OfferStatusId
         {
             get { return Fields.OfferStatusId[this]; }
             set { Fields.OfferStatusId[this] = value; }
         }
 
-        [DisplayName("Software Frameworks"), NotNull, ForeignKey(typeof(SoftwareFrameworksRow), "SoftwareFrameworkId"), LeftJoin("jSoftwareFrameworks"), TextualField("SoftwareFrameworkName")]
+        [DisplayName("Software Framework"), NotNull, ForeignKey(typeof(SoftwareFrameworksRow), "SoftwareFrameworkId"), LeftJoin("jSoftwareFrameworks"), TextualField("SoftwareFrameworkName")]
         [LookupEditor(typeof(SoftwareFrameworksRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
-        [QuickFilter]
+        [QuickFilter(CssClass = "filter-add-button-hidden")]
         public Int32? SoftwareFrameworkId
         {
             get { return Fields.SoftwareFrameworkId[this]; }
@@ -129,7 +129,7 @@ namespace OMP.Offers.Entities
         }
 
         [DisplayName("Company City"), Expression("jCompany.[CityId]")]
-        [QuickFilter]
+        [QuickFilter(CssClass = "filter-add-button-hidden")]
         [LookupEditor(typeof(CitiesRow), FilterField = "IsActive", FilterValue = 1
             , InplaceAdd = true
         )]
