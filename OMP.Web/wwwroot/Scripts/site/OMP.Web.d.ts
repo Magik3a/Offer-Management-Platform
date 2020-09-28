@@ -2632,6 +2632,7 @@ declare namespace OMP {
 declare namespace OMP.Common {
     class LanguageSelection extends Serenity.Widget<any> {
         constructor(select: JQuery, currentLanguage: string);
+        static getCurrentLanguageDbId(): number;
     }
 }
 declare namespace OMP.Common {
@@ -3129,6 +3130,7 @@ declare namespace OMP.Offers {
         getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         loadEntity(entity: OffersRow): void;
+        protected getCloningEntity(): OffersRow;
         private setLocalization;
         private formatAdditionalInfo;
         onSaveSuccess(response: any): void;

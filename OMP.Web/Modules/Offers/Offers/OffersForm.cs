@@ -14,7 +14,7 @@ namespace OMP.Offers.Forms
     public class OffersForm
     {
         [Category("Required")]
-        [DefaultValue("Offer for updating system")]
+        [Placeholder("Choose Company to auto format name")]
         public String Name { get; set; }
         [QuarterWidth]
         public DateTime StartDate { get; set; }

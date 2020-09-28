@@ -188,6 +188,7 @@ namespace OMP
 
             public static class Offers
             {
+                public static LocalText OfferNamePrefix = "Offer for updating system";
                 public static LocalText ValidationErrorMaximumDays = "Maximum Days Development Time can't be higher than Maximum Days Development Time!";
                 public static LocalText OfferReportPage = "page";
                 public static LocalText OfferReportTotalPrice = "Total Price";
@@ -218,7 +219,6 @@ namespace OMP
                 "records that depends on this one!";
             public static LocalText SavePrimaryKeyError = "Can't save record. There is another record with the same {1} value!";
         }
-
-
+        
     }
 }

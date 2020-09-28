@@ -56,6 +56,7 @@
   "Site.Layout.SaveChangesButton": "Запази Промените",
   "Site.Layout.Theme": "Тема",
   "Site.NoGroupingButton": "Без групиране ",
+  "Site.Offers.OfferNamePrefix": "Оферта за обновяване на система",
   "Site.Offers.OfferReportTotalPrice": "Тотал цена",
   "Validation.AuthenticationError": "Невалидно потребителско име или парола!",
   "Validation.CantFindUserWithEmail": "Невалиден имейл адрес!",

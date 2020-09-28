@@ -60,6 +60,20 @@ namespace OMP.Offers {
                 }
                 this.setLocalization();
             });
+
+
+            this.form.CompanyId.changeSelect2(e => {
+                if (!this.form.CompanyId.value) {
+                return;
+                }
+                if (this.isNew()) {
+                  Offers.CompaniesService.Retrieve({ EntityId: this.form.CompanyId.value },
+                    response => {
+                      this.form.Name.value = "Offer for updating system" + " - " + response.Entity.Name;
+                    });
+                  this.setLocalization();
+                }
+            });
         }
 
         getToolbarButtons() {
@@ -80,6 +94,7 @@ namespace OMP.Offers {
 
         protected updateInterface() {
             super.updateInterface();
+            this.cloneButton.toggle(this.isEditMode());
 
             this.toolbar.findButton('export-pdf-button').toggle(this.isEditMode());
         }
@@ -95,13 +110,38 @@ namespace OMP.Offers {
                 this.offerCategoryTasksGrid.offerId = entity.OfferId + "";
                 this.offerCategoriesGrid.offerId = entity.OfferId + "";
                 this.offerOfferAttachmentsGrid.offerId = entity.OfferId + "";
-
+                //this.form.Name.value = entity.Name;
 
             } else {
+                
+                if (this.form.CompanyId.text) {
+                  Offers.CompaniesService.Retrieve({ EntityId: this.form.CompanyId.value },
+                    response => {
+                      this.form.Name.value = "Offer for updating system" + " - " + response.Entity.Name;
+                    });
+
+                } else {
+                  this.form.Name.value = "Offer for updating system";
+                }
                 this.setLocalization();
             }
         }
+        protected getCloningEntity() {
+            var clone = super.getCloningEntity();
 
+            // add (Clone) suffix if it's not already added
+            var suffix = ' (Clone)';
+            if (!Q.endsWith(clone.Name || '', suffix)) {
+                clone.Name = (clone.Name || '') + suffix;
+            }
+
+            clone.InsertUserId = null;
+            clone.InsertDate = null;
+            clone.UpdateDate = null;
+            clone.UpdateUserId = null;
+            clone.IsActive = null;
+            return clone;
+        }
         private setLocalization() {
 
             let opt = {
@@ -124,28 +164,30 @@ namespace OMP.Offers {
                             for (var language of Object.keys(response.Localizations)) {
                                 var entity = response.Localizations[language];
 
-
                                 for (var key of Object.keys(entity)) {
-                                    if (key ===
-                                        UserOfferSettingsRow.Fields
-                                            .OfferInvoiceAdditionalInfoFormatter) {
+                                    if (key === UserOfferSettingsRow.Fields.OfferInvoiceAdditionalInfoFormatter) {
 
                                         if (key ===
                                             "OfferInvoiceAdditionalInfoFormatter"
                                         ) {
-                                            copy[language + '$AdditionalInfo'] =
-                                                this.formatAdditionalInfo(entity[key]);
-
+                                            copy[language + '$AdditionalInfo'] = this.formatAdditionalInfo(entity[key]);
                                         } else {
-
-                                            copy[language + '$AdditionalInfo'] = entity[key];
+                                          copy[language + '$AdditionalInfo'] = entity[key];
                                         }
                                     }
+                                }
 
-                                    //copy[language + '$' + key] = entity[key];
+                                if (OMP.Common.LanguageSelection.getCurrentLanguageDbId() + "" === language) {
+                                  if (this.form.CompanyId.text) {
+                                      copy[language + '$Name'] = Q.tryGetText("Site.Offers.OfferNamePrefix") + " - " + Offers.CompaniesRow.getLookup().itemById[this.form.CompanyId.value].Name;
+                                  } else {
+                                      copy[language + '$Name'] = Q.tryGetText("Site.Offers.OfferNamePrefix");
+                                  }
                                 }
                             }
+
                         }
+
                         this.localizationGrid.load(copy);
                         this.setLocalizationGridCurrentValues();
                         this.localizationPendingValue = this.getLocalizationGridValue();
