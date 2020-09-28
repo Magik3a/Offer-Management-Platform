@@ -2775,7 +2775,9 @@ declare namespace OMP.Offers {
         format(ctx: Slick.FormatterContext): string;
         hideText: boolean;
         backgroundProperty: string;
+        backgroundColor: string;
         borderProperty: string;
+        borderColor: string;
         initializeColumn(column: Slick.Column): void;
     }
 }

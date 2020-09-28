@@ -17,17 +17,17 @@ namespace OMP.Offers {
         }
 
         protected getQuickFilters() {
-          var flt = super.getQuickFilters();
+          let flt = super.getQuickFilters();
 
           var q = Q.parseQueryString();
             if (q["OfferStatusId"]) {
-            var category = Q.tryFirst(flt, x => x.field == "OfferStatusId");
+            let category = Q.tryFirst(flt, x => x.field == "OfferStatusId");
             category.init = e => {
                 e.element.getWidget(Serenity.LookupEditor).value = q["OfferStatusId"];
             };
           }
             if (q["SoftwareFrameworkId"]) {
-                var category = Q.tryFirst(flt, x => x.field == "SoftwareFrameworkId");
+                let category = Q.tryFirst(flt, x => x.field == "SoftwareFrameworkId");
               category.init = e => {
                   e.element.getWidget(Serenity.LookupEditor).value = q["SoftwareFrameworkId"];
               };

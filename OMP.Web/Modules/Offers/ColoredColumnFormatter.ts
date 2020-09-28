@@ -33,7 +33,6 @@ namespace OMP.Offers {
             }
 
 
-
             //return "<span style='background-color: " + color +";'>" + text + '</span>';
 
             return "<div class='' style='height: 100%; width: 100%; max-width: 100%; white-space:pre; " + backgroundColorText + " " + borderColorText + " ' > " + text + '</div>' ;
