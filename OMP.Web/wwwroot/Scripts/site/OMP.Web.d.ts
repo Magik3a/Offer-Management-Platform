@@ -1896,6 +1896,7 @@ declare namespace OMP.Offers {
         AdditionalInfo?: string;
         CompanyId?: number;
         OfferStatusId?: number;
+        SoftwareFrameworkId?: number;
         CompanyName?: string;
         CompanyAddress?: string;
         CompanyPhone?: string;
@@ -1904,6 +1905,9 @@ declare namespace OMP.Offers {
         OfferStatusName?: string;
         OfferStatusBorderColor?: string;
         OfferStatusBackgroundColor?: string;
+        SoftwareFrameworkName?: string;
+        SoftwareFrameworkBorderColor?: string;
+        SoftwareFrameworkBackgroundColor?: string;
         NotCompletedTasks?: number;
         Price?: number;
         TotalPrice?: number;
@@ -1937,6 +1941,7 @@ declare namespace OMP.Offers {
             AdditionalInfo = "AdditionalInfo",
             CompanyId = "CompanyId",
             OfferStatusId = "OfferStatusId",
+            SoftwareFrameworkId = "SoftwareFrameworkId",
             CompanyName = "CompanyName",
             CompanyAddress = "CompanyAddress",
             CompanyPhone = "CompanyPhone",
@@ -1945,6 +1950,9 @@ declare namespace OMP.Offers {
             OfferStatusName = "OfferStatusName",
             OfferStatusBorderColor = "OfferStatusBorderColor",
             OfferStatusBackgroundColor = "OfferStatusBackgroundColor",
+            SoftwareFrameworkName = "SoftwareFrameworkName",
+            SoftwareFrameworkBorderColor = "SoftwareFrameworkBorderColor",
+            SoftwareFrameworkBackgroundColor = "SoftwareFrameworkBackgroundColor",
             NotCompletedTasks = "NotCompletedTasks",
             Price = "Price",
             TotalPrice = "TotalPrice",
@@ -2873,6 +2881,9 @@ declare namespace OMP.Offers {
         protected getUpdatePermission(): string;
         protected getIsActiveProperty(): string;
         protected form: CompaniesForm;
+        private offersGrid;
+        constructor();
+        loadEntity(entity: OffersRow): void;
     }
 }
 declare namespace OMP.Offers {
@@ -3444,5 +3455,28 @@ declare namespace OMP.Offers {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace OMP.Offers {
+    class CompanyOffersDialog extends OffersDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class CompanyOffersGrid extends OffersGrid {
+        protected getDialogType(): typeof CompanyOffersDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected createQuickFilters(): void;
+        protected markupReady(): void;
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected onViewProcessData(response: Serenity.ListResponse<OfferCategoriesRow>): Serenity.ListResponse<OfferCategoriesRow>;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _companyId;
+        get companyId(): string;
+        set companyId(value: string);
     }
 }

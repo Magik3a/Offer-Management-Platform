@@ -7,6 +7,7 @@
         Phone: Serenity.StringEditor;
         AdditionalInfo: Serenity.TextAreaEditor;
         CompanyWebSites: CompanyWebSitesEditor;
+        NoteList: Serenity.StringEditor;
     }
 
     export class CompaniesForm extends Serenity.PrefixedContext {
@@ -32,7 +33,8 @@
                     'Address', w0,
                     'Phone', w0,
                     'AdditionalInfo', w2,
-                    'CompanyWebSites', w3
+                    'CompanyWebSites', w3,
+                    'NoteList', w0
                 ]);
             }
         }

@@ -14,10 +14,8 @@ using MyPages = OMP.Offers.Pages;
 [assembly: NavigationLink(1000, "Offers Settings/Categories", typeof(MyPages.CategoriesController), icon: null)]
 [assembly: NavigationLink(1000, "Offers Settings/Offer Statuses", typeof(MyPages.OfferStatusesController), icon: null)]
 [assembly: NavigationLink(1000, "Offers Settings/Task Statuses", typeof(MyPages.TaskStatusesController), icon: null)]
-#if DEBUG
 [assembly: NavigationLink(1000, "Offers Settings/Offer Categories", typeof(MyPages.OfferCategoriesController), icon: null)]
 [assembly: NavigationLink(1000, "Offers Settings/Offer Category Tasks", typeof(MyPages.OfferCategoryTasksController), icon: null)]
-#endif
 [assembly: NavigationLink(1000, "Offers Settings/User Offer Settings", typeof(MyPages.UserOfferSettingsController), icon: null)]
 [assembly: NavigationLink(1000, "Offers Settings/Offer Attachments", typeof(MyPages.OfferAttachmentsController), icon: null)]
 [assembly: NavigationLink(1000, "Offers Settings/Software Frameworks", typeof(MyPages.SoftwareFrameworksController), icon: null)]

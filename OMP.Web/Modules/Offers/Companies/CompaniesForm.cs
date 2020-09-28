@@ -25,5 +25,6 @@ namespace OMP.Offers.Forms
         [HalfWidth]
         public List<Entities.CompanyWebSitesRow> CompanyWebSites { get; set; }
 
+        public List<object> NoteList { get; set; }
     }
 }
