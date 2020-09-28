@@ -55,6 +55,7 @@ namespace OMP.Offers {
                 cssClass: 'expand-all-button offer-group-button',
                 onClick: () => this.view.setGrouping(
                     [{
+                      formatter: x => '' + x.value + ' (' + x.count + ' items)',
                         getter: fld.CompanyName
                   }])
               },
