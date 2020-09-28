@@ -196,6 +196,12 @@ namespace OMP
 //During construction, the system will be hosted on a personal server. After completing the functionality and the steps described,
 //it must be replaced by a client hosting with a specified name (domain). The offer is valid for 30 days from {2}";
             }
+
+
+            public static LocalText GroupingItemsFormatter = "{0} ({1} items)";
+            public static LocalText NoGroupingButton = "No Grouping";
+            public static LocalText GroupingButtonFormatterOneValue = "Group by {0}";
+            public static LocalText GroupingButtonFormatterTwoValues = "Group by {0} and {1}";
         }
 
         public static partial class Validation
@@ -212,5 +218,7 @@ namespace OMP
                 "records that depends on this one!";
             public static LocalText SavePrimaryKeyError = "Can't save record. There is another record with the same {1} value!";
         }
+
+
     }
 }

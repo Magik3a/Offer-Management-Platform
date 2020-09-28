@@ -51,27 +51,29 @@ namespace OMP.Offers {
             }));
 
             buttons.push({
-                title: 'Group by Company',
+                title: Q.format(Q.tryGetText("Site.GroupingButtonFormatterOneValue"), Q.tryGetText("Db.Offers.Companies.EntitySingular")),
                 cssClass: 'expand-all-button offer-group-button',
                 onClick: () => this.view.setGrouping(
                     [{
-                      formatter: x => '' + x.value + ' (' + x.count + ' items)',
+                        formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
                         getter: fld.CompanyName
                   }])
               },
-              {
-                title: 'Group By Company and Offer Status',
+                {
+                    title: Q.format(Q.tryGetText("Site.GroupingButtonFormatterTwoValues")
+                        , Q.tryGetText("Db.Offers.Companies.EntitySingular")
+                        , Q.tryGetText("Db.Offers.OfferStatuses.EntitySingular")),
                 cssClass: 'expand-all-button offer-group-button',
                 onClick: () => this.view.setGrouping(
                   [{
-                      formatter: x => '' + x.value + ' (' + x.count + ' items)',
+                      formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
                       getter: fld.CompanyName
                   }, {
-                          formatter: x => '' + x.value + ' (' + x.count + ' items)',
+                          formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
                           getter: fld.OfferStatusName
                   }])
-              }, {
-                title: 'No Grouping',
+                }, {
+                  title: Q.tryGetText("Site.NoGroupingButton"),
                 cssClass: 'collapse-all-button',
                 onClick: () => this.view.setGrouping([])
               });
@@ -82,7 +84,7 @@ namespace OMP.Offers {
           super.markupReady();
           this.view.setGrouping(
             [{
-              formatter: x => '' + x.value + ' (' + x.count + ' items)',
+                formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
               getter: fld.CompanyName
             }]);
           // expanding all level 0 (Country) and level 1 (City) groups initially
