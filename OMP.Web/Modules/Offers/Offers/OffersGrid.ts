@@ -1,6 +1,7 @@
 ﻿
 namespace OMP.Offers {
 
+    import fld = OffersRow.Fields;
     @Serenity.Decorators.registerClass()
     export class OffersGrid extends Serenity.EntityGrid<OffersRow, any> {
         protected getColumnsKey() { return 'Offers.Offers'; }
@@ -16,17 +17,17 @@ namespace OMP.Offers {
         }
 
         protected getQuickFilters() {
-          var flt = super.getQuickFilters();
+          let flt = super.getQuickFilters();
 
           var q = Q.parseQueryString();
             if (q["OfferStatusId"]) {
-            var category = Q.tryFirst(flt, x => x.field == "OfferStatusId");
+            let category = Q.tryFirst(flt, x => x.field == "OfferStatusId");
             category.init = e => {
                 e.element.getWidget(Serenity.LookupEditor).value = q["OfferStatusId"];
             };
           }
             if (q["SoftwareFrameworkId"]) {
-                var category = Q.tryFirst(flt, x => x.field == "SoftwareFrameworkId");
+                let category = Q.tryFirst(flt, x => x.field == "SoftwareFrameworkId");
               category.init = e => {
                   e.element.getWidget(Serenity.LookupEditor).value = q["SoftwareFrameworkId"];
               };
@@ -49,9 +50,40 @@ namespace OMP.Offers {
                 onViewSubmit: () => this.onViewSubmit()
             }));
 
+            buttons.push({
+                title: Q.format(Q.tryGetText("Site.GroupingButtonFormatterOneValue"), Q.tryGetText("Db.Offers.Companies.EntitySingular")),
+                cssClass: 'expand-all-button offer-group-button',
+                onClick: () => this.view.setGrouping(
+                    [{
+                        formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
+                        getter: fld.CompanyName
+                  }])
+              },
+                {
+                    title: Q.format(Q.tryGetText("Site.GroupingButtonFormatterTwoValues")
+                        , Q.tryGetText("Db.Offers.Companies.EntitySingular")
+                        , Q.tryGetText("Db.Offers.OfferStatuses.EntitySingular")),
+                cssClass: 'expand-all-button offer-group-button',
+                onClick: () => this.view.setGrouping(
+                  [{
+                      formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
+                      getter: fld.CompanyName
+                  }, {
+                          formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
+                          getter: fld.OfferStatusName
+                  }])
+                }, {
+                  title: Q.tryGetText("Site.NoGroupingButton"),
+                cssClass: 'collapse-all-button',
+                onClick: () => this.view.setGrouping([])
+              });
             return buttons;
         }
 
+        protected markupReady() {
+          super.markupReady();
+          this.view.expandAllGroups(null);
+        }
         protected getColumns() {
             var columns = super.getColumns();
 

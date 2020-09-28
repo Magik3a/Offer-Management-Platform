@@ -19,6 +19,7 @@ namespace OMP.Offers.Columns
         public Int32 OfferCategoryTaskId { get; set; }
         [FilterOnly]
         public Int32 TaskStatusId { get; set; }
+
         [EditLink]
         [Width(400)]
         public String Name { get; set; }

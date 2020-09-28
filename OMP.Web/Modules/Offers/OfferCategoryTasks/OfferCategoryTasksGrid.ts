@@ -44,26 +44,29 @@ namespace OMP.Offers {
           }));
 
           buttons.push({
-              title: 'Group By Offer',
+              title: Q.format(Q.tryGetText("Site.GroupingButtonFormatterOneValue"), Q.tryGetText("Db.Offers.Offers.EntitySingular")),
               cssClass: 'expand-all-button offer-group-button',
               onClick: () => this.view.setGrouping(
-                [{
+                  [{
+                      formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
                   getter: fld.OfferName
                 }])
             },
             {
-              title: 'Group By Offer and Category',
+              title: Q.format(Q.tryGetText("Site.GroupingButtonFormatterTwoValues")
+                  , Q.tryGetText("Db.Offers.Offers.EntitySingular")
+                  , Q.tryGetText("Db.Offers.OfferCategories.EntitySingular")),
                 cssClass: 'expand-all-button offer-group-button',
               onClick: () => this.view.setGrouping(
                 [{
-                  formatter: x => 'Offer: ' + x.value + ' (' + x.count + ' items)',
+                    formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
                     getter: fld.OfferName
                 }, {
-                        formatter: x => 'Offer Category: ' + x.value + ' (' + x.count + ' items)',
+                        formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
                         getter: fld.OfferCategoryCategoryNameReport
                 }])
             }, {
-              title: 'No Grouping',
+                title: Q.tryGetText("Site.NoGroupingButton"),
               cssClass: 'collapse-all-button',
               onClick: () => this.view.setGrouping([])
             });
@@ -113,10 +116,10 @@ namespace OMP.Offers {
         protected markupReady() {
           super.markupReady();
             this.view.setGrouping([{
-              formatter: x => 'Offer: ' + x.value + ' (' + x.count + ' items)',
+                formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
               getter: fld.OfferName
             }, {
-              formatter: x => 'Offer Category: ' + x.value + ' (' + x.count + ' items)',
+                    formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
               getter: fld.OfferCategoryCategoryNameReport
             }]);
           // expanding all level 0 (Country) and level 1 (City) groups initially

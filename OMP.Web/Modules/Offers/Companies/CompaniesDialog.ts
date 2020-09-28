@@ -17,5 +17,27 @@ namespace OMP.Offers {
 
         protected form = new CompaniesForm(this.idPrefix);
 
+        private offersGrid: CompanyOffersGrid;
+
+        constructor() {
+            super();
+
+
+            this.offersGrid = new CompanyOffersGrid(this.byId('OffersGrid'));
+            this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+        }
+
+
+        loadEntity(entity: OffersRow) {
+            super.loadEntity(entity);
+
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Offers', this.isNewOrDeleted());
+
+            if (!this.isNew()) {
+                this.offersGrid.companyId = entity.CompanyId + "";
+
+
+            } 
+        }
     }
 }

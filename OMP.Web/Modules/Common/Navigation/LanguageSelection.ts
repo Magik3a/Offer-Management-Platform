@@ -10,7 +10,7 @@
                 if (path && path != '/' && Q.endsWith(path, '/'))
                     path = path.substr(0, path.length - 1);
                 $.cookie('LanguagePreference', select.val(), {
-                   // path: path,
+                    // path: path,
                     path: '/',
                     expires: 365
                 });
@@ -37,6 +37,21 @@
 
                 select.val(currentLanguage);
             });
+
+        }
+        public static getCurrentLanguageDbId() {
+            let langLookup = Q.getLookup<Administration.LanguageRow>('Administration.Language');
+
+            let currentLanguage = Q.coalesce($.cookie('LanguagePreference'), 'en');
+            if (Q.any(langLookup.items,
+              z => z.LanguageId === currentLanguage)) {
+              return Q.tryFirst(langLookup.items,
+                  z => z.LanguageId === currentLanguage).Id;
+            } else {
+                return Q.tryFirst(langLookup.items,
+                    z => z.LanguageId === 'en').Id;
+            }
+
         }
     }
 }

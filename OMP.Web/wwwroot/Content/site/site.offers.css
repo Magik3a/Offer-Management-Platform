@@ -109,3 +109,9 @@
 .s-Offers-SoftwareFrameworksDialog .caption {
   width: 100px;
 }
+.filter-add-button-hidden .select2-container {
+  min-width: 250px;
+}
+.filter-add-button-hidden .inplace-create {
+  display: none;
+}
