@@ -58,7 +58,7 @@ namespace OMP.Offers.Entities
             set { Fields.MaximumDaysDevelopmentTime[this] = value; }
         }
 
-        [DisplayName("Start Date"), NotNull]
+        [DisplayName("Start Date"), NotNull, SortOrder(1, true)]
         [DateEditor, DefaultValue("now")]
         public DateTime? StartDate
         {

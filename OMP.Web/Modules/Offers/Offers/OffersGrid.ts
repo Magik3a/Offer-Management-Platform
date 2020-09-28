@@ -82,12 +82,6 @@ namespace OMP.Offers {
 
         protected markupReady() {
           super.markupReady();
-          this.view.setGrouping(
-            [{
-                formatter: x => Q.format(Q.tryGetText("Site.GroupingItemsFormatter"), x.value, x.count),
-              getter: fld.CompanyName
-            }]);
-          // expanding all level 0 (Country) and level 1 (City) groups initially
           this.view.expandAllGroups(null);
         }
         protected getColumns() {
