@@ -1,8 +1,9 @@
-﻿
+﻿/// <reference path="../OffersEntityDialog.ts" />
+
 namespace OMP.Offers {
     @Serenity.Decorators.panel(true)
     @Serenity.Decorators.registerClass()
-    export class OffersDialog extends Serenity.EntityDialog<OffersRow, any> {
+    export class OffersDialog extends OffersEntityDialog<OffersRow, any> {
         protected getFormKey() { return OffersForm.formKey; }
         protected getIdProperty() { return OffersRow.idProperty; }
         protected getLocalTextPrefix() { return OffersRow.localTextPrefix; }

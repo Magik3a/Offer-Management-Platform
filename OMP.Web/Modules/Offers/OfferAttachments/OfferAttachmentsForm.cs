@@ -13,9 +13,11 @@ namespace OMP.Offers.Forms
     [BasedOnRow(typeof(Entities.OfferAttachmentsRow), CheckNames = true)]
     public class OfferAttachmentsForm
     {
+        [Category("Required")]
         public Int32 OfferId { get; set; }
         public String Name { get; set; }
         public String FilePath { get; set; }
+        [Category("Extra info")]
         public String Description { get; set; }
     }
 }

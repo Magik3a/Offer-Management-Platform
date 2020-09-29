@@ -2602,6 +2602,7 @@ declare namespace OMP.Common {
         onSave: (options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void) => void;
         onDelete: (options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void) => void;
         destroy(): void;
+        protected getToolbarButtons(): Serenity.ToolButton[];
         protected updateInterface(): void;
         protected saveHandler(options: Serenity.ServiceOptions<Serenity.SaveResponse>, callback: (response: Serenity.SaveResponse) => void): void;
         protected deleteHandler(options: Serenity.ServiceOptions<Serenity.DeleteResponse>, callback: (response: Serenity.DeleteResponse) => void): void;
@@ -3114,7 +3115,13 @@ declare namespace OMP.Offers {
     }
 }
 declare namespace OMP.Offers {
-    class OffersDialog extends Serenity.EntityDialog<OffersRow, any> {
+    class OffersEntityDialog<TEntity, TOptions> extends Serenity.EntityDialog<TEntity, TOptions> {
+        protected getToolbarButtons(): Serenity.ToolButton[];
+        protected updateInterface(): void;
+    }
+}
+declare namespace OMP.Offers {
+    class OffersDialog extends OffersEntityDialog<OffersRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
