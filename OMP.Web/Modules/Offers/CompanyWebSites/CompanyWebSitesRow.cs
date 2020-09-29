@@ -12,7 +12,7 @@ namespace OMP.Offers.Entities
     using System.IO;
 
     [ConnectionKey("Offers"), Module("Offers"), TableName("[dbo].[CompanyWebSites]")]
-    [DisplayName("Company Web Sites"), InstanceName("Company Web Sites")]
+    [DisplayName("Company Web Sites"), InstanceName("Company Web Site")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
     [LookupScript]
